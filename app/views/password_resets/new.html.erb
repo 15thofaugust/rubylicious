@@ -1,0 +1,16 @@
+<% provide :title, t(".title") %>
+<%= render "layouts/header_mini" %>
+<div class="row">
+  <div class="finishing-signup-container">
+    <div class="finishing-signup-wrapper">
+      <div class="login-form-container">
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+          <h3><%= t ".title" %></h3>
+          <h6><%= t ".description" %></h6>
+          <%= f.text_field :email, placeholder: "Your email", class: "input-field" %>
+          <%= f.submit t(".submit"), class: "login-submit" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

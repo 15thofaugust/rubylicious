@@ -1,0 +1,20 @@
+<% provide :title %>
+<%= render "layouts/header_mini" %>
+<div class="row">
+  <div class="finishing-signup-container">
+    <div class="finishing-signup-wrapper">
+      <div class="login-form-container">
+        <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+          <h6><%= t ".description" %></h6>
+          <div class="reset-password-notification">
+            <%= render "shared/error_messages" %>
+          </div>
+          <%= hidden_field_tag :email, @user.email %>
+          <%= f.password_field :password, placeholder: "Password", class: "input-field" %>
+          <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "input-field" %>
+          <%= f.submit t(".submit"), class: "login-submit" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

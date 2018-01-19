@@ -1,0 +1,84 @@
+<% provide :title, t(".title") %>
+<div class="main">
+  <div class="edit-profile-wrapper">
+    <div class="edit-profile-container">
+      <div class="form-container form-container-2-col">
+        <%= form_for(@user) do |f| %>
+        <div class="form-container-row">
+          <%= render "shared/error_messages" %>
+        </div>
+
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :fullname %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <%= f.text_field :fullname, class: "input-field input-field-edit-user" %>
+          </div>
+        </div>
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :username %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <%= f.text_field :username, class: "input-field input-field-edit-user" %>
+          </div>
+        </div>
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :bio %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <%= f.text_area :bio, class: "input-field input-area input-field-edit-user" %>
+          </div>
+        </div>
+        <h6><%= t ".private" %></h6>
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :gender %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <%= f.select :gender,  {"Female" => false, "Male" => true}, {:selected => (@user.gender?)}, class: "input-select" %>
+          </div>
+        </div>
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :private_Account %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <div class="checkbox-description">
+              <%= f.check_box :isprivate, class: "input-checkbox" %>
+              <p><%= t ".pa_description" %></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :newpassword %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <%= f.password_field :password, class: "input-field input-field-edit-user" %>
+          </div>
+        </div>
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :newpasswordconf %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <%= f.password_field :password_confirmation, class: "input-field input-field-edit-user" %>
+          </div>
+        </div>
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :deactive %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <%= link_to t(".deact"), "#" %>
+          </div>
+        </div>
+        <%= f.submit t(".submit"), class: "submit-button submit-edit-user" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

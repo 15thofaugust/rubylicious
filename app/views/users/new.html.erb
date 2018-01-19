@@ -1,0 +1,29 @@
+<% provide :title, t(".title") %>
+<div class="row">
+  <div class="login-container">
+    <div class="login-mockup">
+      <%= image_tag("resources/Mockup.png", class: "iphone-mockup") %>
+    </div>
+    <div class="login-form">
+      <div class="login-form-wrapper">
+        <div class="form-container">
+          <%= form_for(@user) do |f| %>
+            <%= image_tag("resources/logo.png", class: "logo") %>
+            <h6><%= t ".description" %></h6>
+            <%= render "shared/error_messages" %>
+            <%= f.hidden_field :avatar, value: "avatar/default.png" %>
+            <%= f.text_field :email, placeholder: "Email", class: "input-field" %>
+            <%= f.text_field :fullname, placeholder: "Full Name", class: "input-field" %>
+            <%= f.text_field :username, placeholder: "Username", class: "input-field" %>
+            <%= f.password_field :password, placeholder: "Password", class: "input-field" %>
+            <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "input-field" %>
+            <%= f.submit t(".title"), class: "submit-button" %>
+          <% end %>
+        </div>
+        <div class="form-container">
+          <p><%= t(".ifHave") %> <%= link_to t(".login"), login_path %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
