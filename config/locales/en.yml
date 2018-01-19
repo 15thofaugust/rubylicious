@@ -1,4 +1,7 @@
 en:
+  post_success: Success
+  post_failed: Failed
+  hello: "Hello world"
   helpers:
     label:
       user:
@@ -60,6 +63,10 @@ en:
       person_alt: "Profile"
       search_alt: "Search"
       search_hidden: "search"
+  shared:
+    new_post:
+      submit_post: "Post"
+      new_post: "Tell something about your moment ..."
   sessions:
     new:
       title: "Login"
@@ -116,3 +123,5 @@ en:
   application_mailer:
     activation: "Your Rubylicious account is ready"
     reset: ""
+
+

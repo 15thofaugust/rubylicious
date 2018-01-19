@@ -1,0 +1,37 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+  var userList = [];
+  <% @user_tags.each do |user| %>
+    userList.push({"id" : <%= raw user.id %>,
+      "avatar" : "resources/avatar-placeholder.png",
+      "username" : "<%= raw user.username %>"
+    });
+  <% end %>
+
+  $(".caption-box").atwho({
+    at: "@",
+    data: userList,
+    startWithSpace: true,
+    searchKey: "username",
+    insertTpl: ("<a class='tag-user-item' href='/users/${id}'>&nbsp;${username}</a>"),
+    displayTpl: ("<li><a class='tag-user-item' href='/users/${id}'><img class='dropdown-avatar' src='assets/${avatar}'/>&nbsp;${username}</a></li>")
+  });
+
+  $(document).on("click", ".caption-form", (function() {
+    $(this).find(".caption-hidden-field").val($(".caption-box").html());
+  }));
+
+});
+
+</script>
+<div class="col-md-12">
+  <%= form_for @post, html: { class: "caption-form" } do |f| %>
+    <div>
+      <%= f.hidden_field :caption, class: "form-control caption-hidden-field" %>
+      <div class="caption-box" contenteditable="true" placeholder="<%= t".new_post" %>"></div>
+    </div>
+    <br>
+    <%= f.submit t(".submit_post"), class: "btn btn-primary" %>
+  <% end %>
+</div>
+

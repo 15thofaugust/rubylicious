@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post "/finish", to: "users#finish"
   resources :users
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :posts, only: [:create, :destroy]
+  get "/feed", to: "pages#index"
   get "auth/:provider/callback", :to => "sessions#create"
   get "auth/failure", :to => "sessions#failure"
 end
