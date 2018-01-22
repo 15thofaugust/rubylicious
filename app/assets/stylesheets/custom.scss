@@ -1,0 +1,87 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$white: #FFFFFF;
+$mercury: #FAFAFA;
+$concrete: #E6E6E6;
+
+/*header*/
+.navbar {
+  background: $white;
+  .container{
+    width: 100%;
+    padding: 1% 15% 1% 15%;
+    #logo {
+      max-width: 40px;
+      margin: 1% 1% 7%;
+    }
+    .search_box{
+      text-align: center;
+      margin-top: 2%;
+      input {
+        background: $mercury;
+        border: 1px solid $concrete;
+        text-align: center;
+        width: 300px;
+        padding: 9px 0 7px 8px;
+        font-size: 14px;
+        border-radius: 3px;
+        height: 36px;
+      }
+      input:focus{
+        background: $white;
+        border: 1px solid $concrete;
+        text-align: left;
+        width: 300px;
+        font-size: 14px;
+        border-radius: 3px;
+        height: 36px;
+      }
+    }
+    nav {
+      #icon {
+        max-width: 27px;
+        margin-left: 40px;
+        margin-top: 20px;
+      }
+      div {
+        display: inline-block;
+      }
+      .dropdown-toggle:focus{
+        background-color: $white;
+      }
+      .dropdown-toggle{
+        background-color: $white;
+      }
+      .item_dropdown{
+        width: 500px;
+        height: 50px;
+        display: inline-block;
+        .noti_img{
+          width: 40px;
+          height: 40px;
+          line-height: 50px;
+          border-radius: 50%;
+        }
+        .noti_text{
+          width: 450px;
+          height: 50px;
+          line-height: 50px;
+          float: left;
+        }
+      }
+      .dropdown{
+        position: relative;
+      }
+      .noti_number{
+        text-align: center;
+        background-color: red;
+        color: $white;
+        width: 19px;
+        height: 19px;
+        position: absolute;
+        margin: 0 0 0 60px;
+      }
+    }
+  }
+}
