@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+users = User.order(:created_at).take(2)
+10.times do
+  caption = Faker::Lorem.sentence(5)
+  users.each { |user| user.post.create!(caption: caption, image: "/upload/posts/sample.jpg") }
+end
