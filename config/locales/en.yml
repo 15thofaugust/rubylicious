@@ -1,9 +1,118 @@
 en:
-    layouts:
-      header:
-        logo_alt: "Rubylicous 's logo"
-        upload_alt: "Upload"
-        noti_alt: "Notification"
-        person_alt: "Profile"
-        search_alt: "Search"
-        search_hidden: "search"
+  helpers:
+    label:
+      user:
+        private_Account: "Private Account"
+        fullname: "Name"
+        username: "Username"
+        bio: "Biography"
+        newpasswordconf: "New Password Confirmation"
+        newpassword: "New password"
+        deactive: "Temporarily deactive"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "Your email is required for the registration"
+              taken: "This email address is already taken"
+              invalid: "Please provide a valid email address"
+            password:
+              blank: "Please provide a password for your account"
+              confirmation: "Password confirmation must be identical with the password"
+            password_confirmation:
+              blank: "Please confirm your password"
+              confirmation: "Password confirmation must be identical with the password"
+            username:
+              blank: "A username is required for the registration"
+              taken: "This username is already taken"
+              length: "Username's length must be at least 6 characters"
+            fullname:
+              blank: "Your fullname is required for the registration"
+  concerns:
+    password_resets_controller:
+      not_found: "User cannot be found"
+      invalid: "Invalid user"
+      flash_info: "Email sent with password reset instructions"
+      flash_danger: "Email address not found"
+      empty: "cannot be empty"
+      flash_success: "Password has been reset."
+      flash_expired: "Password reset has expired."
+    users_controller:
+      not_found: "User cannot be found."
+    sessions_controller:
+      wrong_combination: "Invalid email/password combination."
+  password_resets:
+    new:
+      title: "Forgot password?"
+      description: "Provide us your email. A new password will be sent to your email address"
+      submit: "Submit"
+    edit:
+      title: "Renew password"
+      description: "Enter your new password and confirm it"
+      submit: "Reset password"
+  layouts:
+    header:
+      logo_alt: "Rubylicous 's logo"
+      upload_alt: "Upload"
+      noti_alt: "Notification"
+      person_alt: "Profile"
+      search_alt: "Search"
+      search_hidden: "search"
+  sessions:
+    new:
+      title: "Login"
+      ifNot: "Don't have an account?"
+      signup: "Signup"
+      or: "OR"
+      google: "%{icon} Login with Google"
+      forgot: "Forgot password?"
+  users:
+    new:
+      title: "Signup"
+      description: "Sign up to see photos and videos from your friends."
+      ifHave: "Have an account?"
+      login: "Login"
+    finish:
+      description: "Finishing your signup"
+      finish: "Finish signup"
+    edit:
+      title: "Edit Profile"
+      private: "Private Information"
+      submit: "Submit"
+      pa_description: "When your account is private, only people you approve can see your photos and videos on Instagram. Your existing followers won't be affected"
+      deact: "Temporarily disable my account"
+  user_mailer:
+    account_activation:
+      greeting: "Welcome to Rubylicious"
+      text_description: |
+        Hi %{username},
+        This is an email from Rubylicious develope team to inform that your account is ready to use!
+        Please log in by the information provided on sign up step.
+        Feel free to contact us if you have any trouble using Rubylicious
+
+        Best regard!
+      html_decription: |
+        Hi %{username},
+        <br> This is an email from Rubylicious develope team to inform that your account is ready to use!
+        <br> Please log in by the information provided on sign up step.
+        <br> Feel free to contact us if you have any trouble using Rubylicious
+        <br>
+        <br> Best regard!
+    password_reset:
+      title: "Password reset"
+      text_description: |
+        To reset your password click the link below:
+        %{link}
+        This link will expire in two hours.
+        If you did not request your password to be reset, please ignore this email and your password will stay as it is.
+      html_description: |
+        To reset your password click the link below:
+        %{link}
+        This link will expire in two hours.
+        If you did not request your password to be reset, please ignore this email and your password will stay as it is.
+      reset: "Reset password"
+  application_mailer:
+    activation: "Your Rubylicious account is ready"
+    reset: ""

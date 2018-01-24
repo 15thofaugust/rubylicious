@@ -1,9 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$white: #FFFFFF;
-$mercury: #FAFAFA;
-$concrete: #E6E6E6;
+$alabaster: #fafafa;
+$concrete: #e6e6e6;
+$gray78: #b8b8b8;
+$white: #fff;
+$dovegrey: #666;
+$pictonblue: #3897f0;
+$silver: #c7c7c7;
+$valencia: #d34836;
 
 /*header*/
 .navbar {
@@ -19,7 +24,7 @@ $concrete: #E6E6E6;
       text-align: center;
       margin-top: 2%;
       input {
-        background: $mercury;
+        background: $alabaster;
         border: 1px solid $concrete;
         text-align: center;
         width: 300px;
@@ -83,5 +88,321 @@ $concrete: #E6E6E6;
         margin: 0 0 0 60px;
       }
     }
+  }
+}
+
+body {
+  background-color: $alabaster;
+}
+
+.login-container {
+  padding-top: 30px;
+  display: flex;
+  width: 935px;
+  height: 804px;
+  margin: auto;
+  justify-content: space-between;
+}
+
+.login-mockup {
+  position: relative;
+  img {
+    width: 454px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+
+.login-form{
+  width: 400px;
+  height: 800px;
+  display: flex;
+  align-items: center;
+}
+
+.login-form-wrapper {
+  overflow: hidden;
+}
+
+.form-container {
+  border: 1px solid $concrete;
+  background-color: $white;
+  border-radius: 1px;
+  padding: 10px;
+  margin-bottom: 10px;
+  h6 {
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    line-height: 20px;
+    font-weight: 600;
+    font-size: 17px;
+    color: $dovegrey;
+  }
+  p {
+    margin: 6px 40px 6px 40px;
+    text-align: center
+  }
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.logo {
+  display: block;
+  margin: auto;
+  margin-bottom: 12px;
+  margin-top: 20px;
+}
+
+.input-field {
+  margin: 0px 40px 10px 40px;
+  width: 300px;
+  padding: 9px 0 7px 8px;
+  background: $alabaster;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  border: 1px solid $concrete;
+  border-radius: 3px;
+  height: 36px;
+  line-height: 14px;
+  &:focus {
+    outline: none;
+    border: 2px solid $gray78;
+  }
+  &::placeholder {
+    font-size: 12px;
+  }
+}
+
+.submit-button {
+  margin: 20px 40px 6px 40px;
+  width: 300px;
+  background: $pictonblue;
+  border-color: $pictonblue;
+  color: $white;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 26px;
+  outline: none;
+  -webkit-appearance: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+#error_explanation {
+  margin: 0px 40px 6px 40px;
+  font-size: 12px;
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.strike {
+  margin: 15px 40px 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    color: #999;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+  div {
+    background: $silver;
+    height: 1px;
+    width: 40%;
+  }
+}
+
+.login-option {
+  padding-top: 10px;
+  margin: 15px 40px 10px 40px;
+  text-align: center;
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+    img {
+      width: 16px;
+      margin-right: 5px;
+    }
+  }
+}
+
+.forgot-option {
+  a {
+    font-size: 13px;
+  }
+}
+
+.google-option {
+  a {
+    color: $valencia;
+  }
+}
+
+.mini-header-container {
+  position:fixed;
+  left: 0px;
+  right: 0px;
+  z-index:100;
+  background-color: $white;
+}
+
+.header-wrapper {
+  border-bottom: solid 1px $concrete;
+  height: 50px;
+  position: relative;
+  img {
+    position: absolute;
+    height: 45px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+}
+
+.finishing-signup-container {
+  padding-top: 50px;
+  display: flex;
+  width: 50%;
+  height: 804px;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.finishing-signup-wrapper {
+  overflow: hidden;
+  margin: auto;
+  h6 {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    line-height: 20px;
+    font-weight: 600;
+    font-size: 17px;
+    color: $dovegrey;
+  }
+}
+
+.error_explanation {
+  ul {
+    padding-right: 40px;
+  }
+}
+
+.edit-profile-wrapper {
+  display: flex;
+  align-items: center;
+  min-height: 800px;
+  width: 70%;
+  margin: auto;
+}
+
+.edit-profile-container {
+  overflow: hidden;
+}
+
+.form-container-2-col {
+  padding: 50px 0px 30px 0px;
+
+}
+
+.form-container-row {
+  width: 775px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+
+.form-container-left {
+  width: 25%;
+  text-align: right;
+  label {
+    width: 100%;
+    font-size: 15px;
+  }
+  margin-left: 40px;
+}
+
+.form-container-right {
+  width: 65%;
+}
+
+.input-field-edit-user {
+  margin-left: 0px!important;
+  width: 355px;
+}
+
+.submit-edit-user {
+  margin: 0 auto!important;
+  display: block;
+  margin-top: 30px!important;
+  width: 120px!important;
+}
+
+.input-area {
+  height: 60px;
+}
+
+.checkbox-description {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  p {
+    margin: 0px 0px 10px 0px !important;
+    text-align: left!important;
+    width: 90%;
+    font-style: italic;
+  }
+  input[type="checkbox"] {
+    border-radius: 3px;
+    border: 1px solid $concrete;
+    height: 16px;
+    width: 16px;
+    background-color: #fff;
+    &:focus {
+      outline: none;
+      border: 2px solid $gray78;
+    }
+  }
+}
+
+.input-select {
+  margin-bottom: 10px;
+  width: 150px;
+  padding: 9px 0 7px 8px;
+  background: $alabaster;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  border: 1px solid $concrete;
+  border-radius: 3px;
+  height: 36px;
+  line-height: 14px;
+  &:focus {
+    outline: none;
+    border: 2px solid $gray78;
   }
 }

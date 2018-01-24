@@ -1,0 +1,5 @@
+username_max_length: 50
+username_min_length: 6
+email_max_length: 255
+pass_min_length: 6
+fullname_max_length: 50

@@ -1,0 +1,11 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @user.errors.each do |attr, msg| %>
+    <% if @user.errors[attr].first == msg %>
+      <%= "<li>#{msg}</li>".html_safe %>
+    <% end %>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<% provide :title %>
+<%= render "layouts/header_mini" %>
+<div class="row">
+  <div class="finishing-signup-container">
+    <div class="finishing-signup-wrapper">
+      <div class="form-container">
+        <%= form_for(@user) do |f| %>
+          <h6><%= t ".description" %></h6>
+          <%= render "shared/error_messages" %>
+          <%= f.hidden_field :email %>
+          <%= f.hidden_field :fullname %>
+          <%= f.hidden_field :provider %>
+          <%= f.text_field :username, placeholder: "Username", class: "input-field" %>
+          <%= f.password_field :password, placeholder: "Password", class: "input-field" %>
+          <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "input-field" %>
+          <%= f.submit t(".finish"), class: "submit-button" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
