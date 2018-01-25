@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 1
+  isSeen: false
+  user_set: one
+  user_get: one
+  post: one
+
+two:
+  type: 1
+  isSeen: false
+  user_set: two
+  user_get: two
+  post: two

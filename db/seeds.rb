@@ -14,4 +14,3 @@ User.create! fullname:  "Nguyen Thu Duc Trung", email: "the15thofaug@gmail.com",
   image = "upload/demo.jpg"
   Post.create! user_id:  user_id, caption: caption,
     image: image
-end

@@ -2,6 +2,12 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   attr_accessor :remember_token, :reset_token
 
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "user_get_id"
+  has_many :active_notifications, class_name: "Notification", foreign_key: "user_set_id"
+
+  has_many :user_sets, through: :passive_notifications
+  has_many :user_gets, through: :active_notifications
+
   before_save {self.email = email.downcase}
   validates :username, presence: true,
     length: {maximum: Settings.username_max_length, minimum: Settings.username_min_length},
@@ -14,6 +20,20 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: Settings.pass_min_length},
     allow_nil: true
+
+  def seen_all
+    self.passive_notifications.each do |noti|
+      noti.update isSeen: true
+    end
+  end
+
+  def set_noti other
+    user_sets << other
+  end
+
+  def get_noti other
+    user_gets << other
+  end
 
   class << self
     def digest string

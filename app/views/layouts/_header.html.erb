@@ -11,24 +11,23 @@
     <nav class="col-md-4">
       <ul class="nav navbar-nav navbar-right">
         <%= link_to image_tag("header/upload.png", alt: t(".upload_alt"), id: "icon"), "#" %>
-        <div class="dropdown">
+        <div class="dropdown" onclick="load_notification()">
           <%= link_to image_tag("header/noti.png", alt: t(".noti_alt"), id:"icon"), "#", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
-          <div class="noti_number">
-            10
-          </div>
-          <ul class="dropdown-menu">
-            <li class="item_dropdown">
-              <%= image_tag "header/person.png", alt: t(".ava_alt"), class: "noti_img" %>
-              <%= link_to "aaaaa", "#", class: "noti_text" %>
-            </li>
-            <li class="item_dropdown">
-              <%= image_tag "header/person.png", alt: t(".ava_alt"), class: "noti_img" %>
-              <%= link_to "bbbbb", "#", class: "noti_text" %>
-            </li>
-            <li class="item_dropdown">
-              <%= image_tag "header/person.png", alt: t(".ava_alt"), class: "noti_img" %>
-              <%= link_to "ccccc", "#", class: "noti_text" %>
-            </li>
+
+          <% i  = 0 %>
+          <% if noti_number > 0 %>
+            <div class="noti_number" id="noti_number">
+              <%= i = noti_number %>
+            </div>
+          <% end %>
+          <ul class="dropdown-menu" >
+            <div class="noti_title">
+              <b><%= t ".noti_title" %></b>
+            </div>
+            <hr>
+            <div id = "notifications">
+
+            </div>
           </ul>
         </div>
         <%= link_to image_tag("header/person.png", alt: t(".person_alt"), id: "icon"), current_user %>
@@ -36,3 +35,5 @@
     </nav>
   </div>
 </header>
+
+<script type="text/javascript"><%= render "layouts/custom.js.erb" %></script>
