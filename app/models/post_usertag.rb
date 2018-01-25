@@ -1,0 +1,2 @@
+class PostUsertag < ApplicationRecord
+end
