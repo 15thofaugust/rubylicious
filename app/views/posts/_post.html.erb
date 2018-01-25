@@ -3,15 +3,16 @@
     <%= link_to "#{image_tag(post.user.avatar)} #{post.user.username}".html_safe, "#" %>
   </div>
   <div class="post-box-image">
-    <%= link_to image_tag(post.image), "#" %>
+    <%= link_to image_tag(post.image.url), "#" %>
   </div>
   <div class="post-box-interaction">
     <%= link_to image_tag("resources/like"), "#" %>
     <%= link_to image_tag("resources/comment"), "#" %>
   </div>
   <div class="post-box-caption">
-    <% if post.caption.length > 10 %>
-      <p><%= truncate post.caption, length: 10 %></p>
+    <% post_caption = sanitize post.caption %>
+    <% if post_caption.length > 50 %>
+      <p><%= sanitize post_caption %></p>
       <%= link_to t(".more"), "", class: "read-more-#{post.id}" %>
       <script>
         $('.read-more-<%= post.id %>').on('click', function(e) {
@@ -20,11 +21,11 @@
         })
       </script>
     <% else %>
-      <p><%= post.caption %></p>
+      <p><%= post_caption %></p>
     <% end %>
   </div>
   <div class="post-box-comment"></div>
   <div class="post-box-upload-at">
-    <p><%= time_ago_in_words(Time.now - post.created_at).capitalize %></p>
+    <small>Posted <%= time_ago_in_words(post.created_at) %> ago.</small>
   </div>
 </div>
