@@ -1,0 +1,20 @@
+<div class="index-container">
+  <div id="my-posts">
+    <%= render @posts %>
+  </div>
+</div>
+<nav id="page-nav">
+  <%= will_paginate @posts %>
+</nav>
+<script type="text/javascript">
+  $(document).ready(function(){
+  var $container = $('#my-posts');
+    $container.masonry({
+      itemSelector: '.post-box',
+      columnWidth: function( containerWidth ) {
+        return containerWidth / 6;
+      }
+    });
+  });
+</script>
+

@@ -1,0 +1,30 @@
+<div class="post-box">
+  <div class="post-box-header">
+    <%= link_to "#{image_tag(post.user.avatar)} #{post.user.username}".html_safe, "#" %>
+  </div>
+  <div class="post-box-image">
+    <%= link_to image_tag(post.image), "#" %>
+  </div>
+  <div class="post-box-interaction">
+    <%= link_to image_tag("resources/like"), "#" %>
+    <%= link_to image_tag("resources/comment"), "#" %>
+  </div>
+  <div class="post-box-caption">
+    <% if post.caption.length > 10 %>
+      <p><%= truncate post.caption, length: 10 %></p>
+      <%= link_to t(".more"), "", class: "read-more-#{post.id}" %>
+      <script>
+        $('.read-more-<%= post.id %>').on('click', function(e) {
+          e.preventDefault()
+          $(this).parent().html('<p><%= escape_javascript post.caption %></p>')
+        })
+      </script>
+    <% else %>
+      <p><%= post.caption %></p>
+    <% end %>
+  </div>
+  <div class="post-box-comment"></div>
+  <div class="post-box-upload-at">
+    <p><%= time_ago_in_words(Time.now - post.created_at).capitalize %></p>
+  </div>
+</div>

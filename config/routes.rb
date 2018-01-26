@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "sessions#new"
+  root "posts#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "/finish", to: "users#finish"
   resources :users
   resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :posts
   get "auth/:provider/callback", :to => "sessions#create"
   get "auth/failure", :to => "sessions#failure"
 end
