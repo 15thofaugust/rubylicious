@@ -1,4 +1,8 @@
 en:
+  post_success: "Success"
+  post_failed: "Failed"
+  image_size: "Maximum file size is 5MB. Please choose a smaller file."
+  hello: "Hello world"
   helpers:
     label:
       user:
@@ -60,6 +64,20 @@ en:
       person_alt: "Profile"
       search_alt: "Search"
       search_hidden: "search"
+  shared:
+    new_post:
+      upload: "Upload your image"
+      submit_post: "Post"
+      image_size: "Maximum file size is 5MB. Please choose a smaller file."
+      new_post: "Tell something about your moment ..."
+    feed:
+      like: "Like"
+      comment: "Commnent"
+  posts:
+    new:
+      js:
+        image_size: "Maximum file size is 5MB. Please choose a smaller file."
+        confirm_cancel: "Discard this post ?"
   sessions:
     new:
       title: "Login"
@@ -116,3 +134,5 @@ en:
   application_mailer:
     activation: "Your Rubylicious account is ready"
     reset: ""
+
+

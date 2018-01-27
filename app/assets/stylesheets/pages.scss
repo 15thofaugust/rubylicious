@@ -1,0 +1,68 @@
+// TAG
+
+.caption-box {
+    margin: 10px 0px 10px 0px;
+    width: 100%;
+    min-height: 60px;
+    padding: 9px 0 7px 8px;
+    background: #fafafa;
+    overflow: auto;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    line-height: 1.4;
+}
+
+.dropdown-avatar{
+  width: 40px;
+  height: 40px;
+  margin-right: 7px
+}
+
+
+//COMMENT and CAPTION
+
+[contenteditable=true]:empty:before{
+  content: attr(placeholder);
+  display: block; /* For Firefox */
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+}
+
+.btn{
+  width: 100%;
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 3px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.preview_upload{
+  width:100%;
+
+  //border: 1px solid gray;
+}
+#popup-upload-form{
+  display: block;
+}
+.cancel-post{
+  margin-top: 10px;
+  cursor: pointer;
+  display:block;
+}

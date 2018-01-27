@@ -1,0 +1,19 @@
+<ul>
+  <% @feed.each do |p| %>
+    <li id="post-<%= p.id %>" class="col-md-6" style="list-style: none">
+      <br>
+      <p>
+        <b>
+          <%= image_tag "avatar/default.png",width:  50, height: 50 %>
+          &nbsp;<%= link_to p.user.username, user_path(p.user_id) %>
+        </b>
+      </p>
+      <p><%= image_tag p.image.url(:thumb) if p.image?%></p>
+      <p><%= sanitize p.caption %></p>
+      <a href="#"><%= t ".like" %></a>
+      <a href="#"><%= t ".comment" %></a>
+      <br><br>
+      <small><em>Posted <%= time_ago_in_words(p.created_at) %> ago.</em></small>
+    </li>
+  <% end %>
+</ul>

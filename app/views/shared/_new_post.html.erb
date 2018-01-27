@@ -1,0 +1,19 @@
+<script type="text/javascript">
+  <%=  render "posts/new.js"%>
+</script>
+<div class="col-md-6">
+  <%= form_for @post, html: { class: "caption-form" } do |f| %>
+    <span class="upload-btn-wrapper">
+      <button class="btn"><%= t ".upload" %></button>
+      <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", id: "upload-btn"%>
+    </span>
+    <div id="popup-upload-form" >
+      <img id="preview_upload" src="">
+      <div class="caption-box" contenteditable="true" placeholder="<%= t".new_post" %>"></div>
+      <%= f.hidden_field :caption, class: "form-control caption-hidden-field" %>
+      <br>
+      <%= f.submit t(".submit_post"), class: "btn btn-primary" %>
+      <div class="cancel-post btn btn-danger">Cancel</div>
+    </div>
+  <% end %>
+</div>

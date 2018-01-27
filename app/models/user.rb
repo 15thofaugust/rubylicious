@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :reset_token
-
+  has_many :post
   before_save {self.email = email.downcase}
   validates :username, presence: true,
     length: {maximum: Settings.username_max_length, minimum: Settings.username_min_length},
@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: Settings.pass_min_length},
     allow_nil: true
+
+  scope :get_all_users, -> {User.select(:id,:username,:avatar).order(username: :asc)}
 
   class << self
     def digest string
