@@ -1,0 +1,65 @@
+$alabaster: #fafafa;
+$concrete: #e6e6e6;
+$gray78: #b8b8b8;
+$white: #fff;
+$dovegrey: #666;
+$pictonblue: #3897f0;
+$silver: #c7c7c7;
+$valencia: #d34836;
+$mineshaft: #262626;
+$dustygray: #999999;
+
+.user-page-container {
+  .user-page-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 45px;
+    border-bottom: 1px solid $concrete;
+    .user-page-avatar {
+      width: 30%;
+      text-align: center;
+      img {
+        width: 152px;
+        height: 152px;
+      }
+    }
+    .user-page-info {
+      width: 70%;
+      .user-page-info-row {
+        h3 {
+          font-size: 32px;
+          font-weight: 300;
+          line-height: 40px;
+        }
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .user-page-main {
+    padding-top: 55px;
+    .user-page-main-wrapper {
+      padding-left: 30px;
+      text-align: center;
+      .user-post {
+        img {
+          width: 340px;
+          height: 340px;
+          object-fit: cover;
+          margin-bottom: 34px;
+          opacity: 1.0;
+          transition: opacity .3s ease-in-out;
+          -moz-transition: opacity .3s ease-in-out;
+          -webkit-transition: opacity .3s ease-in-out;
+          &:hover {
+            opacity: 0.6;
+            transition: opacity .3s ease-in-out;
+            -moz-transition: opacity .3s ease-in-out;
+            -webkit-transition: opacity .3s ease-in-out;
+          }
+        }
+      }
+    }
+  }
+}

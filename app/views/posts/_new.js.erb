@@ -48,7 +48,9 @@ $(document).ready(function(){
 // Upload
   $("#upload-btn").change(function () {
     preview_upload(this);
-    $("#popup-upload-form").fadeIn(1000);
+    $(".upload-btn-wrapper input[type=file]").css("height","60px");
+    $(".btn-upload").css("height","60px").html('<%= t ".choose_another" %>');
+    $("#popup-upload-form").fadeIn(300);
   });
 
   $("#post_image").bind("change", function() {
@@ -57,13 +59,26 @@ $(document).ready(function(){
       alert('<%= t (".image_size") %>');
     }
   });
-//Submit caption
-  $(".cancel-post").click(function () {
+  function cancel_post() {
     var check = confirm('<%= t ".confirm_cancel" %>');
     if (check) {
       $(".caption-box").empty();
-      $("#popup-upload-form").fadeOut(100);
+      $(".caption-form")[0].reset();
+      $(".caption-popup-box").hide();
+      $("#popup-upload-form").hide();
+      $(".btn-upload").css("height","300px").html('<%= t ".upload" %>');
+      $("#upload-btn").css("height","300px");
+      $(".dim").fadeOut(300);
     }
+  }
+//Submit caption
+  $(".cancel-post").click(function(){
+    cancel_post();
+  });
+
+  $(".dim").click(function(){
+    cancel_post();
+    $(".popup").removeClass(".popup");
   });
 
   $(document).on("click", ".caption-form", (function() {

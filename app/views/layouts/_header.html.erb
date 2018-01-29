@@ -1,7 +1,8 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <div class ="col-md-4" >
+    <div class ="col-md-4 header-logo-wrapper" >
       <%= link_to image_tag("header/l.png", alt: t(".logo_alt"),  id: "logo"), root_path %>
+      <div></div>
       <%= link_to image_tag("header/t.png", alt: t(".logo_alt"), id: "rubylicious_text"), root_path %>
     </div>
     <div class="search_box col-md-4">
@@ -9,7 +10,7 @@
     </div>
     <nav class="col-md-4">
       <ul class="nav navbar-nav navbar-right">
-        <%= link_to image_tag("header/upload.png", alt: t(".upload_alt"), id: "icon"), "#" %>
+        <%= image_tag "header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload"%>
         <div class="dropdown">
           <%= link_to image_tag("header/noti.png", alt: t(".noti_alt"), id:"icon"), "#", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
           <div class="noti_number">
@@ -30,7 +31,7 @@
             </li>
           </ul>
         </div>
-        <%= link_to image_tag("header/person.png", alt: t(".person_alt"), id: "icon"), "#" %>
+        <%= link_to image_tag("header/person.png", alt: t(".person_alt"), id: "icon"), current_user %>
       </ul>
     </nav>
   </div>
