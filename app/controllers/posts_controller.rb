@@ -1,5 +1,14 @@
 class PostsController < ApplicationController
   def index
+    @posts = Post.posts_by_follower
+    .paginate page: params[:page], per_page: Settings.index_paginate_per
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    @post = Post.new
+    @user_tags = User.get_all_users
+    @hashtags = Hashtag.get_all_hashtags
   end
 
   def show
@@ -12,10 +21,10 @@ class PostsController < ApplicationController
   def create
     @post = current_user.post.build post_params
     if @post.save
-      flash[:success] = "ok" #t "post_success"
+      flash[:success] = t "post_success"
       redirect_to root_path
     else
-      flash[:success] = "failed" #t "post_failed"
+      flash[:danger] = t "post_failed"
       redirect_to root_path
     end
   end

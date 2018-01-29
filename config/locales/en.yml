@@ -1,6 +1,6 @@
 en:
-  post_success: "Success"
-  post_failed: "Failed"
+  post_success: "Your image has been upload. Enjoy"
+  post_failed: "Your image can't be uploaded now. Please try again"
   image_size: "Maximum file size is 5MB. Please choose a smaller file."
   hello: "Hello world"
   helpers:
@@ -56,6 +56,9 @@ en:
       title: "Renew password"
       description: "Enter your new password and confirm it"
       submit: "Reset password"
+  posts:
+    post:
+      more: "Read more"
   layouts:
     header:
       logo_alt: "Rubylicous 's logo"
@@ -66,8 +69,9 @@ en:
       search_hidden: "search"
   shared:
     new_post:
-      upload: "Upload your image"
+      upload: "Browse file or drop your image here"
       submit_post: "Post"
+      cancel_post: "Cancel"
       image_size: "Maximum file size is 5MB. Please choose a smaller file."
       new_post: "Tell something about your moment ..."
     feed:
@@ -76,8 +80,11 @@ en:
   posts:
     new:
       js:
+        choose_another: "Choose another image"
+        upload: "Browse file or drop your image here"
         image_size: "Maximum file size is 5MB. Please choose a smaller file."
         confirm_cancel: "Discard this post ?"
+      search_hidden: "Search"
   sessions:
     new:
       title: "Login"
