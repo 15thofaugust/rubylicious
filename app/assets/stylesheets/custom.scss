@@ -9,16 +9,33 @@ $dovegrey: #666;
 $pictonblue: #3897f0;
 $silver: #c7c7c7;
 $valencia: #d34836;
+$black: #000000;
+$dustygray: #999999;
+$omegranate: #f03d25;
 
 /*header*/
 .navbar {
   background: $white;
+  border-bottom: solid 1px $gray78;
+  display: flex;
+  align-items: center;
+  height: 80px;
   .container{
-    width: 100%;
+    width: 93%;
     padding: 1% 15% 1% 15%;
+    .header-logo-wrapper {
+      display: flex;
+      align-items: center;
+      div {
+        width: 1px;
+        background: $black;
+        height: 40px;
+        margin-right: 20px;
+      }
+    }
     #logo {
       max-width: 40px;
-      margin: 1% 1% 7%;
+      margin: -5px 25px 0px 0px;
     }
     .search_box{
       text-align: center;
@@ -27,23 +44,24 @@ $valencia: #d34836;
         background: $alabaster;
         border: 1px solid $concrete;
         text-align: center;
-        width: 300px;
+        width: 250px;
         padding: 9px 0 7px 8px;
         font-size: 14px;
         border-radius: 3px;
-        height: 36px;
-      }
-      input:focus{
-        background: $white;
-        border: 1px solid $concrete;
-        text-align: left;
-        width: 300px;
-        font-size: 14px;
-        border-radius: 3px;
-        height: 36px;
+        height: 30px;
+        &:focus {
+          background: $white;
+          border: 2px solid $gray78;
+          text-align: left;
+          outline: none;
+        }
+        &::placeholder {
+          font-size: 12px;
+        }
       }
     }
     nav {
+      padding-right: 4%;
       #icon {
         max-width: 27px;
         margin-left: 40px;
@@ -80,12 +98,14 @@ $valencia: #d34836;
       }
       .noti_number{
         text-align: center;
-        background-color: red;
+        background-color: $omegranate;
         color: $white;
-        width: 19px;
-        height: 19px;
+        width: 16px;
+        height: 16px;
         position: absolute;
-        margin: 0 0 0 60px;
+        margin: -7px 0 0 57px;
+        border-radius: 5px;
+        font-size: 12px;
       }
     }
   }
@@ -131,7 +151,7 @@ body {
 .form-container {
   border: 1px solid $concrete;
   background-color: $white;
-  border-radius: 1px;
+  border-radius: 3px;
   padding: 10px;
   margin-bottom: 10px;
   h6 {
@@ -405,4 +425,8 @@ body {
     outline: none;
     border: 2px solid $gray78;
   }
+}
+
+#page-nav {
+  text-align: center;
 }

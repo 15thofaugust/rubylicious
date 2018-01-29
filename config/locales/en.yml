@@ -52,6 +52,9 @@ en:
       title: "Renew password"
       description: "Enter your new password and confirm it"
       submit: "Reset password"
+  posts:
+    post:
+      more: "Read more"
   layouts:
     header:
       logo_alt: "Rubylicous 's logo"
@@ -59,7 +62,7 @@ en:
       noti_alt: "Notification"
       person_alt: "Profile"
       search_alt: "Search"
-      search_hidden: "search"
+      search_hidden: "Search"
   sessions:
     new:
       title: "Login"

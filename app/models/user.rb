@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
   attr_accessor :remember_token, :reset_token
 
   before_save {self.email = email.downcase}
@@ -42,15 +43,15 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth auth
-    user = User.find_or_create_by email: auth.info.email
-    user.fullname = auth.info.name
-    user.email = auth.info.email
-    user.username = auth.info.email[0,
-      auth.info.email.index("@")] + "_" + ("0".."9").to_a.sample(10).join
-    user.password = (("0".."9").to_a + ("a".."z").to_a + ("A".."Z").to_a).sample(8).join
-    user.avatar = "avatar/default.png"
-    user.save!
-    user
+    where(email: auth.info.email).first_or_initialize.tap do |user|
+      user.fullname = auth.info.name
+      user.email = auth.info.email
+      user.username = auth.info.email[0,
+        auth.info.email.index("@")] + "_" + ("0".."9").to_a.sample(10).join
+      user.password = (("0".."9").to_a + ("a".."z").to_a + ("A".."Z").to_a).sample(8).join
+      user.avatar = "avatar/default.png"
+      user.save
+    end
   end
 
   def send_activation_email

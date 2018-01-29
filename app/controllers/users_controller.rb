@@ -7,7 +7,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show; end
+  def show
+    @posts = @user.posts.order(created_at: :desc).paginate page: params[:page],
+      per_page: Settings.user_post_paginate_per
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def create
     @user = User.new user_params
