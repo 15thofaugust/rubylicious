@@ -1,15 +1,9 @@
-$alabaster: #fafafa;
-$concrete: #e6e6e6;
-$gray78: #b8b8b8;
-$white: #fff;
-$dovegrey: #666;
-$pictonblue: #3897f0;
-$silver: #c7c7c7;
-$valencia: #d34836;
-$mineshaft: #262626;
-$dustygray: #999999;
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'colors.scss';
 
 .user-page-container {
+  padding-top: 60px;
   .user-page-header {
     display: flex;
     justify-content: space-between;
@@ -21,18 +15,71 @@ $dustygray: #999999;
       img {
         width: 152px;
         height: 152px;
+        object-fit: cover;
+        border-radius: 50%;
       }
     }
     .user-page-info {
       width: 70%;
       .user-page-info-row {
+        color: $mineshaft;
+        line-height: 25px;
+        margin-bottom: 15px;
         h3 {
           font-size: 32px;
           font-weight: 300;
-          line-height: 40px;
         }
         p {
           font-size: 16px;
+        }
+      }
+      .user-page-info-row-1 {
+        display: flex;
+        justify: space-between;
+        input {
+          width: 70%;
+        }
+        .unfollow-button {
+          background: $alabaster;
+          border: solid 1px $alto;
+          color: $mineshaft;
+          margin: 23px 40px 6px 40px !important;
+        }
+        .follow-button {
+          margin: 23px 40px 6px 40px !important;
+        }
+        a {
+          margin: 23px 40px 6px 40px;
+          width: 13%;
+          background: $alabaster;
+          border: solid 1px $alto;
+          color: $mineshaft;
+          border-radius: 3px;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 32px;
+          height: 32px;
+          outline: none;
+          text-decoration: none;
+          text-align: center;
+          -webkit-appearance: none;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+      .user-page-info-stat {
+        display: flex;
+        justify: space-between;
+        font-size: 16px;
+        .stat {
+          font-weight: 600;
+          padding-right: 5px;
+        }
+        a {
+          padding-left: 50px;
+          color: $mineshaft;
+          text-decoration: none;
         }
       }
     }
@@ -43,21 +90,45 @@ $dustygray: #999999;
       padding-left: 30px;
       text-align: center;
       .user-post {
-        img {
-          width: 340px;
-          height: 340px;
-          object-fit: cover;
-          margin-bottom: 34px;
-          opacity: 1.0;
-          transition: opacity .3s ease-in-out;
-          -moz-transition: opacity .3s ease-in-out;
-          -webkit-transition: opacity .3s ease-in-out;
-          &:hover {
+        text-align: center;
+        opacity: 1.0;
+            transition: opacity .3s ease-in-out;
+            -moz-transition: opacity .3s ease-in-out;
+            -webkit-transition: opacity .3s ease-in-out;
+        &:hover {
             opacity: 0.6;
             transition: opacity .3s ease-in-out;
             -moz-transition: opacity .3s ease-in-out;
             -webkit-transition: opacity .3s ease-in-out;
           }
+        .user-post-stat {
+          position: absolute;
+          top: 40%;
+          left: 35%;
+          display: none;
+          z-index: 1;
+          .user-post-stat-component {
+            display: flex;
+            justify: space-between;
+            margin-right: 30px;
+            img {
+              width: 20px;
+              height: 20px;
+              margin-right: 7px;
+            }
+            p {
+              color: $white;
+              font-size: 17px;
+              line-height: 22px;
+              font-weight: 600;
+            }
+          }
+        }
+        img {
+          width: 340px;
+          height: 340px;
+          object-fit: cover;
+          margin-bottom: 30px;
         }
       }
     }

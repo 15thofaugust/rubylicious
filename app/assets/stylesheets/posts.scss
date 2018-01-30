@@ -1,16 +1,6 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-$alabaster: #fafafa;
-$concrete: #e6e6e6;
-$gray78: #b8b8b8;
-$white: #fff;
-$dovegrey: #666;
-$pictonblue: #3897f0;
-$silver: #c7c7c7;
-$valencia: #d34836;
-$mineshaft: #262626;
-$dustygray: #999999;
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'colors.scss';
 
 #my-posts {
   padding-top: 60px;
@@ -19,14 +9,16 @@ $dustygray: #999999;
     border: 1px solid $concrete;
     background-color: $white;
     border-radius: 3px;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     .post-box-header {
-      padding: 16px 16px 16px 16px;
+      padding: 16px;
       height: 60px;
       border-bottom: solid 1px $concrete;
       img {
         width: 30px;
         margin-right: 20px;
+        object-fit: cover;
+        border-radius: 50%;
       }
       a {
         line-height: 20px;
@@ -42,14 +34,31 @@ $dustygray: #999999;
       }
     }
     .post-box-interaction {
-      padding: 16px 16px 16px 16px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      width: 25%;
       img {
         width: 24px;
         margin-right: 20px;
       }
+      .like-button {
+        width: 25.5px;
+        margin-right: 20px;
+        border: none;
+      }
+    }
+    .post-box-count {
+      padding: 0px 16px;
+      a {
+        text-decoration: none;
+        color: $mineshaft;
+        font-weight: 600;
+        font-size: 15px;
+      }
     }
     .post-box-caption {
-      padding: 16px 16px 16px 16px;
+      padding: 16px;
       display: flex;
       p {
         color: $mineshaft;

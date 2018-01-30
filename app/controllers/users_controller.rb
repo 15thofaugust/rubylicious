@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, except: [:show, :new, :create]
   before_action :find_user, except: [:new, :create, :finish]
   before_action :correct_user, only: [:edit, :udpate]
   before_action :admin_user, only: :destroy
 
+
   def new
+    redirect_to root_path if logged_in?
     @user = User.new
   end
 
@@ -29,7 +32,6 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    params[:user].delete :password if params[:user][:password].blank?
     if @user.update_attributes update_params
       redirect_to login_path
     else
@@ -56,6 +58,12 @@ class UsersController < ApplicationController
       :password_confirmation,
       :isprivate,
       :avatar
+  end
+
+  def logged_in_user
+    return if logged_in?
+    flash[:danger] = t ".log_req"
+    redirect_to login_path
   end
 
   def correct_user

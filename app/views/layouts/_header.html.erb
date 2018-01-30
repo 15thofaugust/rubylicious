@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top">
   <div class="container">
     <div class ="col-md-4 header-logo-wrapper" >
       <%= link_to image_tag("header/l.png", alt: t(".logo_alt"),  id: "logo"), root_path %>
@@ -8,32 +8,38 @@
     <div class="search_box col-md-4">
       <input type="text" name="search_text" placeholder="<%= t ".search_hidden" %>" >
     </div>
-    <nav class="col-md-4">
+    <% if logged_in? %>
+      <nav class="col-md-4">
+        <ul class="nav navbar-nav navbar-right">
+          <%= image_tag "header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload"%>
+          <div class="dropdown" onclick="load_notification()">
+            <%= link_to image_tag("header/noti.png", alt: t(".noti_alt"), id:"icon"), "#", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
+            <% i  = 0 %>
+            <% if noti_number > 0 %>
+              <div class="noti_number" id="noti_number">
+                <%= i = noti_number %>
+              </div>
+            <% end %>
+            <ul class="dropdown-menu" >
+              <div class="noti_title">
+                <b><%= t ".noti_title" %></b>
+              </div>
+              <hr>
+              <div id = "notifications">
+              </div>
+            </ul>
+          </div>
+          <%= link_to image_tag("header/person.png", alt: t(".person_alt"), id: "icon"), current_user %>
+        </ul>
+      </nav>
+    <% else %>
+    <nav class="col-md-4 col-md-4-without-login">
       <ul class="nav navbar-nav navbar-right">
-        <%= image_tag "header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload"%>
-        <div class="dropdown" onclick="load_notification()">
-          <%= link_to image_tag("header/noti.png", alt: t(".noti_alt"), id:"icon"), "#", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
-
-          <% i  = 0 %>
-          <% if noti_number > 0 %>
-            <div class="noti_number" id="noti_number">
-              <%= i = noti_number %>
-            </div>
-          <% end %>
-          <ul class="dropdown-menu" >
-            <div class="noti_title">
-              <b><%= t ".noti_title" %></b>
-            </div>
-            <hr>
-            <div id = "notifications">
-
-            </div>
-          </ul>
-        </div>
-        <%= link_to image_tag("header/person.png", alt: t(".person_alt"), id: "icon"), current_user %>
+        <%= link_to t(".signup"), signup_path, class: "header-signup" %>
+        <%= link_to t(".login"), login_path, class: "header-login" %>
       </ul>
     </nav>
+    <% end %>
   </div>
 </header>
-
 <script type="text/javascript"><%= render "layouts/custom.js.erb" %></script>

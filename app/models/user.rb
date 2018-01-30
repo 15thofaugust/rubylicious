@@ -1,15 +1,25 @@
 class User < ApplicationRecord
-  has_many :posts, dependent: :destroy
   attr_accessor :remember_token, :reset_token
-
-  has_many :passive_notifications, class_name: "Notification", foreign_key: "user_get_id"
-  has_many :active_notifications, class_name: "Notification", foreign_key: "user_set_id"
-
+  has_many :posts, dependent: :destroy
+  has_many :active_relationships, class_name: "Relationship",
+    foreign_key: :follower_id,
+    dependent: :destroy
+  has_many :passive_relationships, class_name: "Relationship",
+    foreign_key: :followed_id,
+    dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :like_activities, class_name: "Like", foreign_key: :user_id,
+    dependent: :destroy
+  has_many :likes, through: :like_activities, source: :post
+  has_many :passive_notifications, class_name: "Notification", foreign_key: :user_get_id
+  has_many :active_notifications, class_name: "Notification", foreign_key: :user_set_id
   has_many :user_sets, through: :passive_notifications
   has_many :user_gets, through: :active_notifications
-
   has_many :post
-  before_save {self.email = email.downcase}
+
+  before_save {email.downcase!}
+
   validates :username, presence: true,
     length: {maximum: Settings.username_max_length, minimum: Settings.username_min_length},
     uniqueness: {case_sensitive: false}
@@ -22,7 +32,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: Settings.pass_min_length},
     allow_nil: true
 
-  scope :get_all_users, -> {User.select(:id,:username,:avatar).order(username: :asc)}
+  scope :get_all_users, -> {select(:id, :username, :avatar).order username: :asc}
+
   def seen_all
     self.passive_notifications.each do |noti|
       noti.update isSeen: true
@@ -90,6 +101,30 @@ class User < ApplicationRecord
   end
 
   def password_reset_expired?
-    reset_sent_at < (Settings.pass_reset_expired_time).hours.ago
+    reset_sent_at < Settings.pass_reset_expired_time.hours.ago
+  end
+
+  def follow other_user
+    active_relationships.create followed_id: other_user.id
+  end
+
+  def unfollow other_user
+    following.delete other_user
+  end
+
+  def following? other_user
+    following.include? other_user
+  end
+
+  def like post
+    like_activities.create post_id: post.id
+  end
+
+  def unlike post
+    likes.delete post
+  end
+
+  def like? post
+    likes.include? post
   end
 end
