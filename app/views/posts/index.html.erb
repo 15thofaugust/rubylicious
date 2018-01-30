@@ -1,20 +1,32 @@
+
 <div class="index-container">
   <div id="my-posts">
     <%= render @posts %>
   </div>
 </div>
 <nav id="page-nav">
+  <div class="caption-popup-box">
+  <%= render "shared/new_post" %>
+</div>
+
   <%= will_paginate @posts %>
 </nav>
 <script type="text/javascript">
   $(document).ready(function(){
-  var $container = $('#my-posts');
+    var $container = $('#my-posts');
     $container.masonry({
       itemSelector: '.post-box',
       columnWidth: function( containerWidth ) {
         return containerWidth / 6;
       }
     });
+
+    $(".icon-upload").click(function(){
+      $(".caption-popup-box").fadeIn(300);
+      $(".caption-popup-box").addClass("popup");
+      $(".dim").fadeIn(300);
+    });
+
   });
 </script>
 

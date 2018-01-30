@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180129021354) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
-    t.string "content"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20180129021354) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.string "image"
-    t.string "caption"
+    t.text "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_posts_on_user_id_and_created_at"
