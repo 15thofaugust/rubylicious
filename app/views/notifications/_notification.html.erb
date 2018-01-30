@@ -1,0 +1,33 @@
+<% current_user.passive_notifications.each do |noti| %>
+  <li class="item_dropdown">
+    <div class ="link_img">
+      <%= link_to image_tag("header/person.png", class: "noti_img"), "#"%>
+    </div>
+
+    <% if noti.isSeen %>
+      <% if noti.type_noti == 1 %>
+        <%= link_to t("layouts.header.liked_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text" %>
+      <% elsif noti.type_noti == 2 %>
+       <%= link_to t("layouts.header.commented_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text" %>
+      <% elsif noti.type_noti == 3 %>
+        <%= link_to t("layouts.header.tagged_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text" %>
+      <% else %>
+        <%= link_to t("layouts.header.followed_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text" %>
+      <% end %>
+    <% else %>
+      <% if noti.type_noti == 1 %>
+        <%= link_to t("layouts.header.liked_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text_unseen" %>
+      <% elsif noti.type_noti == 2 %>
+       <%= link_to t("layouts.header.commented_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text_unseen" %>
+      <% elsif noti.type_noti == 3 %>
+        <%= link_to t("layouts.header.tagged_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text_unseen" %>
+      <% else %>
+        <%= link_to t("layouts.header.followed_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text_unseen" %>
+      <% end %>
+    <% end %>
+
+    <div class = "timestamp">
+      <%= time_ago_in_words(noti.created_at) %> ago.
+    </div>
+  </li>
+<% end %>

@@ -62,7 +62,13 @@ en:
       noti_alt: "Notification"
       person_alt: "Profile"
       search_alt: "Search"
-      search_hidden: "Search"
+      search_hidden: "search"
+      ava_alt: "Person"
+      liked_noti: "<b>%{user_name}</b> has liked your post"
+      commented_noti: "<b>%{user_name}</b> has commented on your post"
+      tagged_noti: "<b>%{user_name}</b> has mentioned you"
+      followed_noti: "<b>%{user_name}</b> has followed you"
+      noti_title: "Notification"
   sessions:
     new:
       title: "Login"

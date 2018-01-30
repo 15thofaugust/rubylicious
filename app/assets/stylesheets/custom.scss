@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 $alabaster: #fafafa;
 $concrete: #e6e6e6;
 $gray78: #b8b8b8;
@@ -12,6 +13,9 @@ $valencia: #d34836;
 $black: #000000;
 $dustygray: #999999;
 $omegranate: #f03d25;
+$mercury: #FAFAFA;
+$grey-light: #F2F2F2;
+$silver-chalice: #9F9F9F;
 
 /*header*/
 .navbar {
@@ -80,17 +84,55 @@ $omegranate: #f03d25;
         width: 500px;
         height: 50px;
         display: inline-block;
-        .noti_img{
+        .link_img{
           width: 40px;
           height: 40px;
           line-height: 50px;
-          border-radius: 50%;
+          .noti_img{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
         }
         .noti_text{
+          padding-left: 20px;
           width: 450px;
           height: 50px;
           line-height: 50px;
           float: left;
+          text-decoration: none;
+          color: black;
+        }
+        .noti_text:hover{
+          padding-left: 20px;
+          width: 450px;
+          height: 50px;
+          line-height: 50px;
+          float: left;
+          text-decoration: none;
+          color: black;
+          background: $concrete;
+        }
+        .timestamp{
+          color: $silver-chalice;
+          margin-left: 20px;
+        }
+        .noti_text_unseen{
+          width: 450px;
+          height: 50px;
+          line-height: 50px;
+          float: left;
+          background: $grey-light;
+          padding-left: 20px;
+          text-decoration: none;
+          color: black;
+        }
+        .noti_text_unseen:hover{
+          width: 450px;
+          height: 50px;
+          line-height: 50px;
+          float: left;
+          background: $concrete;
         }
       }
       .dropdown{
@@ -106,6 +148,19 @@ $omegranate: #f03d25;
         margin: -7px 0 0 57px;
         border-radius: 5px;
         font-size: 12px;
+        margin: 0 0 0 60px;
+        margin-top: 10%;
+      }
+      .dropdown-menu{
+        max-height: 500px;
+        overflow: scroll;
+        .noti_title{
+          width: 500px;
+          text-align: center;
+        }
+      }
+      hr{
+        margin: 0;
       }
     }
   }
@@ -425,6 +480,10 @@ body {
     outline: none;
     border: 2px solid $gray78;
   }
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 #page-nav {
