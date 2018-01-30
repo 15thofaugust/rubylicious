@@ -43,8 +43,8 @@ class User < ApplicationRecord
     end
   end
 
-  def set_noti other
-    user_sets << other
+  def set_noti other_user, post
+    self.active_notifications.build(user_get_id: other_user.id, post_id: post.id).save
   end
 
   def get_noti other

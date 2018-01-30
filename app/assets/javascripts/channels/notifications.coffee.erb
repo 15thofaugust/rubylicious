@@ -1,0 +1,24 @@
+<% environment.context_class.instance_eval { include NotificationsHelper } %>
+<% environment.context_class.instance_eval { include SessionsHelper } %>
+
+App.notifications = App.cable.subscriptions.create "NotificationsChannel",
+  connected: ->
+    # Called when the subscription is ready for use on the server
+
+  disconnected: ->
+    # Called when the subscription has been terminated by the server
+
+  received: (data) ->
+    if (parseInt(data["notification"]) == parseInt($("#current_user_id").html()))
+      if ($('.number_ground').html().trim() == "")
+        $('.number_ground').html("
+          <div class='noti_number' id='noti_number'>
+            1
+          </div>")
+      else
+        $('#noti_number').html((parseInt($('#noti_number').html()) + 1))
+  speak: (notification) ->
+    @perform 'speak', notification: notification
+
+$(document).on "click", "#like_button", ->
+  App.notifications.speak(this.value)
