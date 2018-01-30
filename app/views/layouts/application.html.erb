@@ -8,7 +8,8 @@
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
   <%if logged_in? %>
-    <body style = "margin-top: 115px;">
+    <body style = "margin-top: 80px;">
+      <div class="dim"></div>
       <%= render "layouts/header" %>
       <div class="container">
         <% flash.each do |message_type, message| %>
