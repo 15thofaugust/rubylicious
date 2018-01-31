@@ -1,0 +1,14 @@
+$(document).ready(function(){
+  var $container = $('#my-posts');
+  $container.masonry({
+    itemSelector: '.post-box',
+    columnWidth: function( containerWidth ) {
+      return containerWidth / 2;
+    }
+  });
+  $(".icon-upload").click(function(){
+    $(".caption-popup-box").fadeIn(300);
+    $(".caption-popup-box").addClass("popup");
+    $(".dim").fadeIn(300);
+  });
+});

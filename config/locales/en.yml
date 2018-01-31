@@ -45,6 +45,7 @@ en:
       flash_expired: "Password reset has expired."
     users_controller:
       not_found: "User cannot be found."
+      log_req: "Login is required"
     sessions_controller:
       wrong_combination: "Invalid email/password combination."
   password_resets:
@@ -56,9 +57,6 @@ en:
       title: "Renew password"
       description: "Enter your new password and confirm it"
       submit: "Reset password"
-  posts:
-    post:
-      more: "Read more"
   layouts:
     header:
       logo_alt: "Rubylicous 's logo"
@@ -91,6 +89,12 @@ en:
         image_size: "Maximum file size is 5MB. Please choose a smaller file."
         confirm_cancel: "Discard this post ?"
       search_hidden: "Search"
+      singup: "Sign Up"
+      login: "Log In"
+    post:
+      more: "Read more"
+      time: "Posted %{time} ago"
+      count: "%{count} likes"
   sessions:
     new:
       title: "Login"
@@ -105,15 +109,22 @@ en:
       description: "Sign up to see photos and videos from your friends."
       ifHave: "Have an account?"
       login: "Login"
-    finish:
-      description: "Finishing your signup"
-      finish: "Finish signup"
     edit:
       title: "Edit Profile"
       private: "Private Information"
       submit: "Submit"
       pa_description: "When your account is private, only people you approve can see your photos and videos on Instagram. Your existing followers won't be affected"
       deact: "Temporarily disable my account"
+    follow_form:
+      edit: "Edit Profile"
+    follow:
+      button: "Follow"
+    unfollow:
+      button: "Following"
+    show:
+      posts: " %{count} posts"
+      followers: "%{count} followers"
+      following: "%{count} following"
   user_mailer:
     account_activation:
       greeting: "Welcome to Rubylicious"
