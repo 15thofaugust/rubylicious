@@ -1,26 +1,12 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'colors.scss';
 
-
-$alabaster: #fafafa;
-$concrete: #e6e6e6;
-$gray78: #b8b8b8;
-$white: #fff;
-$dovegrey: #666;
-$pictonblue: #3897f0;
-$silver: #c7c7c7;
-$valencia: #d34836;
-$black: #000000;
-$dustygray: #999999;
-$omegranate: #f03d25;
-$mercury: #FAFAFA;
-$grey-light: #F2F2F2;
-$silver-chalice: #9F9F9F;
 
 /*header*/
 .navbar {
-  background: $white;
-  border-bottom: solid 1px $gray78;
+  background: $white !important;
+  border-bottom: solid 1px $gray78 !important;
   display: flex;
   align-items: center;
   height: 80px;
@@ -63,6 +49,9 @@ $silver-chalice: #9F9F9F;
           font-size: 12px;
         }
       }
+    }
+    .col-md-4-without-login {
+      margin-top: 20px;
     }
     nav {
       padding-right: 4%;
@@ -161,6 +150,38 @@ $silver-chalice: #9F9F9F;
       }
       hr{
         margin: 0;
+      }
+      .header-login {
+        color: $pictonblue;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 32px;
+        height: 32px;
+        outline: none;
+        text-decoration: none;
+        text-align: center;
+        -webkit-appearance: none;
+        &:focus {
+          outline: none;
+        }
+      }
+      .header-signup {
+        margin-right: 30px;
+        padding: 6px 20px;
+        background: $pictonblue;
+        color: $white;
+        border-radius: 3px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 32px;
+        height: 32px;
+        outline: none;
+        text-decoration: none;
+        text-align: center;
+        -webkit-appearance: none;
+        &:focus {
+          outline: none;
+        }
       }
     }
   }
@@ -263,7 +284,7 @@ body {
   margin: 20px 40px 6px 40px;
   width: 300px;
   background: $pictonblue;
-  border-color: $pictonblue;
+  border: 1px solid $pictonblue;
   color: $white;
   border-radius: 3px;
   font-size: 14px;
@@ -426,15 +447,15 @@ body {
 }
 
 .input-field-edit-user {
-  margin-left: 0px!important;
+  margin-left: 0px !important;
   width: 355px;
 }
 
 .submit-edit-user {
-  margin: 0 auto!important;
+  margin: 0 auto !important;
   display: block;
-  margin-top: 30px!important;
-  width: 120px!important;
+  margin-top: 30px !important;
+  width: 120px !important;
 }
 
 .input-area {
@@ -447,7 +468,7 @@ body {
   width: 90%;
   p {
     margin: 0px 0px 10px 0px !important;
-    text-align: left!important;
+    text-align: left !important;
     width: 90%;
     font-style: italic;
   }
@@ -488,4 +509,7 @@ body {
 
 #page-nav {
   text-align: center;
+  .pagination {
+    display: none;
+  }
 }

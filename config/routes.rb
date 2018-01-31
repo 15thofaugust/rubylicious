@@ -7,9 +7,16 @@ Rails.application.routes.draw do
   post "/signup",  to: "users#create"
   get "/finish", to: "users#finish"
   post "/finish", to: "users#finish"
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :password_resets, only: [:new, :create, :edit, :update]
-  resources :posts
-  get "auth/:provider/callback", :to => "sessions#create"
-  get "auth/failure", :to => "sessions#failure"
+  resources :posts, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
+
+  get "auth/:provider/callback", to: "sessions#create"
+  get "auth/failure", to: "sessions#failure"
 end

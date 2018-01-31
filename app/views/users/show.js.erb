@@ -1,9 +1,9 @@
 <% @posts.each do |p| %>
-$boxes = $('<div class="user-post"></div>');
-$('.user-page-main-wrapper').append('<div class="user-post user-post-' + '<%= raw p.id %>' + '"></div>').imagesLoaded(function(){
-  $('.user-page-main-wrapper').masonry('reload');
-$('.user-post-' + '<%= raw p.id %>').append('<%= j link_to image_tag(p.image), "#" %>')
-});
+  $boxes = $('<div class="user-post"></div>');
+  $('.user-page-main-wrapper').append('<div class="user-post user-post-' + '<%= raw p.id %>' + '"></div>').imagesLoaded(function(){
+    $('.user-page-main-wrapper').masonry('reload');
+  $('.user-post-' + '<%= raw p.id %>').append('<%= j link_to image_tag(p.image), "#" %>')
+  });
 <% end %>
 <% if @posts.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @posts %>');
@@ -11,3 +11,4 @@ $('.user-post-' + '<%= raw p.id %>').append('<%= j link_to image_tag(p.image), "
   $(window).off('scroll');
   $('.pagination').remove();
 <% end %>
+

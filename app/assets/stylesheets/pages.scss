@@ -1,5 +1,6 @@
-$alabaster: #fafafa;
-$abbey: #e6e6e6;
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'colors.scss';
 
 .caption-box {
     margin: 10px 0px 10px 0px;
