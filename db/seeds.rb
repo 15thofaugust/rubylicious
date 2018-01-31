@@ -8,9 +8,20 @@
 User.create! fullname:  "Nguyen Thu Duc Trung", email: "the15thofaug@gmail.com",
   password: "abc123", password_confirmation: "abc123", username: "15thofaugust",
   avatar: "avatar/default.png"
-30.times do |n|
-  user_id = 1
-  caption  = Faker::Name.name
-  image = "upload/demo.jpg"
-  Post.create! user_id:  user_id, caption: caption,
-    image: image
+User.create! fullname:  "Nguyen Thuy Chi", email: "mitzu9xx@gmail.com",
+  password: "abc123", password_confirmation: "abc123", username: "its.Cheese",
+  avatar: "avatar/default.png"
+# 15.times do |n|
+#   user_id = 1
+#   caption  = Faker::Name.name
+#   image = "upload/demo.jpg"
+#   Post.create! user_id:  user_id, caption: caption,
+#     image: image
+# end
+# 15.times do |n|
+#   user_id = 2
+#   caption  = Faker::Name.name
+#   image = "upload/demo2.jpg"
+#   Post.create! user_id:  user_id, caption: caption,
+#     image: image
+# end
