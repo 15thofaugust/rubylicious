@@ -49,7 +49,7 @@ $(document).ready(function(){
   $("#upload-btn").change(function () {
     preview_upload(this);
     $(".upload-btn-wrapper input[type=file]").css("height","60px");
-    $(".btn-upload").css("height","60px").html('<%= t ".choose_another" %>');
+    $(".btn-upload").addClass("btn-upload-extended").html('<%= t ".choose_another" %>');
     $("#popup-upload-form").fadeIn(300);
   });
 
@@ -60,6 +60,7 @@ $(document).ready(function(){
       $(".caption-form")[0].reset();
       $(".caption-popup-box").hide();
       $("#popup-upload-form").hide();
+      $(".btn-upload").removeClass("btn-upload-extended");
       $(".btn-upload").css("height","300px").html('<%= t ".upload" %>');
       $("#upload-btn").css("height","300px");
       $(".dim").fadeOut(300);

@@ -49,6 +49,26 @@
           font-size: 12px;
         }
       }
+      div {
+        background: $alabaster;
+        border: 1px solid $concrete;
+        text-align: center;
+        width: 250px;
+        padding: 0 7px;
+        font-size: 14px;
+        line-height: 30px;
+        border-radius: 3px;
+        height: 30px;
+        &:focus {
+          background: $white;
+          border: 2px solid $gray78;
+          text-align: left;
+          outline: none;
+        }
+        &::placeholder {
+          font-size: 12px;
+        }
+      }
     }
     .col-md-4-without-login {
       margin-top: 20px;

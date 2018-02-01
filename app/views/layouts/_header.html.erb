@@ -6,7 +6,7 @@
       <%= link_to image_tag("header/t.png", alt: t(".logo_alt"), id: "rubylicious_text"), root_path %>
     </div>
     <div class="search_box col-md-4">
-      <input type="text" name="search_text" placeholder="<%= t ".search_hidden" %>" >
+      <div class="search_box_text" contenteditable="true" placeholder="<%= t ".search_hidden" %>"></div>
     </div>
     <% if logged_in? %>
       <nav class="col-md-4">

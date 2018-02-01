@@ -22,10 +22,12 @@ class Partials::CommentsController < Partials::BaseController
 
   def destroy
     if is_current_user_commnent?
-      @comment.delete
-      respond_to do |format|
-        format.html { redirect_to root_path }
-        format.js
+      if @comment.delete
+        respond_to do |format|
+          format.html { redirect_to partials_post_comments_path }
+          format.js
+          flash[:success] = t ".del_success"
+        end
       end
     end
   end
