@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to root_path if logged_in?
   end
 
   def create
@@ -8,13 +9,13 @@ class SessionsController < ApplicationController
       if user && user.authenticate(params[:session][:password])
         log_in user
         remember user
-        redirect_to edit_user_path user
+        redirect_to root_path
       else
         user = User.find_by username: params[:session][:login]
         if user && user.authenticate(params[:session][:password])
           log_in user
           remember user
-          redirect_to edit_user_path user
+          redirect_to root_path
         else
           flash.now[:danger] = t ".wrong_combination"
           render :new
@@ -25,7 +26,7 @@ class SessionsController < ApplicationController
         user = User.from_omniauth(request.env["omniauth.auth"])
         session[:user_id] = user.id
         remember user
-        redirect_to edit_user_path user
+        redirect_to root_path
       end
     end
   end

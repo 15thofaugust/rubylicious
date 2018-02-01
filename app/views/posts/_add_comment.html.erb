@@ -1,0 +1,7 @@
+<%= form_for post do |f| %>
+  <div class="post-box-add-comment-wrapper">
+    <div class="comment-box comment-box-<%= post.id %>"
+      contenteditable="true"
+      placeholder="<%= t ".add" %>"></div>
+  </div>
+<% end %>

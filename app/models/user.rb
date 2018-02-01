@@ -12,8 +12,11 @@ class User < ApplicationRecord
   has_many :like_activities, class_name: "Like", foreign_key: :user_id,
     dependent: :destroy
   has_many :likes, through: :like_activities, source: :post
-  has_many :passive_notifications, class_name: "Notification", foreign_key: :user_get_id
-  has_many :active_notifications, class_name: "Notification", foreign_key: :user_set_id
+  has_many :comment_activities, class_name: Comment.name, foreign_key: :user_id,
+    dependent: :destroy
+  has_many :comments, through: :comment_activities, source: :comment
+  has_many :passive_notifications, class_name: Notification.name, foreign_key: :user_get_id
+  has_many :active_notifications, class_name: Notification.name, foreign_key: :user_set_id
   has_many :user_sets, through: :passive_notifications
   has_many :user_gets, through: :active_notifications
   has_many :post

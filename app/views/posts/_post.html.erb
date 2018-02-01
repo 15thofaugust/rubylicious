@@ -14,7 +14,7 @@
           <%= render partial: "like", locals: {post: post} %>
         <% end %>
       </div>
-      <%= link_to image_tag("resources/comment"), "#" %>
+      <%= image_submit_tag("resources/comment", class: "get-to-comment", value: post.id) %>
     </div>
     <div class="post-box-count">
       <%= link_to t(".count",
@@ -26,13 +26,24 @@
     <% post_caption = sanitize post.caption %>
     <% if post_caption.length > Settings.post_caption_truncate %>
       <p><%= sanitize post_caption %></p>
-      <%= link_to t(".more"), "", class: "read-more-#{post.id}" %>
+      <%= link_to t(".more"), "", class: "read-more read-more-#{post.id}" %>
     <% else %>
       <p><%= post_caption %></p>
     <% end %>
   </div>
-  <div class="post-box-comment"></div>
+  <div class="post-box-comment post-box-comment-<%= post.id %>">
+    <% if post.comments.count > Settings.min_comment_load %>
+      <%= render partial: post.comments.order(created_at: :desc).limit(Settings.min_comment_load) %>
+      <%= link_to t(".load-more"), {controller: "comments", action: "index",
+        id: post.id, page: 2}, class: "load-more-comm load-more-comm-#{post.id}", value: 1, remote: true %>
+    <% else %>
+      <%= render partial: post.comments %>
+    <% end %>
+  </div>
   <div class="post-box-upload-at">
-    <p><%= t(".time", time: time_ago_in_words(post.created_at) ) %></p>
+    <p><%= t(".time", time: time_ago_in_words(post.created_at) ).upcase %></p>
+  </div>
+  <div class="post-box-add-comment">
+    <%= render partial: "add_comment", locals: {post: post} %>
   </div>
 </div>

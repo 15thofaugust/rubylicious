@@ -38,14 +38,14 @@
       display: flex;
       justify-content: space-between;
       width: 25%;
-      img {
-        width: 24px;
-        margin-right: 20px;
-      }
-      .like-button {
-        width: 25.5px;
+      input {
+        width: 25px;
         margin-right: 20px;
         border: none;
+        height: 25px;
+        &:focus {
+          outline: none;
+        }
       }
     }
     .post-box-count {
@@ -60,6 +60,7 @@
     .post-box-caption {
       padding: 16px;
       display: flex;
+      border-bottom: 1px solid $concrete;
       p {
         color: $mineshaft;
         line-height: 20px;
@@ -72,10 +73,67 @@
         color: $dustygray;
       }
     }
+    .post-box-comment {
+      padding: 16px;
+      .load-more-comm {
+        text-decoration: none;
+        color: $dustygray;
+        padding-left: 5px;
+      }
+      .comments_wrapper {
+        display: flex;
+        justify-content: space-between;
+        .comment-text {
+          display: flex;
+          width: 95%;
+          p {
+            font-size: 15px;
+            line-height: 20px;
+            a {
+              color: $mineshaft;
+              text-decoration: none;
+              font-weight: 600;
+            }
+          }
+        }
+        .comment-button {
+          .glyphicon-remove {
+            color: $silver;
+            &:hover {
+              color: $mineshaft;
+            }
+          }
+        }
+      }
+    }
+    .post-box-add-comment {
+      .comment-box {
+        margin: 0px 16px ;
+        border-top:solid 1px $concrete;
+        padding: 15px 0px;
+        font-size: 12px;
+        color: $dustygray;
+        overflow: hidden;
+        white-space: nowrap;
+        &:focus {
+          outline: none;
+          font-size: 14px;
+          color: $mineshaft;
+          text-overflow: inherit;
+        }
+      }
+      .comment-box br {
+          display: none;
+        }
+      .comment-box * {
+          display: inline;
+          white-space: nowrap;
+      }
+    }
     .post-box-upload-at {
       padding: 5px 16px 16px 16px;
       color: $dustygray;
-      font-size: 13px;
+      font-size: 11px;
     }
   }
 }

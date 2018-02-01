@@ -1,0 +1,4 @@
+<%= form_for unlike(post.id), html: { method: :delete }, remote: true do |f| %>
+  <%= f.submit type: "image", src: image_path("resources/unlike.png"),
+    class: "like-button", value: "" %>
+<% end %>

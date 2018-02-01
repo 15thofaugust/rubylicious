@@ -11,4 +11,10 @@ $(document).ready(function(){
     $(".caption-popup-box").addClass("popup");
     $(".dim").fadeIn(300);
   });
+  $('.get-to-comment').each(function(){
+    var id = $(this).attr('value');
+    $(this).click(function(){
+      $('.comment-box-' + id).focus();
+    });
+  });
 });

@@ -188,7 +188,7 @@
 }
 
 body {
-  background-color: $alabaster;
+  background-color: $alabaster !important;
 }
 
 .login-container {
@@ -501,10 +501,6 @@ body {
     outline: none;
     border: 2px solid $gray78;
   }
-}
-
-::-webkit-scrollbar {
-    display: none;
 }
 
 #page-nav {

@@ -1,0 +1,8 @@
+$('.post-box-comment-<%= params[:id] %>').empty();
+$('.post-box-comment-<%= params[:id] %>').append('<%= j render @comments %>');
+<% if Post.find_by_id(params[:id]).comments.count > Settings.min_comment_load * params[:page].to_i %>
+  $('.post-box-comment-<%= params[:id] %>').append('<%= j link_to t(".load-more"),\
+    {controller: "comments", action: "index", id: params[:id], page: params[:page].to_i + 1},\
+    class: "load-more-comm load-more-comm-#{params[:id]}", value: 1, remote: true %>')
+<% end %>
+$('#my-posts').masonry('reload');
