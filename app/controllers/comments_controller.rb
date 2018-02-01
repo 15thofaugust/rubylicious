@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
   def index
-    @comments = Comment.comments_by_posts(params[:id])
-      .order(created_at: :desc).limit Settings.min_comment_load * params[:page].to_i
+    @comments = Comment.comments_by_posts(params[:id], params[:page])
     respond_to do |format|
       format.html
       format.js

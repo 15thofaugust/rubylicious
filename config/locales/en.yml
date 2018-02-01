@@ -89,6 +89,8 @@ en:
   posts:
     add_comment:
       add: "Add a comment..."
+    post:
+      more: "Read more"
     new:
       js:
         choose_another: "Choose another image"
@@ -103,6 +105,12 @@ en:
       time: "Posted %{time} ago"
       count: "%{count} likes"
       load-more: "Load more comments"
+  partials:
+    comments:
+      index:
+        new_comment: "Add a comment ..."
+        ago: "AGO"
+        are_you_sure: "Are you sure ?"
   sessions:
     new:
       title: "Login"
@@ -133,6 +141,9 @@ en:
       posts: " %{count} posts"
       followers: "%{count} followers"
       following: "%{count} following"
+  comment:
+    comment_success: "Comment success"
+    comment_failed: "Comment failed"
   user_mailer:
     account_activation:
       greeting: "Welcome to Rubylicious"
