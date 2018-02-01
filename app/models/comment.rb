@@ -5,6 +5,10 @@ class Comment < ApplicationRecord
   validates :post_id, presence: true
   validates :content, presence: true
 
-  scope :comments_by_posts, -> (post_id){where post_id: post_id}
-
+  scope :comments_by_posts, (lambda do
+    |post_id, page_num|
+    from(Comment.where(post_id: post_id).order(created_at: :desc)
+      .limit(Settings.min_comment_load * page_num.to_i), :desc)
+    .select("desc.*").order("desc.created_at asc")
+  end)
 end
