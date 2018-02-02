@@ -1,0 +1,10 @@
+$boxes = $('<%= j render @notifications %>');
+$('#my-notifications').append($boxes).imagesLoaded(function(){
+  $('#my-notifications').masonry('reload');
+});
+<% if @notifications.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @notifications %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>
