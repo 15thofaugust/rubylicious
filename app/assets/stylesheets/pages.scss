@@ -2,6 +2,16 @@
 @import 'bootstrap';
 @import 'colors.scss';
 
+.search-user-item{
+  font-weight: bold;
+  color: $black;
+  display: block;
+  &:hover{
+    text-decoration: none;
+    color: $white;
+  }
+}
+
 .caption-box {
   margin: 10px;
   min-height: 60px;
