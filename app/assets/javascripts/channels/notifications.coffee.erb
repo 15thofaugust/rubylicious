@@ -10,6 +10,7 @@ App.notifications = App.cable.subscriptions.create "NotificationsChannel",
 
   received: (data) ->
     if (parseInt(data["notification"]) == parseInt($("#current_user_id").html()))
+      noti()
       if ($('.number_ground').html().trim() == "")
         $('.number_ground').html("
           <div class='noti_number' id='noti_number'>
@@ -22,3 +23,33 @@ App.notifications = App.cable.subscriptions.create "NotificationsChannel",
 
 $(document).on "click", "#like_button", ->
   App.notifications.speak(this.value)
+
+$(document).on "click", "#follow_button", ->
+  App.notifications.speak($(this).attr("user_follwed_id"))
+
+$(document).on "click", "#post_button", ->
+  ids = $(".caption-box").html()
+  pattern = /\"\/users\/(.*?)\"/g
+  while((matches = pattern.exec(ids)) != null)
+    App.notifications.speak(matches[1])
+
+
+noti = `function noti(){
+  if (Notification.permission === "granted") {
+    var notification = new Notification("Rubylicious", {
+      icon: "<%= asset_path 'header/t.png'%>",
+      body: "You've been received new notification!",
+    });
+
+    notification.onclick = function () {
+      window.open("https://github.com/");
+    };
+
+    setTimeout(function(){
+      notification.close();
+    },5000);
+  } else {
+    Notification.requestPermission();
+  }
+}`
+

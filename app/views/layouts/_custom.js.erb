@@ -5,7 +5,7 @@ function load_notification () {
       $("#notifications").html(this.responseText);
     }
   };
-  xhttp.open("GET", "http://localhost:3000/notification", true);
+  xhttp.open("GET", "<%= notification_path %>", true);
   xhttp.send();
   $("#noti_number").hide();
 }
