@@ -9,3 +9,27 @@ function load_notification () {
   xhttp.send();
   $("#noti_number").hide();
 }
+function search(url){
+  window.location.href(url);
+}
+$(document).ready(function(){
+
+  var userList = [];
+
+  <% @user_tags.each do |user| %>
+    userList.push({"id" : <%= raw user.id %>,
+      "avatar" : "<%= raw user.avatar %>",
+      "username" : "<%= raw user.username %>"
+    });
+  <% end %>
+
+  $(".search_box_text").atwho({
+    at: "@",
+    data: userList,
+    highlightFirst: true,
+    startWithSpace: true,
+    searchKey: "username",
+    insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">${username}"),
+    displayTpl: ("<li><a class=\"search-user-item\" onclick=\"window.location.href = this;\" href=\"/users/${id}\"><img class=\"dropdown-avatar\" src=\"${avatar}\"/>${username}</a></li>")
+  });
+});

@@ -64,7 +64,8 @@
 
 .preview-box{
   max-height: 300px;
-  width: auto
+  width: auto;
+  background: $codgray;
 }
 
 #popup-upload-form{
@@ -104,4 +105,13 @@
 }
 .popup{
   z-index: 10000;
+}
+
+.cancel-post, .submit-post{
+  width: 100%;
+}
+
+.btn-upload-extended{
+  height:60px;
+  line-height: 40px;
 }

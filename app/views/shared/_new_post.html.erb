@@ -1,6 +1,6 @@
-<script type="text/javascript">
-  <%=  render "posts/new.js"%>
-</script>
+ <script type="text/javascript">
+        <%= render "posts/new.js.erb" %>
+      </script>
 <%= form_for @post, html: { class: "caption-form" } do |f| %>
   <span class="upload-btn-wrapper">
     <div class="btn-upload"><%= t ".upload" %></div>
