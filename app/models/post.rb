@@ -16,7 +16,7 @@ class Post < ApplicationRecord
       .order created_at: :desc
   end)
   scope :posts_by_follower, (lambda do
-    joins(:user).where "posts.user_id = users.id"
+    joins(:user).where("posts.user_id = users.id").order created_at: :desc
   end)
   scope :get_post_by_id, -> {select(:id, :user_id, :image, :caption, :created_at)
     .where("id = ?", "%#{post_id}%").order(created_at: :desc)}
