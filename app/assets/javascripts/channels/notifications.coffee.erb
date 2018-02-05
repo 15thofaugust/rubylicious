@@ -53,3 +53,6 @@ noti = `function noti(){
   }
 }`
 
+$(".comment-box").on 'keypress', (event) ->
+  if event.keyCode is 13 #return = send
+    alert("s")
