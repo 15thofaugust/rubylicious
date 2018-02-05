@@ -1,5 +1,7 @@
 <% if current_user?@user %>
   <%= link_to t(".edit"), edit_user_path, class: "edit-profile-button" %>
+  <%= link_to "<span class='glyphicon glyphicon-off'></span>".html_safe,
+    logout_path, method: :delete, class: "logout-button" %>
 <% else %>
   <div id="follow_form">
   <% if current_user.following? @user %>
