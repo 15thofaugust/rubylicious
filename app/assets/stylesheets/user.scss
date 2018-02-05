@@ -49,7 +49,7 @@
           margin: 23px 40px 6px 40px !important;
         }
         a {
-          margin: 23px 40px 6px 40px;
+          margin: 23px 10px 6px 10px;
           width: 13%;
           background: $alabaster;
           border: solid 1px $alto;
@@ -66,6 +66,9 @@
           &:focus {
             outline: none;
           }
+        }
+        .logout-button {
+          width: 5%;
         }
       }
       .user-page-info-stat {
