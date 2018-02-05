@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   before_save {email.downcase!}
 
+  has_many :comment, dependent: :destroy
   validates :username, presence: true,
     length: {maximum: Settings.username_max_length, minimum: Settings.username_min_length},
     uniqueness: {case_sensitive: false}

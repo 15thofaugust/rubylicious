@@ -1,0 +1,48 @@
+$(document).ready(function(){
+  var userList = [];
+  var hashtagList = [];
+
+  <% @user_tags.each do |user| %>
+    userList.push({"id" : <%= raw user.id %>,
+      "avatar" : "<%= raw user.avatar %>",
+      "username" : "<%= raw user.username %>"
+    });
+  <% end %>
+
+  <% @hashtags.each do |hashtag| %>
+    hashtagList.push({"id" : <%= raw hashtag.id %>,
+      "content" : "<%= raw hashtag.content %>"
+    });
+  <% end %>
+
+  $(".comment-textarea").atwho({
+    at: "@",
+    data: userList,
+    startWithSpace: true,
+    searchKey: "username",
+    insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">\@${username}</a>"),
+    displayTpl: ("<li><img class=\"dropdown-avatar\" src=\"assets/${avatar}\"/>\@${username}</li>")
+  });
+
+  $(".comment-textarea").atwho({
+    at: "#",
+    data: hashtagList,
+    startWithSpace: true,
+    searchKey: "content",
+   insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">\#${content}</a>"),
+    displayTpl: ("<li>\#${content}</li>")
+  });
+
+  $(".comment-textarea").keypress(function(e){ return e.which != 13; });
+
+  $(document).on("keyup",".comment-form",function(e){
+    if(e.keyCode== 13 || e.which== 13) {
+         e.preventDefault();
+        var content = $(".comment-textarea").html();
+        if (content.length > 0) {
+          $(this).find(".comment-hidden-field").val(content);
+          $('.comment-form').submit();
+        }
+      }
+  });
+});
