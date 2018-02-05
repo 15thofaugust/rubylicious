@@ -51,9 +51,6 @@ ActiveRecord::Schema.define(version: 20180129021354) do
     t.integer "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_notifications_on_post_id"
-    t.index ["user_get_id"], name: "index_notifications_on_user_get_id"
-    t.index ["user_set_id"], name: "index_notifications_on_user_set_id"
   end
 
   create_table "post_hashtags", force: :cascade do |t|

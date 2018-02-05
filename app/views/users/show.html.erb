@@ -38,7 +38,7 @@
             <p><%= p.likes.count %></p>
           </div>
         </div>
-        <%= link_to image_tag(p.image), "#", class: "user-post-image", value: p.id %>
+        <%= link_to image_tag(p.image), partials_post_comments_path(p.id), class: "user-post-image", value: p.id %>
       </div>
       <% end %>
     </div>
