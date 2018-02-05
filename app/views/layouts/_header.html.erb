@@ -14,12 +14,14 @@
           <%= image_tag "header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload"%>
           <div class="dropdown" onclick="load_notification()">
             <%= link_to image_tag("header/noti.png", alt: t(".noti_alt"), id:"icon"), "#", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
-            <% i  = 0 %>
-            <% if noti_number > 0 %>
-              <div class="noti_number" id="noti_number">
-                <%= i = noti_number %>
-              </div>
-            <% end %>
+            <div class="number_ground">
+              <% i  = 0 %>
+              <% if noti_number > 0 %>
+                <div class="noti_number" id="noti_number">
+                  <%= i = noti_number %>
+                </div>
+              <% end %>
+            </div>
             <ul class="dropdown-menu" >
               <div class="noti_title">
                 <b><%= t ".noti_title" %></b>
@@ -41,5 +43,9 @@
     </nav>
     <% end %>
   </div>
+  <span id="current_user_id" style="display:none"><%= @current_user_id = current_user.id %></span>
 </header>
-<script type="text/javascript"><%= render "layouts/custom.js.erb" %></script>
+
+<script type="text/javascript">
+  <%= render "layouts/custom.js.erb" %>
+</script>
