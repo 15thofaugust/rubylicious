@@ -43,16 +43,6 @@ ActiveRecord::Schema.define(version: 20180129021354) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer "type_noti"
-    t.boolean "isSeen"
-    t.integer "user_set_id"
-    t.integer "user_get_id"
-    t.integer "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "post_hashtags", force: :cascade do |t|
     t.integer "post_id"
     t.integer "hashtag_id"
@@ -106,4 +96,16 @@ ActiveRecord::Schema.define(version: 20180129021354) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "type_noti"
+    t.boolean "isSeen"
+    t.integer "user_set_id"
+    t.integer "user_get_id"
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["user_get_id"], name: "index_notifications_on_user_get_id"
+    t.index ["user_set_id"], name: "index_notifications_on_user_set_id"
+  end
 end
