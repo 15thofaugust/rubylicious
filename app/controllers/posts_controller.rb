@@ -33,6 +33,19 @@ class PostsController < ApplicationController
         format.html {redirect_to root_path}
         format.js
       end
+      pattern = /\"\/users\/(.*?)\"/
+      matches = []
+
+      @post.caption.scan(pattern) do
+        matches << $1
+      end
+      matches.each do |res|
+        if @post.user_id != Integer(res)
+          Notification.create(type_noti: 3, user_set_id: @post.user_id,
+            user_get_id: res, post_id: @post.id)
+        end
+      end
+
       flash[:success] = t "post_success"
     else
       respond_to do |format|

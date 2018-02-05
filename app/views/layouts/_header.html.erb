@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top">
   <div class="container">
-    <div class ="col-md-4 header-logo-wrapper" >
+    <div class ="col-xs-4 header-logo-wrapper" >
       <%= link_to image_tag("header/l.png", alt: t(".logo_alt"),  id: "logo"), root_path %>
       <div></div>
       <%= link_to image_tag("header/t.png", alt: t(".logo_alt"), id: "rubylicious_text"), root_path %>
@@ -9,7 +9,7 @@
       <div class="search_box_text" contenteditable="true" placeholder="<%= t ".search_hidden" %>"></div>
     </div>
     <% if logged_in? %>
-      <nav class="col-md-4">
+      <nav class="col-xs-4">
         <ul class="nav navbar-nav navbar-right">
           <%= image_tag "header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload"%>
           <div class="dropdown" onclick="load_notification()">
@@ -34,8 +34,9 @@
           <%= link_to image_tag("header/person.png", alt: t(".person_alt"), id: "icon"), current_user %>
         </ul>
       </nav>
+      <span id="current_user_id" style="display:none"><%= @current_user_id = current_user.id %></span>
     <% else %>
-    <nav class="col-md-4 col-md-4-without-login">
+    <nav class="col-xs-4 col-xs-4-without-login">
       <ul class="nav navbar-nav navbar-right">
         <%= link_to t(".signup"), signup_path, class: "header-signup" %>
         <%= link_to t(".login"), login_path, class: "header-login" %>
@@ -43,7 +44,6 @@
     </nav>
     <% end %>
   </div>
-  <span id="current_user_id" style="display:none"><%= @current_user_id = current_user.id %></span>
 </header>
 
 <script type="text/javascript">

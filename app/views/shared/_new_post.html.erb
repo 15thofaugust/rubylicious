@@ -11,7 +11,7 @@
     <div class="caption-box" contenteditable="true" placeholder="<%= t".new_post" %>"></div>
     <%= f.hidden_field :caption, class: "form-control caption-hidden-field" %>
     <br>
-    <%= f.submit t(".submit_post"), class: "submit-post btn btn-primary" %>
+    <%= f.submit t(".submit_post"), class: "btn btn-primary", id: "post_button" %>
   </div>
   <div class="cancel-post btn btn-danger"><%= t ".cancel_post" %></div>
 <% end %>

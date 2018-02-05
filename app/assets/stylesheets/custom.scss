@@ -161,13 +161,16 @@
         margin-top: 25%;
       }
       .dropdown-menu{
-        max-height: 500px;
+        max-height: 400px;
         margin-top: 30px;
         overflow: scroll;
         .noti_title{
-          width: 500px;
-          margin-left: 50px;
+          width: 400px;
+          margin-left: 120px;
           text-align: center;
+        }
+        .dim {
+          display: none;
         }
       }
       hr{
@@ -522,6 +525,12 @@ body {
   &:focus {
     outline: none;
     border: 2px solid $gray78;
+  }
+}
+
+#my-notifications{
+  .pagination {
+    display: none;
   }
 }
 
