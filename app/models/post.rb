@@ -18,6 +18,8 @@ class Post < ApplicationRecord
   scope :posts_by_follower, (lambda do
     joins(:user).where "posts.user_id = users.id"
   end)
+  scope :get_post_by_id, -> {select(:id, :user_id, :image, :caption, :created_at)
+    .where("id = ?", "%#{post_id}%").order(created_at: :desc)}
 
   private
   def image_size

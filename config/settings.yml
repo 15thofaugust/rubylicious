@@ -8,3 +8,4 @@ user_post_paginate_per: 12
 post_caption_truncate: 50
 image_max_size: 5
 min_comment_load: 2
+upload_max_size: 5

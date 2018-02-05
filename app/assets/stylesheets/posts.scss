@@ -75,10 +75,13 @@
     }
     .post-box-comment {
       padding: 16px;
-      .load-more-comm {
-        text-decoration: none;
-        color: $dustygray;
+      .load-more-comm-wrapper {
+        padding-bottom: 10px;
         padding-left: 5px;
+        a {
+          text-decoration: none;
+          color: $dustygray;
+        }
       }
       .comments_wrapper {
         display: flex;
