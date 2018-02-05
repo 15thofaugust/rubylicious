@@ -3,7 +3,7 @@
     <%= link_to "#{image_tag(post.user.avatar)} #{post.user.username}".html_safe, post.user %>
   </div>
   <div class="post-box-image">
-    <%= link_to image_tag(post.image.url), "#" %>
+    <%= link_to image_tag(post.image.url(:thumb)), partials_post_comments_path(post.id) %>
   </div>
   <% if logged_in? %>
     <div class="post-box-interaction">
@@ -23,13 +23,7 @@
     </div>
   <% end %>
   <div class="post-box-caption">
-    <% post_caption = sanitize post.caption %>
-    <% if post_caption.length > Settings.post_caption_truncate %>
-      <p><%= sanitize post_caption %></p>
-      <%= link_to t(".more"), "", class: "read-more read-more-#{post.id}" %>
-    <% else %>
-      <p><%= post_caption %></p>
-    <% end %>
+      <p><%= sanitize post.caption %></p>
   </div>
   <div class="post-box-comment post-box-comment-<%= post.id %>">
     <% if post.comments.count > Settings.min_comment_load %>

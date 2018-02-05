@@ -1,3 +1,6 @@
+<script type="text/javascript">
+  <%= render "show.js" %>
+</script>
 <div class="index-container">
   <div id="my-posts">
     <%= render @posts %>
@@ -10,6 +13,10 @@
 
   <%= will_paginate @posts %>
 </nav>
+
+<div id="popup-post">
+
+</div>
 <script type="text/javascript">
   <%= render "posts/index.js.erb" %>
 </script>

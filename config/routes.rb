@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
+
   root "posts#index"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -13,12 +15,24 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
+  resources :posts
+  namespace :partials do
+    resources :posts, only: [:show] do
+      resources :comments
+     end
+  end
   resources :password_resets
-  resources :posts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :comments, except: [:index]
 
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: "sessions#failure"
+  resources :users
+  resources :password_resets, except: [:show, :index, :destroy]
+  resources :posts
+  get "auth/:provider/callback", to: "sessions#create"
+  get "auth/failure", to: "sessions#failure"
+  get "/notification", to: "notifications#index"
+
 end
