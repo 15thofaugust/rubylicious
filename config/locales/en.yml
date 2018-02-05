@@ -46,8 +46,6 @@ en:
     users_controller:
       not_found: "User cannot be found."
       log_req: "Login is required"
-    sessions_controller:
-      wrong_combination: "Invalid email/password combination."
   comments:
     comment:
       delete: "Delete comment?"
@@ -96,7 +94,8 @@ en:
         choose_another: "Choose another image"
         upload: "Browse file or drop your image here"
         image_size: "Maximum file size is 5MB. Please choose a smaller file."
-        confirm_cancel: "Discard this post ?"
+        erb:
+          confirm_cancel: "Discard this post ?"
       search_hidden: "Search"
       singup: "Sign Up"
       login: "Log In"
@@ -120,6 +119,8 @@ en:
       or: "OR"
       google: "%{icon} Login with Google"
       forgot: "Forgot password?"
+    create:
+      wrong_combination: "Invalid email/password combination."
   users:
     new:
       title: "Signup"

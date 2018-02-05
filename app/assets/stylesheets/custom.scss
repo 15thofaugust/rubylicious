@@ -70,8 +70,8 @@
         }
       }
     }
-    .col-md-4-without-login {
-      margin-top: 20px;
+    .col-xs-4-without-login {
+      margin-top: 20px !important;
     }
     nav {
       padding-right: 4%;
@@ -213,7 +213,19 @@
 }
 
 .alert {
+  width: 25%;
+  margin: auto;
+  text-align: center;
+  color: $white !important;
+  border: none !important;
+}
 
+.alert-danger {
+  background-color: $omegranate !important;
+}
+
+.alert-success {
+ background-color: $mineshaft !important;
 }
 
 body {
