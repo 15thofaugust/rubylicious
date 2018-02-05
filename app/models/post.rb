@@ -15,10 +15,12 @@ class Post < ApplicationRecord
     select(:id,:user_id,:image,:caption,:created_at)
       .order created_at: :desc
   end)
+
+  following_ids = "SELECT followed_id FROM relationships
+                     WHERE  follower_id = :user_id"
   scope :posts_by_follower, (lambda do
     |follower_id|
-    where(user_id: Relationship.select(:followed_id).where(follower_id: follower_id),
-      user_id: follower_id).order(created_at: :desc)
+    where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: follower_id).order(created_at: :desc)
   end)
   scope :get_post_by_id, -> {select(:id, :user_id, :image, :caption, :created_at)
     .where("id = ?", "%#{post_id}%").order(created_at: :desc)}

@@ -110,11 +110,11 @@ class User < ApplicationRecord
 
   def follow other_user
     active_relationships.create followed_id: other_user.id
-    Notification.create(type_noti: 4, user_set_id: self.id, user_get_id: other_user.id)
+    # Notification.create(type_noti: 4, user_set_id: self.id, user_get_id: other_user.id)
   end
 
   def unfollow other_user
-    Notification.where(type_noti: 4, user_set_id: self.id, user_get_id: other_user.id).first.destroy
+    # Notification.where(type_noti: 4, user_set_id: self.id, user_get_id: other_user.id).first.destroy
     following.delete other_user
   end
 
