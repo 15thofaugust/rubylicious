@@ -1,15 +1,14 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :notifications
-  has_many :post_hashtag
+  has_many :photos
+  has_many :post_hashtags
   has_many :be_liked_activites, class_name: Like.name, foreign_key: :post_id,
     dependent: :destroy
   has_many :likes, through: :be_liked_activites, source: :user
   has_many :comments
   validates :user_id, presence: true
-  validates :image, presence: true
-
-  mount_uploader :image, ImageUploader
+  accepts_nested_attributes_for :photos
 
   after_create do
     post = Post.find_by id: self.id
@@ -43,7 +42,7 @@ class Post < ApplicationRecord
     |follower_id|
     where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: follower_id).order(created_at: :desc)
   end)
-  scope :get_post_by_id, -> {select(:id, :user_id, :image, :caption, :created_at)
+  scope :get_post_by_id, -> {select(:id, :user_id, :caption, :created_at)
     .where("id = ?", "%#{post_id}%").order(created_at: :desc)}
 
   private

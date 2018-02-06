@@ -5,6 +5,7 @@ $(document).on('turbolinks:load', function () {
     if (more_posts_url && $(window).scrollTop() > $(document).height() - $(window).height() - 100) {
       $('.pagination').html('<img src="/assets/resources/loading.gif" alt="Loading..." title="Loading..." />');
       $.getScript(more_posts_url);
+      $(".feed-slide .feed-item:first-child").addClass("active");
     }
   });
 });
@@ -18,4 +19,3 @@ $(".dropdown-menu").on('scroll', function(){
     $.getScript(more_posts_url);
   }
 });
-

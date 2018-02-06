@@ -1,3 +1,12 @@
+$(".dim").fadeIn(300);
+$(".dim").addClass("dim-single-post");
+$(".dim-single-post").click(function(){
+  $(".single-post-container").empty();
+  $('.next-post-wrapper').empty();
+  $('.prev-post-wrapper').empty();
+  $(".dim").removeClass("dim-single-post");
+  $(this).fadeOut(300);
+});
 $(".single-post-wrapper").fadeIn(300);
 $(".single-post-container").empty();
 $(".single-post-container").append('<%= j render partial: "posts/single_post",\
@@ -17,11 +26,5 @@ $('.prev-post-wrapper').empty();
     "<span class=\"glyphicon glyphicon-triangle-left\"></span>".html_safe,\
     prev_post, remote: true %>')
 <% end %>
-$(".dim").fadeIn(300);
-$(".dim").addClass("dim-single-post");
-$(".dim-single-post").click(function(){
-  $(".single-post-container").empty();
-  $('.next-post-wrapper').empty();
-  $('.prev-post-wrapper').empty();
-  $(this).fadeOut(300);
-});
+
+

@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 // Preview upload
   function preview_upload(input){
     if (input.files && input.files[0]){
@@ -14,20 +15,22 @@ $(document).ready(function(){
 // Display User Tags and Hashtags
   var userList = [];
   var hashtagList = [];
-
-  <% @user_tags.each do |user| %>
-    userList.push({"id" : <%= raw user.id %>,
-      "avatar" : "<%= raw user.avatar %>",
-      "username" : "<%= raw user.username %>"
-    });
+  <% if @user_tags%>
+    <% @user_tags.each do |user| %>
+      userList.push({"id" : <%= raw user.id %>,
+        "avatar" : "<%= raw user.avatar %>",
+        "username" : "<%= raw user.username %>"
+      });
+    <% end %>
   <% end %>
 
-  <% @hashtags.each do |hashtag| %>
-    hashtagList.push({"id" : <%= raw hashtag.id %>,
-      "content" : "<%= raw hashtag.content %>"
-    });
+  <% if @hashtags%>
+    <% @hashtags.each do |hashtag| %>
+      hashtagList.push({"id" : <%= raw hashtag.id %>,
+        "content" : "<%= raw hashtag.content %>"
+      });
+    <% end %>
   <% end %>
-
   $(".caption-box").atwho({
     at: "@",
     data: userList,
@@ -45,32 +48,27 @@ $(document).ready(function(){
     $("#popup-upload-form").fadeIn(300);
   });
 
-  function cancel_post() {
-    var check = confirm('<%= t ".confirm_cancel" %>');
-    if (check) {
-      $(".caption-box").empty();
-      $(".caption-form")[0].reset();
-      $(".caption-popup-box").hide();
-      $("#popup-upload-form").hide();
-      $(".btn-upload").removeClass("btn-upload-extended");
-      $(".btn-upload").css("height","300px").html('<%= t ".upload" %>');
-      $("#upload-btn").css("height","300px");
-      $(".dim").fadeOut(300);
-    }
-  }
 //Submit caption
   $(".cancel-post").click(function(){
     cancel_post();
   });
 
-  $(".dim-upload-post").click(function(){
-    cancel_post();
-    $(".popup").removeClass(".popup");
-  });
-
-
-
   $(document).on("click", ".caption-form", (function() {
     $(this).find(".caption-hidden-field").val($(".caption-box").html());
   }));
 });
+
+function cancel_post() {
+  var check = confirm('<%= t ".confirm_cancel" %>');
+  if (check) {
+    $(".caption-box").empty();
+    $(".caption-form")[0].reset();
+    $(".caption-popup-box").hide();
+    $("#popup-upload-form").hide();
+    $(".btn-upload").removeClass("btn-upload-extended");
+    $(".btn-upload").addClass("height-300").html('<%= t ".upload" %>');
+    $("#upload-btn").addClass("height-300");
+    $(".dim").fadeOut(300);
+  }
+}
+
