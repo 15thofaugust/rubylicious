@@ -11,16 +11,10 @@
   </div>
 </div>
 <nav id="page-nav">
-<div class="caption-popup-box">
-  <%= render "shared/new_post" %>
-</div>
 
   <%= will_paginate @posts %>
 </nav>
 
-<div id="popup-post">
-
-</div>
 <script type="text/javascript">
   <%= render "posts/index.js.erb" %>
   <%= render "posts/index_comment.js.erb" %>

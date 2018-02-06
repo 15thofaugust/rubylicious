@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180129021354) do
+ActiveRecord::Schema.define(version: 20180206100347) do
 
   create_table "comment_usertags", force: :cascade do |t|
     t.integer "comment_id"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 20180129021354) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.integer "post_id"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "post_hashtags", force: :cascade do |t|
     t.integer "post_id"
     t.integer "hashtag_id"
@@ -69,7 +76,6 @@ ActiveRecord::Schema.define(version: 20180129021354) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
-    t.string "image"
     t.text "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -2,6 +2,10 @@
 @import 'bootstrap';
 @import 'colors.scss';
 
+body{
+  transistion: 0.5s;
+}
+
 .search-user-item{
   font-weight: bold;
   color: $black;
@@ -71,17 +75,19 @@
   font-weight: bold;
   line-height:284px;
   z-index: 10000;
+  text-align: center;
 }
 
 #preview_upload{
-  max-width: 400px;
+  max-width: 500px;
   max-height: 300px;
 }
 
 .preview-box{
-  max-height: 300px;
+  overflow: overlay;
   width: auto;
-  background: $codgray;
+  background: $alabaster;
+  max-height: 300px;
 }
 
 #popup-upload-form{
@@ -130,16 +136,16 @@
 }
 
 .caption-popup-box{
-  display:none;
+  display: block;
   z-index: 10000;
   position: fixed;
-  width: 400px;
+  width: 700px;
   height: auto;
-  top: 50%;
-  left: 50%;
-  margin: -240px 0px 0px -200px;
+  top: 10%;
+  left: calc(50% - 350px);
+  //margin: -240px 0px 0px -200px;
   background-color: $alabaster;
-  border: solid 1px $concrete;
+  //border: solid 1px $concrete;
   border-radius: 3px;
 }
 
@@ -169,4 +175,25 @@
 .btn-upload-extended{
   height:60px;
   line-height: 40px;
+}
+
+.preview_imgs{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin: 10px;
+}
+
+.item-img{
+  width: 545px !important;
+  height: 545px !important;
+  object-fit: cover;
+}
+.item-single-img{
+  max-width: 700px !important;
+  max-height: 700px !important;
+}
+
+.height-300{
+  height: 300px;
 }

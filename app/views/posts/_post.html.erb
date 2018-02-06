@@ -3,7 +3,37 @@
     <%= link_to "#{image_tag(post.user.avatar)} #{post.user.username}".html_safe, post.user %>
   </div>
   <div class="post-box-image">
-    <%= link_to image_tag(post.image.url(:thumb)), post, remote: true %>
+    <% if post.photos.count == 0 %>
+      <p><%= t ".no_images" %></p>
+    <% elsif post.photos.count == 1 %>
+      <% post.photos.each do |p| %>
+        <%= link_to image_tag(p.image.url :thumb), post, remote: true %>
+      <% end %>
+    <% elsif post.photos.count > 1 %>
+
+    <div id="album-<%= post.id %>" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <% post.photos.each_with_index do |p,i| %>
+           <li data-target="#album-<%= p.id %>" data-slide-to="<%= i %>" class="<%= "active" if i == 0 %>"></li>
+        <% end %>
+      </ol>
+      <div class="carousel-inner feed-slide">
+        <% post.photos.each_with_index do |p,i| %>
+          <div class="item feed-item <%= "active" if i == 0 %>">
+            <%= link_to image_tag(p.image.url(:thumb), class: "item-img"), post, remote: true %>
+          </div>
+        <% end %>
+      </div>
+      <a class="left carousel-control" href="#album-<%= post.id %>" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only"><%= t ".next" %></span>
+      </a>
+      <a class="right carousel-control" href="#album-<%= post.id %>" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only"><%= t ".prev" %></span>
+      </a>
+    </div>
+    <% end %>
   </div>
   <% if logged_in? %>
     <div class="post-box-interaction">
