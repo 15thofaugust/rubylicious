@@ -23,4 +23,3 @@ User.create! fullname:  "Nguyen Thuy Chi", email: "mitzu9xx@gmail.com",
   username: username,
   avatar: "avatar/default.png"
 end
-

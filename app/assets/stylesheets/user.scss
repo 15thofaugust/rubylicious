@@ -158,3 +158,37 @@
     }
   }
 }
+.user-edit-avatar{
+  width: 152px;
+  height: 152px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.upload-avatar-wrapper{
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  .upload-avatar-btn{
+  width: 152px;
+  border: 1px solid $concrete;
+  color: $mineshaft;
+  background-color: $white;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  }
+  .upload-avatar-field{
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+}
+
+.ava{
+  margin: 0px 40px 10px 40px;
+}

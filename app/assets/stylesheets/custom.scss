@@ -499,6 +499,9 @@ body {
     width: 20%;
     background: $white;
     padding: 20px 0 20px;
+    &:first-child{
+      display:none;
+    }
     .unfollow-button {
       background: $alabaster;
       border: solid 1px $alto;
@@ -511,6 +514,7 @@ body {
     .noti_img{
       width: 80px;
       height: 80px;
+      object-fit: cover;
       border-radius: 50%;
     }
     .user_path{
@@ -540,4 +544,16 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
+}
+.header-ava, .dropdown-avatar{
+  max-width: 40px !important;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.tag-user-item{
+  font-weight: bold;
+  color: $black;
+  display: block;
 }

@@ -1,4 +1,7 @@
 <% provide :title, t(".title") %>
+<script type="text/javascript">
+  <%= render "edit.js" %>
+</script>
 <div class="main">
   <div class="edit-profile-wrapper">
     <div class="profile-config-menu">
@@ -19,6 +22,24 @@
           <%= render "shared/error_messages" %>
         </div>
 
+        <div class="form-container-row">
+          <div class="form-container-col form-container-left">
+            <%= f.label :avatar %>
+          </div>
+          <div class="form-container-col form-container-right">
+            <div class="ava">
+              <span class="ava-preview">
+                <%= image_tag @user.avatar.url(:avatar),id: "avatar-preview", class: "user-edit-avatar"%>
+              </span>
+              <div class="upload-avatar-wrapper">
+                <button class="upload-avatar-btn"><%= t ".change_avatar" %></button>
+                <%= f.file_field :avatar,
+                  class: "upload-avatar-field",
+                  accept: "image/x-png,image/jpeg"%>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="form-container-row">
           <div class="form-container-col form-container-left">
             <%= f.label :fullname %>

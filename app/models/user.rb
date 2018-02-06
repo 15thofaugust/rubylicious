@@ -33,9 +33,8 @@ class User < ApplicationRecord
   has_many :user_sets, through: :passive_notifications
   has_many :user_gets, through: :active_notifications
   has_many :post
-
+  mount_uploader :avatar, ImageUploader
   before_save {email.downcase!}
-
   has_many :comment, dependent: :destroy
   validates :username, presence: true,
     length: {maximum: Settings.username_max_length, minimum: Settings.username_min_length},
@@ -72,7 +71,6 @@ class User < ApplicationRecord
     where user_id = 3
     order by created_at asc")
   end)
-
 
   def seen_all
     self.passive_notifications.each do |noti|

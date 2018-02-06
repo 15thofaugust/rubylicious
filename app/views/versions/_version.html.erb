@@ -22,7 +22,7 @@
       <h6><%= version.created_at.strftime("%c") %></h6>
     </div>
     <div class="form-container-col form-container-right-log" >
-      <%= link_to(image_tag(Like.find_by_id(version.item_id).post.image.url(:thumb)),
+      <%= link_to(image_tag(Like.find_by_id(version.item_id).post.photos.first.image.url(:thumb)),
         post_path(Like.find_by_id(version.item_id).post)) %>
     </div>
   </div>
@@ -39,7 +39,7 @@
       <h6><%= version.created_at.strftime("%c") %></h6>
     </div>
     <div class="form-container-col form-container-right-log" >
-      <%= link_to(image_tag(Comment.find_by_id(version.item_id).post.image.url(:thumb)),
+      <%= link_to(image_tag(Comment.find_by_id(version.item_id).post.photos.first.image.url(:thumb)),
         post_path(Comment.find_by_id(version.item_id).post)) %>
     </div>
   </div>
