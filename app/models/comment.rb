@@ -1,7 +1,6 @@
 class Comment < ApplicationRecord
   after_create_commit :create_notification
   before_destroy :destroy_notification
-
   belongs_to :user
   belongs_to :post
   validates :content, presence: true

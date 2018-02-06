@@ -1,12 +1,13 @@
 <%= form_for comment do |f| %>
-  <div class="comments_wrapper clearfix">
+  <div class="comments_wrapper clearfix comments_wrapper-<%= comment.id %>">
     <div class="comment-text">
       <p><%= link_to comment.user.username, comment.user %> <%= sanitize comment.content %></p>
     </div>
     <div class="comment-button">
       <% if current_user? comment.user or current_user.post.include? comment.post%>
         <%= link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe,
-          comment, method: :delete, data: { confirm: t(".delete") } %>
+          {controller: "comments", action: "destroy", id: comment.id},
+          method: :delete, data: {confirm: t(".delete")}, remote: true %>
       <% end %>
     </div>
   </div>

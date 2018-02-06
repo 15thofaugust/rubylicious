@@ -1,9 +1,9 @@
-<div class="post-box">
+<div class="post-box post-box-<%= post.id %>">
   <div class="post-box-header">
     <%= link_to "#{image_tag(post.user.avatar)} #{post.user.username}".html_safe, post.user %>
   </div>
   <div class="post-box-image">
-    <%= link_to image_tag(post.image.url(:thumb)), partials_post_comments_path(post.id) %>
+    <%= link_to image_tag(post.image.url(:thumb)), post, remote: true %>
   </div>
   <% if logged_in? %>
     <div class="post-box-interaction">
@@ -16,12 +16,12 @@
       </div>
       <%= image_submit_tag("resources/comment", class: "get-to-comment", value: post.id) %>
     </div>
-    <div class="post-box-count">
-      <%= link_to t(".count",
-        count: like_count(post)).html_safe,
-        "#" %>
-    </div>
   <% end %>
+  <div class="post-box-count">
+    <%= link_to t(".count",
+      count: like_count(post)).html_safe,
+      "#" %>
+  </div>
   <div class="post-box-caption">
       <p><%= sanitize post.caption %></p>
   </div>

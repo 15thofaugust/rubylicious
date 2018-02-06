@@ -213,11 +213,14 @@
 }
 
 .alert {
-  width: 25%;
+  width: 286px;
   margin: auto;
   text-align: center;
   color: $white !important;
   border: none !important;
+  position: fixed;
+  left: calc(50% - 143px);
+  z-index: 10001;
 }
 
 .alert-danger {
@@ -225,7 +228,7 @@
 }
 
 .alert-success {
- background-color: $mineshaft !important;
+  background-color: $mineshaft !important;
 }
 
 body {
@@ -554,5 +557,33 @@ body {
   text-align: center;
   .pagination {
     display: none;
+  }
+}
+
+.single-post-wrapper {
+  display: none;
+  z-index: 10000;
+  position: fixed;
+  width: auto;
+  height: auto;
+  top: calc(50% - 350px);
+  left: calc(50% - 500px);
+  .nearest-post-wrapper {
+    position: fixed;
+    overflow: hidden;
+    top: 45%;
+    font-size: 50px;
+    a {
+      color: $concrete;
+      &:hover {
+        color: $gray78;
+      }
+    }
+  }
+  .next-post-wrapper {
+    left: 80%;
+  }
+  .prev-post-wrapper {
+    left: 18.3%;
   }
 }

@@ -34,7 +34,8 @@ $(document).ready(function(){
     startWithSpace: true,
     searchKey: "username",
     insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">\@${username}</a>"),
-    displayTpl: ("<li><img class=\"dropdown-avatar\" src=\"assets/${avatar}\"/>\@${username}</li>")
+    displayTpl: ('<li><img class="dropdown-avatar"\
+     src="assets/${avatar}" style="border-radius: 50%;" />@${username}</li>')
   });
 
   $(".caption-box").atwho({
