@@ -72,10 +72,12 @@ $(document).ready(function(){
     cancel_post();
   });
 
-  $(".dim").click(function(){
+  $(".dim-upload-post").click(function(){
     cancel_post();
     $(".popup").removeClass(".popup");
   });
+
+
 
   $(document).on("click", ".caption-form", (function() {
     $(this).find(".caption-hidden-field").val($(".caption-box").html());

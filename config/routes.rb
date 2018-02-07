@@ -16,11 +16,6 @@ Rails.application.routes.draw do
     end
   end
   resources :posts
-  namespace :partials do
-    resources :posts, only: [:show] do
-      resources :comments
-     end
-  end
   resources :password_resets
   resources :relationships, only: [:create, :destroy]
   resources :likes, only: [:create, :destroy]

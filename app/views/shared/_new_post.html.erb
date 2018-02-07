@@ -1,7 +1,7 @@
  <script type="text/javascript">
-        <%= render "posts/new.js.erb" %>
-      </script>
-<%= form_for @post, html: { class: "caption-form" } do |f| %>
+  <%= render "posts/new.js.erb" %>
+</script>
+<%= form_for @post, html: { class: "caption-form" }, remote: true do |f| %>
   <span class="upload-btn-wrapper">
     <div class="btn-upload"><%= t ".upload" %></div>
     <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", id: "upload-btn"%>
