@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show]
+  before_action only: [:show] do load_post params[:id]
+  end
+  before_action :correct_post, only: [:destroy, :edit, :update]
 
   def index
     if logged_in?
@@ -18,15 +20,9 @@ class PostsController < ApplicationController
   end
 
   def show
-    if logged_in?
-      @current_post = Post.get_post_by_id @post.id
-      @comments = Comment.get_all_post_comments @post.id
-      respond_to do |format|
-        format.html
-        format.js
-      end
-    else
-      redirect_to login_path
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
@@ -37,13 +33,8 @@ class PostsController < ApplicationController
   def create
     @post = current_user.post.build post_params
     if @post.save
-      respond_to do |format|
-        format.html {redirect_to root_path}
-        format.js
-      end
       pattern = /\"\/users\/(.*?)\"/
       matches = []
-
       @post.caption.scan(pattern) do
         matches << $1
       end
@@ -53,33 +44,62 @@ class PostsController < ApplicationController
             user_get_id: res, post_id: @post.id)
         end
       end
-
       flash[:success] = t "post_success"
     else
-      respond_to do |format|
-        format.html {redirect_to root_path}
-        format.js
-      end
       flash[:success] = t "post_failed"
+    end
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js
+    end
+  end
+
+  def edit
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
   def update
+    if @post.update_attributes update_post_params
+      respond_to do |format|
+        format.html
+        format.js {flash.now[:success] = t ".post_update_success"}
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.js {flash.now[:danger] = t ".post_update_failed"}
+      end
+    end
   end
 
   def destroy
+    if @post.destroy
+      respond_to do |format|
+        format.html
+        format.js {flash.now[:success] = t "post_delete_success"}
+      end
+    else
+      respond_to do |format|
+        format.html
+        format.js {flash.now[:danger] = t "post_delete_failed"}
+      end
+    end
   end
 
   private
-
-  def find_post
-    @post = Post.find_by_id(params[:post_id])
-    return if @post
-    flash[:danger] = t ".not_found"
-    redirect_to root_path
-  end
-
   def post_params
     params.require(:post).permit(:user_id, :caption, :image)
+  end
+
+  def update_post_params
+    params.require(:post).permit(:caption)
+  end
+
+  def correct_post
+    @post = current_user.posts.find_by id: params[:id]
+    redirect_to root_url if @post.nil?
   end
 end

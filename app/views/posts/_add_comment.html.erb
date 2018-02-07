@@ -1,7 +1,12 @@
-<%= form_for post do |f| %>
+<%= form_for post.comments.build,
+  html: {class: "index-comment-form index-comment-form-#{post.id}", value: post.id},
+  remote: true do |f| %>
   <div class="post-box-add-comment-wrapper">
-    <div class="comment-box comment-box-<%= post.id %>"
-      contenteditable="true"
+    <div class="comment-box comment-box-<%= post.id %>" contenteditable="true"
       placeholder="<%= t ".add" %>"></div>
+    <%= f.hidden_field :content,
+      class: "form-control comment-hidden-field comment-hidden-field-#{post.id}",
+      id: "comment-for-#{post.id}" %>
+    <div><%= hidden_field_tag :post_id, post.id %></div>
   </div>
 <% end %>
