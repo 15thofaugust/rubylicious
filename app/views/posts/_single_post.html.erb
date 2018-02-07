@@ -1,0 +1,89 @@
+<script type="text/javascript">
+  <%= render "comment.js" %>
+  <%= render "posts/show.js.erb" %>
+  <%= render "posts/edit_caption.js.erb" %>
+</script>
+<div class="row post-popup">
+  <div class="post-image col-md-8">
+     <%= image_tag @post.image.url(:post), id: "post-img" %>
+   </div>
+   <div class="post-stuffs col-md-4">
+    <div class="post-user">
+      <%= link_to "#{image_tag @post.user.avatar} #{@post.user.username}".html_safe, @post.user %>
+    </div>
+    <div class="post-main">
+      <div class="post-caption">
+        <div class="post-caption-container">
+          <p><%= sanitize @post.caption %><p>
+          <div class="post-caption-edit">
+            <%= form_for post, html: { class: "edit-caption-form" }, remote: true do |f|%>
+              <div class="edit-caption-textarea" contenteditable="true">
+                <%= sanitize @post.caption %>
+              </div>
+              <%= f.hidden_field :caption,
+                class: "form-control edit-caption-hidden-field" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="dropdown">
+          <span id="edit-post"
+            class="glyphicon glyphicon-option-horizontal dropdown-toggle dropdown-toggle-post"
+            data-toggle="dropdown"></span>
+          <ul class="dropdown-menu dropdown-menu-post">
+            <% if @post.user.posts.include? @post %>
+              <li><%= link_to t(".edit_post"), edit_post_path, remote: true %></li>
+              <li><%= link_to t(".delete_post"), @post,
+              method: :delete, data: {confirm: t(".conf_delete_post")}, remote: true %></li>
+            <% end %>
+            <li><%= link_to t(".report_post"), "#" %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="comment-section">
+        <% if post.comments.count > Settings.min_comment_load %>
+          <div class="load-more-wrapper load-more-wrapper-<%= post.id %>">
+            <%= link_to t(".load-more"), {controller: "comments", action: "index",
+              id: post.id, page: 2}, class: "load-more-comm load-more-comm-#{post.id}",
+              value: 1, remote: true %>
+          </div>
+          <%= render partial: Comment
+            .from(post.comments.order(created_at: :desc).limit(Settings.min_comment_load), :desc)
+            .select("desc.*").order("desc.created_at asc") %>
+        <% else %>
+          <%= render partial: post.comments %>
+        <% end %>
+      </div>
+    </div>
+    <% if logged_in? %>
+      <div class="single-post-interaction">
+        <div class="single-post-like-<%= post.id %>">
+          <% if current_user.like? post %>
+            <%= render partial: "unlike", locals: {post: post} %>
+          <% else %>
+            <%= render partial: "like", locals: {post: post} %>
+          <% end %>
+        </div>
+        <%= image_submit_tag("resources/comment", class: "get-to-single-comment", value: post.id) %>
+      </div>
+    <% end %>
+    <div class="single-post-count">
+      <%= link_to t(".count",
+        count: like_count(post)).html_safe,
+        "#" %>
+    </div>
+    <div class="single-post-upload-at">
+      <p><%= t(".time", time: time_ago_in_words(post.created_at) ).upcase %></p>
+    </div>
+    <div class="comment-box">
+      <%= form_for post.comments.build, html: { class: "comment-form" }, remote: true do |f|%>
+        <div class="comment-textarea" contenteditable="true"
+          placeholder="<%= t ".new_comment" %>"></div>
+        <%= f.hidden_field :content,
+          class: "form-control comment-hidden-field",
+          id: "comment-for-#{@post.id}" %>
+        <div><%= hidden_field_tag :post_id, post.id %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

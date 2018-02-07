@@ -1,3 +1,5 @@
 $('.post-box-like-<%= @post.id %>')
   .html('<%= j render partial: "posts/unlike", locals: {post: @post} %>');
+$('.single-post-like-<%= @post.id %>')
+  .html('<%= j render partial: "posts/unlike", locals: {post: @post} %>');
 $(".likes-count-<%= @post.id %>").html('<%= @post.likes.count %>');

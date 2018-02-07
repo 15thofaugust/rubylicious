@@ -22,7 +22,7 @@
       count: like_count(post)).html_safe,
       "#" %>
   </div>
-  <div class="post-box-caption">
+  <div class="post-box-caption post-box-caption-<%= post.id %>">
       <p><%= sanitize post.caption %></p>
   </div>
   <div class="post-box-comment post-box-comment-<%= post.id %>">

@@ -1,0 +1,46 @@
+$(document).ready(function(){
+  var userList = [];
+  var hashtagList = [];
+
+  <% @user_tags.each do |user| %>
+    userList.push({"id" : <%= raw user.id %>,
+      "avatar" : "<%= raw user.avatar %>",
+      "username" : "<%= raw user.username %>"
+    });
+  <% end %>
+
+
+  $(".comment-textarea").atwho({
+    at: "@",
+    data: userList,
+    startWithSpace: true,
+    searchKey: "username",
+    insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">\@${username}</a>"),
+    displayTpl: ('<li><img class="dropdown-avatar"\
+     src="assets/${avatar}" style="border-radius: 50%;" />@${username}</li>')
+  });
+
+  $(".comment-textarea").atwho({
+    at: "#",
+    data: hashtagList,
+    startWithSpace: true,
+    searchKey: "content",
+   insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">\#${content}</a>"),
+    displayTpl: ("<li>\#${content}</li>")
+  });
+
+  $('.index-comment-form').each(function(){
+    $(this).keypress(function(e){ return e.which != 13; });
+    var id = $(this).attr('value');
+    $(document).on("keyup", this,function(e){
+      if(e.keyCode== 13 || e.which== 13) {
+         e.preventDefault();
+        var content = $(".comment-box-" + id).html();
+        if (content.length > 0) {
+          $(this).find(".comment-hidden-field-" + id).val(content);
+          $('.index-comment-form-' + id).submit();
+        }
+      }
+    });
+  });
+});

@@ -1,0 +1,10 @@
+$('.flash-wrapper').html('<%= j render "shared/flash_messages.html.erb" %>');
+setTimeout(function(){
+  $(".alert").fadeOut(1000);
+},3000);
+$('.post-box-comment-<%= params[:post_id] %>').append('<%= j render @comment %>');
+$('.comment-box-<%= params[:post_id] %>').empty();
+$('#my-posts').masonry('reload');
+$('.comment-section').append('<%= j render @comment %>');
+$('.comment-textarea').empty();
+
