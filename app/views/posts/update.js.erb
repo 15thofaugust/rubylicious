@@ -1,0 +1,11 @@
+$('.flash-wrapper').html('<%= j render "shared/flash_messages.html.erb" %>');
+setTimeout(function(){
+  $(".alert").fadeOut(1000);
+},3000);
+$(".post-caption-container").find("p").css("display","block");
+$(".post-caption-container").html('<%= j sanitize @post.caption %>');
+$(".post-box-caption-<%= params[:id] %>").find("p").html('<%= j sanitize @post.caption %>');
+$(".post-caption-edit").css("display","none");
+$(".dropdown-toggle-post").click(function(){
+  $(".dropdown-menu-post").toggle();
+});

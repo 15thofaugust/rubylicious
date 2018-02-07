@@ -1,6 +1,10 @@
 en:
   post_success: "Your image has been upload. Enjoy"
   post_failed: "Your image can't be uploaded now. Please try again"
+  post_delete_success: "Your post has been deleted successfully!"
+  post_delete_failed: "Your post has not been deleted successfully!"
+  post_not_found: "Post cannot be found"
+  comment_not_found: "Comment cannot be found"
   image_size: "Maximum file size is 5MB. Please choose a smaller file."
   hello: "Hello world"
   helpers:
@@ -46,9 +50,6 @@ en:
     users_controller:
       not_found: "User cannot be found."
       log_req: "Login is required"
-  comments:
-    comment:
-      delete: "Delete comment?"
     index:
       load-more: "Load more comments"
   password_resets:
@@ -104,11 +105,21 @@ en:
       time: "Posted %{time} ago"
       count: "%{count} likes"
       load-more: "Load more comments"
+    single_post:
+      count: "%{count} likes"
+      time: "Posted %{time} ago"
+      load-more: "Load more comments"
+      new_comment: "Add a comment ..."
+      edit_post: "Edit Post"
+      delete_post: "Delete Post"
+      conf_delete_post: "Are you sure you want to delete this post?"
+      report_post: "Report Inappropriate"
+    update:
+      post_update_success: "Your post has been updated successfully."
+      post_update_failed: "Your post hasn't been updated successfully."
   partials:
     comments:
       index:
-        new_comment: "Add a comment ..."
-        ago: "AGO"
         are_you_sure: "Are you sure ?"
         del_success: "Comment has been deleted"
   sessions:
@@ -143,9 +154,15 @@ en:
       posts: " %{count} posts"
       followers: "%{count} followers"
       following: "%{count} following"
-  comment:
-    comment_success: "Comment success"
-    comment_failed: "Comment failed"
+  comments:
+    create:
+      comment_success: "Comment success"
+      comment_failed: "Comment failed"
+    destroy:
+      delete_success: "Your comment has been deleted successfully."
+      delete_failed: "Your comment has not been deleted successfully."
+    comment:
+      delete: "Delete comment?"
   user_mailer:
     account_activation:
       greeting: "Welcome to Rubylicious"

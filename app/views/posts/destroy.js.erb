@@ -1,0 +1,8 @@
+$('.flash-wrapper').html('<%= j render "shared/flash_messages.html.erb" %>');
+setTimeout(function(){
+  $(".alert").fadeOut(1000);
+},3000);
+$(".single-post-wrapper").empty();
+$(".dim").fadeOut(300);
+$(".post-box-<%= params[:id] %>").remove();
+$('#my-posts').masonry('reload');

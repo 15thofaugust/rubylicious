@@ -8,7 +8,12 @@
     <%= javascript_include_tag "application", "data-turbolinks-track": "reload" %>
   </head>
   <body>
-    <div class="dim"></div>
+    <div id="dim" class="dim"></div>
+    <div class="single-post-wrapper">
+      <div class="nearest-post-wrapper prev-post-wrapper"></div>
+      <div class="single-post-container"></div>
+      <div class="nearest-post-wrapper next-post-wrapper"></div>
+    </div>
     <% unless current_page? signup_path or current_page? login_path %>
       <%= render "layouts/header" %>
       <script type="text/javascript">
@@ -16,9 +21,11 @@
       </script>
     <% end %>
     <div class="container">
-      <% flash.each do |message_type, message| %>
-        <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
-      <% end %>
+      <div class="flash-wrapper">
+        <% flash.each do |message_type, message| %>
+          <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
+        <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>
