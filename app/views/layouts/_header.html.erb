@@ -27,9 +27,15 @@
                 <b><%= t ".noti_title" %></b>
               </div>
               <hr>
-              <div id = "notifications">
+
+              <div id = "notifications"></div>
+              <br><br><hr>
+
+              <div id = "all_noti_text">
+                <b><i><%= link_to t(".noti_text"), notification_path %></i></b>
               </div>
             </ul>
+
           </div>
           <%= link_to image_tag("header/person.png", alt: t(".person_alt"), id: "icon"), current_user %>
         </ul>

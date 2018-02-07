@@ -1,6 +1,10 @@
 <script type="text/javascript">
   <%= render "show.js" %>
 </script>
+<div class="recommend-text"><b><%=t ".recommend" %></b></div>
+<div class="suggest-users">
+  <%= render "users/user" %>
+</div>
 <div class="index-container">
   <div id="my-posts">
     <%= render @posts %>

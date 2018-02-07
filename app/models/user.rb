@@ -35,6 +35,14 @@ class User < ApplicationRecord
     allow_nil: true
 
   scope :get_all_users, -> {select(:id, :username, :avatar).order username: :asc}
+  scope :suggestion_users, (lambda do |follower_id|
+    joins("LEFT JOIN relationships R ON R.followed_id = users.id")
+    .where("(users.id NOT IN (SELECT R.followed_id FROM relationships R
+      WHERE R.follower_id = :user_id)) AND 1", user_id: follower_id)
+    .group("users.id")
+    .order("COUNT(R.id) DESC")
+    .limit(20)
+  end)
 
   def seen_all
     self.passive_notifications.each do |noti|
@@ -108,11 +116,16 @@ class User < ApplicationRecord
 
   def follow other_user
     active_relationships.create followed_id: other_user.id
-    Notification.create(type_noti: 4, user_set_id: self.id, user_get_id: other_user.id)
+    Notification.create(type_noti: 4,
+      user_set_id: self.id,
+      user_get_id: other_user.id,
+      isSeen: false)
   end
 
   def unfollow other_user
-    Notification.where(type_noti: 4, user_set_id: self.id, user_get_id: other_user.id).first.destroy
+    Notification.where(type_noti: 4,
+      user_set_id: self.id,
+      user_get_id: other_user.id).first.destroy
     following.delete other_user
   end
 

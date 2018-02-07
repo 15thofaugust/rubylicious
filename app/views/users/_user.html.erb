@@ -1,0 +1,21 @@
+<% @users.each do |user| %>
+  <div id="my-users">
+    <%= link_to image_tag(user.avatar, class: "noti_img"), user %> <br><br>
+
+    <strong> <%= link_to user.username, user, class: "user_path" %> </strong> <br>
+
+   <%= link_to user.fullname, user, class: "user_path" %><br><br>
+
+    <div class ="number_<%= user.id %>" >
+      <i><%= t ".followed", num_user: user.passive_relationships.count %></i>
+    </div>
+    <div id="follow_form" class ="button_follow button_<%= user.id %>">
+      <% @user = user %>
+      <% if current_user.following? @user %>
+        <%= render "users/unfollow" %>
+      <% else %>
+        <%= render "users/follow" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
