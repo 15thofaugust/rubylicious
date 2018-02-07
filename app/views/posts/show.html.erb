@@ -1,0 +1,4 @@
+<% provide :title, t(".title", name: @post.user.fullname) %>
+<div class="single-post-page-container">
+  <%= render partial: "posts/single_post", locals: {post: @post} %>
+</div>

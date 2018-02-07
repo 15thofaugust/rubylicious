@@ -11,6 +11,27 @@ class Post < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  after_create do
+    post = Post.find_by id: self.id
+    tags = self.caption.scan /#\w+/
+    tags.uniq.map do |hashtag|
+      tag = Hashtag.find_or_create_by content: hashtag.downcase.delete("#")
+      PostHashtag.create(post_id: self.id,
+        hashtag_id: Hashtag.find_by(content: hashtag.downcase.delete("#")).id)
+    end
+  end
+
+  before_update do
+    post = Post.find_by id: self.id
+    post.post_hashtags.delete_all
+    tags = self.caption.scan /#\w+/
+    tags.uniq.map do |hashtag|
+      tag = Hashtag.find_or_create_by content: hashtag.downcase.delete("#")
+      PostHashtag.create(post_id: self.id,
+        hashtag_id: Hashtag.find_by(content: hashtag.downcase.delete("#")).id)
+    end
+  end
+
   scope :get_all_posts, (lambda do
     select(:id,:user_id,:image,:caption,:created_at)
       .order created_at: :desc
@@ -24,7 +45,6 @@ class Post < ApplicationRecord
   end)
   scope :get_post_by_id, -> {select(:id, :user_id, :image, :caption, :created_at)
     .where("id = ?", "%#{post_id}%").order(created_at: :desc)}
-
 
   private
   def image_size

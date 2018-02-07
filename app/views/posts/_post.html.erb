@@ -23,7 +23,7 @@
       "#" %>
   </div>
   <div class="post-box-caption post-box-caption-<%= post.id %>">
-      <p><%= sanitize post.caption %></p>
+      <p><%= sanitize render_hashtag(post.caption) %></p>
   </div>
   <div class="post-box-comment post-box-comment-<%= post.id %>">
     <% if post.comments.count > Settings.min_comment_load %>

@@ -37,15 +37,6 @@ $(document).ready(function(){
     displayTpl: ('<li><img class="dropdown-avatar"\
      src="assets/${avatar}" style="border-radius: 50%;" />@${username}</li>')
   });
-
-  $(".caption-box").atwho({
-    at: "#",
-    data: hashtagList,
-    startWithSpace: true,
-    searchKey: "content",
-   insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">\#${content}</a>"),
-    displayTpl: ("<li>\#${content}</li>")
-  });
 // Upload
   $("#upload-btn").change(function () {
     preview_upload(this);

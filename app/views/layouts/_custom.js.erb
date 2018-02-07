@@ -15,6 +15,7 @@ function search(url){
 $(document).ready(function(){
 
   var userList = [];
+  var hashtagList = [];
 
   <% @user_tags.each do |user| %>
     userList.push({"id" : <%= raw user.id %>,
@@ -31,5 +32,21 @@ $(document).ready(function(){
     searchKey: "username",
     insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">${username}"),
     displayTpl: ("<li><a class=\"search-user-item\" onclick=\"window.location.href = this;\" href=\"/users/${id}\"><img class=\"dropdown-avatar\" src=\"${avatar}\"/>${username}</a></li>")
+  });
+
+  <% Hashtag.get_all_hashtags.each do |hashtag| %>
+    hashtagList.push({"id" : <%= raw hashtag.id %>,
+      "content" : "<%= raw hashtag.content %>"
+    });
+  <% end %>
+
+  $(".search_box_text").atwho({
+    at: "#",
+    data: hashtagList,
+    highlightFirst: true,
+    startWithSpace: true,
+    searchKey: "content",
+    insertTpl: ("<a class=\"tag-user-item\" href=\"/posts/hashtag/${content}\">${content}"),
+    displayTpl: ("<li><a class=\"search-user-item\" onclick=\"window.location.href = this;\" href=\"/posts/hashtag/${content}\">\#${content}</a></li>")
   });
 });

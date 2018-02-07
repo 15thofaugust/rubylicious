@@ -9,10 +9,21 @@ class ApplicationController < ActionController::Base
     @user_tags = User.get_all_users
   end
 
+  def get_all_hashtags
+    @hashtags_all = Hashtag.get_all_hashtags
+  end
+
   def load_post post_id
     @post = Post.find_by_id post_id
     return if @post
     flash[:danger] = t "post_not_found"
     redirect_to root_path
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = t ".log_req"
+      redirect_to login_path
+    end
   end
 end

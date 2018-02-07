@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def index
     if logged_in?
+      @users = User.suggestion_users current_user.id
       @posts = Post.posts_by_follower(current_user.id)
       .paginate page: params[:page], per_page: Settings.index_paginate_per
       respond_to do |format|
@@ -87,6 +88,15 @@ class PostsController < ApplicationController
         format.js {flash.now[:danger] = t "post_delete_failed"}
       end
     end
+  end
+
+  def hashtags
+    @posts_hashtag = Hashtag.find_by(content: params[:name]).post_hashtag
+    @posts = Array.new
+    @posts_hashtag.each do |post_hashtag|
+      @posts << post_hashtag.post
+    end
+    @posts.sort! {|a, b| b.created_at <=> a.created_at}
   end
 
   private

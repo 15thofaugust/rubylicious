@@ -75,6 +75,7 @@ en:
       tagged_noti: "<b>%{user_name}</b> has mentioned you"
       followed_noti: "<b>%{user_name}</b> has followed you"
       noti_title: "Notification"
+      noti_text: "See all your notifications"
   shared:
     new_post:
       upload: "Browse file or drop your image here"
@@ -86,6 +87,8 @@ en:
       like: "Like"
       comment: "Commnent"
   posts:
+    index:
+      recommend: "Top users that recommended for you"
     add_comment:
       add: "Add a comment..."
     post:
@@ -117,6 +120,8 @@ en:
     update:
       post_update_success: "Your post has been updated successfully."
       post_update_failed: "Your post hasn't been updated successfully."
+    hashtags:
+      hashtag_text: "Result for Hashtag: \"%{hashtag}\""
   partials:
     comments:
       index:
@@ -154,6 +159,8 @@ en:
       posts: " %{count} posts"
       followers: "%{count} followers"
       following: "%{count} following"
+    user:
+      followed: "Followed by %{num_user} users"
   comments:
     create:
       comment_success: "Comment success"
@@ -196,3 +203,4 @@ en:
   application_mailer:
     activation: "Your Rubylicious account is ready"
     reset: ""
+
