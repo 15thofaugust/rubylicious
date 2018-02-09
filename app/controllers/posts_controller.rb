@@ -90,6 +90,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def hashtags
+    @posts_hashtag = Hashtag.find_by(content: params[:name]).post_hashtag
+    @posts = Array.new
+    @posts_hashtag.each do |post_hashtag|
+      @posts << post_hashtag.post
+    end
+    @posts.sort! {|a, b| b.created_at <=> a.created_at}
+  end
+
   private
   def post_params
     params.require(:post).permit(:user_id, :caption, :image)

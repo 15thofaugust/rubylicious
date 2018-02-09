@@ -120,6 +120,8 @@ en:
     update:
       post_update_success: "Your post has been updated successfully."
       post_update_failed: "Your post hasn't been updated successfully."
+    hashtags:
+      hashtag_text: "Result for Hashtag: \"%{hashtag}\""
   partials:
     comments:
       index:

@@ -10,4 +10,8 @@ module PostsHelper
   def unlike id
     current_user.like_activities.find_by post_id: id
   end
+
+  def render_hashtag post
+    post.gsub(/#\w+/) {|word| link_to word, "/posts/hashtag/#{word.delete('#')}"}.html_safe
+  end
 end
