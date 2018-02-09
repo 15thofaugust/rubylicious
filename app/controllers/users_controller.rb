@@ -33,8 +33,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes update_params
-      redirect_to login_path
+      flash[:success] = t ".update_success"
+      redirect_to edit_user_path
     else
+      flash[:danger] = t ".update_failed"
       render :edit
     end
   end

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action only: [:create] do find_post params[:post_id]
+  before_action only: [:create] do load_post params[:post_id]
   end
   before_action :load_comment, only: [:destroy]
 
