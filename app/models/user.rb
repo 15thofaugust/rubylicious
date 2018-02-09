@@ -1,17 +1,32 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :reset_token
+
+  enum gender: [:Male, :Female]
+
   has_many :posts, dependent: :destroy
-  has_many :active_relationships, class_name: "Relationship",
+
+  has_many :active_relationships, class_name: Relationship.name,
     foreign_key: :follower_id,
     dependent: :destroy
-  has_many :passive_relationships, class_name: "Relationship",
+  has_many :passive_relationships, class_name: Relationship.name,
     foreign_key: :followed_id,
     dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  has_many :like_activities, class_name: "Like", foreign_key: :user_id,
+
+  has_many :like_activities, class_name: Like.name, foreign_key: :user_id,
     dependent: :destroy
   has_many :likes, through: :like_activities, source: :post
+
+  has_many :send_follow_request, class_name: Follow_Request.name,
+    foreign_key: :follower_id,
+    dependent: :destroy
+  has_many :receive_follow_request, class_name: Follow_Request.name,
+    foreign_key: :followed_id,
+    dependent: :destroy
+  has_many :sent_requests, through: :send_follow_request, source: :followed
+  has_many :receive_requests, through: :receive_follow_request, source: :follower
+
   has_many :comments, foreign_key: :user_id, dependent: :destroy
   has_many :passive_notifications, class_name: Notification.name, foreign_key: :user_get_id
   has_many :active_notifications, class_name: Notification.name, foreign_key: :user_set_id
@@ -131,6 +146,10 @@ class User < ApplicationRecord
 
   def following? other_user
     following.include? other_user
+  end
+
+  def requesting? other_user
+    sent_requests.include? other_user
   end
 
   def like post

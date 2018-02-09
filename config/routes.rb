@@ -13,11 +13,13 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get :sent_requests, :receive_requests
     end
   end
   resources :posts
   resources :password_resets
   resources :relationships, only: [:create, :destroy]
+  resources :follow_requests, only: [:create, :destroy, :update]
   resources :likes, only: [:create, :destroy]
   resources :comments, except: [:index]
 
@@ -29,5 +31,4 @@ Rails.application.routes.draw do
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: "sessions#failure"
   get "/notification", to: "notifications#index"
-
 end

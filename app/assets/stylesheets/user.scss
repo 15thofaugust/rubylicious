@@ -87,6 +87,27 @@
       }
     }
   }
+  .user-blank-container {
+    display: table;
+    height: 500px;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 55px;
+    .form-container {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      h2 {
+        color: $mineshaft;
+        font-weight: 600;
+        font-size: 17px;
+      }
+      p {
+        color: $mineshaft;
+        font-size: 15px;
+      }
+    }
+  }
   .user-page-main {
     padding-top: 55px;
     .user-page-main-wrapper {

@@ -456,6 +456,44 @@ body {
   min-height: 800px;
   width: 70%;
   margin: auto;
+  .profile-config-menu {
+    width: 30%;
+    border: 1px solid $concrete;
+    border-right: none;
+    background-color: $white;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    height: 705px;
+    .profile-config-selected {
+      border-left: solid 2px $mineshaft;
+      a {
+        font-weight: 600;
+      }
+    }
+    ul {
+      list-style-type: none;
+      padding: 0px !important;
+      padding-top: 50px !important;
+      margin: 0px !important;
+      li {
+        height: 50px;
+        line-height: 50px;
+        a {
+          padding: 16px 16px 16px 25px;
+          color: $mineshaft;
+          font-weight: 300;
+          font-size: 17px;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+        &:hover {
+          text-decoration: none;
+          background-color: $alabaster;
+        }
+      }
+    }
+  }
 }
 
 .edit-profile-container {
@@ -477,17 +515,16 @@ body {
 
 
 .form-container-left {
-  width: 25%;
+  width: 23%;
   text-align: right;
   label {
     width: 100%;
     font-size: 15px;
   }
-  margin-left: 40px;
 }
 
 .form-container-right {
-  width: 65%;
+  width: 72%;
 }
 
 .input-field-edit-user {
@@ -509,7 +546,7 @@ body {
 .checkbox-description {
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 65%;
   p {
     margin: 0px 0px 10px 0px !important;
     text-align: left !important;
