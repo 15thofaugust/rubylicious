@@ -1,0 +1,22 @@
+<div class="form-container-row form-container-major-row">
+  <div class="form-container-col form-container-left-major">
+    <p>
+      <%= t(".description",
+        user: link_to("#{image_tag(request.avatar)} #{request.username}"
+          .html_safe, request)).html_safe %>
+    </p>
+  </div>
+  <div class="form-container-col form-container-right-major
+    form-container-right-major-<%= update_request(request.id).id %>">
+    <%= form_for update_request(request.id),
+      url: {action: "accept", id: update_request(request.id)},
+      remote: true do |f| %>
+      <%= f.submit t(".accept"), class: "submit-button accept-button" %>
+    <% end %>
+    <%= form_for update_request(request.id),
+      url: {action: "decline", id: update_request(request.id)},
+      remote: true do |f| %>
+      <%= f.submit t(".decline"), class: "submit-button decline-button" %>
+    <% end %>
+  </div>
+</div>

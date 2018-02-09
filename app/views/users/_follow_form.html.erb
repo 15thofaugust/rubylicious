@@ -4,10 +4,18 @@
     logout_path, method: :delete, class: "logout-button" %>
 <% else %>
   <div id="follow_form">
-  <% if current_user.following? @user %>
-    <%= render "unfollow" %>
+  <% if @user.isprivate? && !current_user.following?(@user)%>
+    <% if current_user.requesting? @user %>
+      <%= render "cancel_request" %>
+    <% else %>
+      <%= render "send_request" %>
+    <% end %>
   <% else %>
-    <%= render "follow" %>
+    <% if current_user.following? @user %>
+      <%= render "unfollow" %>
+    <% else %>
+      <%= render "follow" %>
+    <% end %>
   <% end %>
   </div>
 <% end %>

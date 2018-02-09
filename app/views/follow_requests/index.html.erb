@@ -1,0 +1,20 @@
+<% provide :title, t(".title") %>
+<div class="main">
+  <div class="edit-profile-wrapper">
+    <div class="profile-config-menu">
+      <div class="form-container">
+        <ul>
+          <li><%= link_to t("edit_button"), edit_user_path(current_user) %></li>
+          <li class="profile-config-selected">
+            <%= link_to t("follow_request"), follow_requests_path %>
+          </li>
+          <li><%= link_to t("liked_picture"), "#" %></li>
+        </ul>
+      </div>
+    </div>
+    <div class="edit-profile-container">
+      <div class="form-container form-container-2-col">
+        <%= render partial: "request", collection: @requests %>
+      </div>
+  </div>
+</div>

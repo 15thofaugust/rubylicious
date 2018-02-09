@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if logged_in?
       @users = User.suggestion_users current_user.id
       @posts = Post.posts_by_follower(current_user.id)
-      .paginate page: params[:page], per_page: Settings.index_paginate_per
+        .paginate page: params[:page], per_page: Settings.index_paginate_per
       respond_to do |format|
         format.html
         format.js

@@ -1,0 +1,14 @@
+<div class="user-post", value=<% post.id %>>
+  <div class="user-post-stat user-post-stat-<%= post.id %>">
+    <div class="user-post-stat-component">
+      <%= image_tag "resources/likefill.png" %>
+      <p><%= post.likes.count %></p>
+    </div>
+    <div class="user-post-stat-component">
+      <%= image_tag "resources/commentfill.png" %>
+      <p><%= post.likes.count %></p>
+    </div>
+  </div>
+  <%= link_to image_tag(post.image), post, class: "user-post-image", value: post.id, remote: true %>
+</div>
+
