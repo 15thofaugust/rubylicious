@@ -14,7 +14,7 @@
     <div class="post-main">
       <div class="post-caption">
         <div class="post-caption-container">
-          <p><%= sanitize @post.caption %><p>
+          <p><%= sanitize render_hashtag(@post.caption) %><p>
           <div class="post-caption-edit">
             <%= form_for post, html: { class: "edit-caption-form" }, remote: true do |f|%>
               <div class="edit-caption-textarea" contenteditable="true">

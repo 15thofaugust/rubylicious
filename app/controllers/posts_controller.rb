@@ -90,6 +90,26 @@ class PostsController < ApplicationController
     end
   end
 
+  def hashtags
+    tag = Hashtag.find_by(content: params[:name])
+    if tag.nil?
+      flash[:danger] = t "hashtag_not_found", hashtag: params[:name]
+      redirect_to root_path
+    else
+      @posts_hashtag = tag.post_hashtag
+      if @posts_hashtag.nil?
+        flash[:danger] = t "hashtag_not_found", hashtag: params[:name]
+        redirect_to root_path
+      else
+        @posts = Array.new
+        @posts_hashtag.each do |post_hashtag|
+          @posts << post_hashtag.post
+        end
+        @posts.sort! {|a, b| b.created_at <=> a.created_at}
+      end
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:user_id, :caption, :image)

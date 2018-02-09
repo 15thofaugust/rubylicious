@@ -1,0 +1,11 @@
+<div class ="recommend-text">
+  <b><%= t ".hashtag_text", hashtag: params[:name]  %><b>
+</div>
+<hr>
+<div id= "my-posts">
+  <%= render @posts %>
+</div>
+<script type="text/javascript">
+  <%= render "posts/index.js.erb" %>
+  <%= render "posts/index_comment.js.erb" %>
+</script>

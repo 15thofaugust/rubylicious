@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/finish", to: "users#finish"
   post "/finish", to: "users#finish"
   get "/comment", to: "comments#index"
+  get "/posts/hashtag/:name", to: "posts#hashtags"
   resources :users do
     member do
       get :following, :followers
