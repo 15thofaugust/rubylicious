@@ -17,12 +17,4 @@ class RelationshipsController < ApplicationController
       format.js
     end
   end
-
-  private
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = t ".log_req"
-      redirect_to login_path
-    end
-  end
 end
