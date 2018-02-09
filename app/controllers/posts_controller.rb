@@ -91,12 +91,23 @@ class PostsController < ApplicationController
   end
 
   def hashtags
-    @posts_hashtag = Hashtag.find_by(content: params[:name]).post_hashtag
-    @posts = Array.new
-    @posts_hashtag.each do |post_hashtag|
-      @posts << post_hashtag.post
+    tag = Hashtag.find_by(content: params[:name])
+    if tag.nil?
+      flash[:danger] = t "hashtag_not_found", hashtag: params[:name]
+      redirect_to root_path
+    else
+      @posts_hashtag = tag.post_hashtag
+      if @posts_hashtag.nil?
+        flash[:danger] = t "hashtag_not_found", hashtag: params[:name]
+        redirect_to root_path
+      else
+        @posts = Array.new
+        @posts_hashtag.each do |post_hashtag|
+          @posts << post_hashtag.post
+        end
+        @posts.sort! {|a, b| b.created_at <=> a.created_at}
+      end
     end
-    @posts.sort! {|a, b| b.created_at <=> a.created_at}
   end
 
   private

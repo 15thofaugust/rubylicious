@@ -7,6 +7,7 @@ en:
   comment_not_found: "Comment cannot be found"
   image_size: "Maximum file size is 5MB. Please choose a smaller file."
   hello: "Hello world"
+  hashtag_not_found: "Not found any result of Hashtag: \"%{hashtag}\""
   helpers:
     label:
       user:
