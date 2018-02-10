@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action only: [:show] do load_post params[:id]
   end
   before_action :correct_post, only: [:destroy, :edit, :update]
-
   def index
     if logged_in?
       @users = User.suggestion_users current_user.id
@@ -29,11 +28,19 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post_photo = @post.photos.build
   end
 
   def create
-    @post = current_user.post.build post_params
+    @post = current_user.posts.build post_params
     if @post.save
+      params[:photos][:image].each do |a|
+        @post.photos.create!(image: a)
+      end
+      respond_to do |format|
+        format.html
+        format.js
+      end
       pattern = /\"\/users\/(.*?)\"/
       matches = []
       @post.caption.scan(pattern) do
@@ -111,9 +118,6 @@ class PostsController < ApplicationController
   end
 
   private
-  def post_params
-    params.require(:post).permit(:user_id, :caption, :image)
-  end
 
   def update_post_params
     params.require(:post).permit(:caption)
@@ -123,4 +127,10 @@ class PostsController < ApplicationController
     @post = current_user.posts.find_by id: params[:id]
     redirect_to root_url if @post.nil?
   end
+  def post_params
+    params.require(:post).permit(:user_id,
+     :caption,
+      photos_attributes: [:id, :post_id, :image])
+  end
 end
+

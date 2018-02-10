@@ -1,13 +1,20 @@
- <script type="text/javascript">
-  <%= render "posts/new.js.erb" %>
+<script type="text/javascript">
+   <%= render "main.js" %>
 </script>
-<%= form_for @post, html: { class: "caption-form" }, remote: true do |f| %>
-  <span class="upload-btn-wrapper">
-    <div class="btn-upload"><%= t ".upload" %></div>
-    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", id: "upload-btn"%>
-  </span>
-  <div id="popup-upload-form" >
-    <div class="preview-box"><img id="preview_upload" src=""></div>
+<%= form_for @post, html: { class: "caption-form", multipart: true } do |f| %>
+  <%= f.fields_for :photos do |p| %>
+    <span class="upload-btn-wrapper">
+      <div class="btn-upload"><%= t ".upload" %></div>
+      <%= f.file_field :image,
+        multiple: true,
+        name: "photos[image][]",
+        class: "upload-images",
+        id: "upload-btn" %>
+    </span>
+  <% end %>
+  </div>
+    <div class="preview-box"></div>
+  <div id="popup-upload-form">
     <div class="caption-box" contenteditable="true" placeholder="<%= t".new_post" %>"></div>
     <%= f.hidden_field :caption, class: "form-control caption-hidden-field" %>
     <br>

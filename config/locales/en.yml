@@ -6,6 +6,7 @@ en:
   post_not_found: "Post cannot be found"
   comment_not_found: "Comment cannot be found"
   image_size: "Maximum file size is 5MB. Please choose a smaller file."
+  post_not_found: "Post cannot be found"
   hello: "Hello world"
   hashtag_not_found: "Not found any result of Hashtag: \"%{hashtag}\""
   helpers:
@@ -94,17 +95,19 @@ en:
       add: "Add a comment..."
     post:
       more: "Read more"
-    new:
+    main:
       js:
         choose_another: "Choose another image"
         upload: "Browse file or drop your image here"
         image_size: "Maximum file size is 5MB. Please choose a smaller file."
-        erb:
-          confirm_cancel: "Discard this post ?"
+        confirm_cancel: "Discard this post ?"
       search_hidden: "Search"
       singup: "Sign Up"
       login: "Log In"
     post:
+      next: "Next"
+      prev: "Previous"
+      no_images: "No image"
       more: "Read more"
       time: "Posted %{time} ago"
       count: "%{count} likes"
