@@ -1,4 +1,6 @@
 class Comment < ApplicationRecord
+  has_paper_trail on: [:create]
+
   after_create_commit :create_notification
   before_destroy :destroy_notification
   belongs_to :user
