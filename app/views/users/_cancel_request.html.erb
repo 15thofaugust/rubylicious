@@ -1,0 +1,5 @@
+<%= form_for cancel_request(@user.id),
+  html: { method: :delete },
+  remote: true do |f| %>
+  <%= f.submit t(".button"), class: "submit-button unfollow-button" %>
+<% end %>

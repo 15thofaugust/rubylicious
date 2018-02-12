@@ -14,11 +14,20 @@ Rails.application.routes.draw do
   resources :users do
     member do
       get :following, :followers
+      get :sent_requests, :receive_requests
     end
   end
   resources :posts
   resources :password_resets
   resources :relationships, only: [:create, :destroy]
+  resources :follow_requests, except: [:show, :new, :edit] do
+    collection do
+      patch "accept/:id", to: "follow_requests#accept", as: "accept"
+      put "accept/:id", to: "follow_requests#accept"
+      patch "decline/:id", to: "follow_requests#decline", as: "decline"
+      put "decline/:id", to: "follow_requests#decline"
+    end
+  end
   resources :likes, only: [:create, :destroy]
   resources :comments, except: [:index]
 
@@ -30,5 +39,4 @@ Rails.application.routes.draw do
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: "sessions#failure"
   get "/notification", to: "notifications#index"
-
 end

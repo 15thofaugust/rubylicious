@@ -1,6 +1,17 @@
 <% provide :title, t(".title") %>
 <div class="main">
   <div class="edit-profile-wrapper">
+    <div class="profile-config-menu">
+      <div class="form-container">
+        <ul>
+          <li class="profile-config-selected">
+            <%= link_to t("edit_button"), edit_user_path %>
+          </li>
+          <li><%= link_to t("follow_request"), follow_requests_path %></li>
+          <li><%= link_to t("liked_picture"), "#" %></li>
+        </ul>
+      </div>
+    </div>
     <div class="edit-profile-container">
       <div class="form-container form-container-2-col">
         <%= form_for(@user) do |f| %>
@@ -38,7 +49,8 @@
             <%= f.label :gender %>
           </div>
           <div class="form-container-col form-container-right">
-            <%= f.select :gender,  {"Female" => false, "Male" => true}, {:selected => (@user.gender?)}, class: "input-select" %>
+            <%= f.select :gender,  User.genders.keys.map {|gen| [gen.humanize, gen]},
+              {selected: (@user.gender)}, class: "input-select" %>
           </div>
         </div>
         <div class="form-container-row">
@@ -76,7 +88,9 @@
             <%= link_to t(".deact"), "#" %>
           </div>
         </div>
-        <%= f.submit t(".submit"), class: "submit-button submit-edit-user" %>
+        <div class="form-container-row">
+          <%= f.submit t(".submit"), class: "submit-button submit-edit-user" %>
+        </div>
         <% end %>
       </div>
     </div>

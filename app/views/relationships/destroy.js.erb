@@ -1,4 +1,8 @@
-$("#follow_form").html("<%= escape_javascript(render('users/follow')) %>");
+<% if @user.isprivate? %>
+  $("#follow_form").html("<%= escape_javascript(render('users/send_request')) %>");
+<% else %>
+  $("#follow_form").html("<%= escape_javascript(render('users/follow')) %>");
+<% end %>
 $("#followers").html('<%= @user.followers.count %>');
 $(".button_<%= @user.id %>").html("<%= escape_javascript(render('users/follow')) %>");
 $(".number_<%= @user.id %>").html('<i><%= t "users.user.followed", num_user: @user.passive_relationships.count %></i>');

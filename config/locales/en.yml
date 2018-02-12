@@ -8,6 +8,9 @@ en:
   image_size: "Maximum file size is 5MB. Please choose a smaller file."
   hello: "Hello world"
   hashtag_not_found: "Not found any result of Hashtag: \"%{hashtag}\""
+  edit_button: "Edit Profile"
+  follow_request: "Follow Requests"
+  liked_picture: "Liked Pictures"
   helpers:
     label:
       user:
@@ -109,6 +112,8 @@ en:
       time: "Posted %{time} ago"
       count: "%{count} likes"
       load-more: "Load more comments"
+    show:
+      title: "Rubylicious photo by %{name}"
     single_post:
       count: "%{count} likes"
       time: "Posted %{time} ago"
@@ -156,10 +161,27 @@ en:
       button: "Follow"
     unfollow:
       button: "Following"
+    send_request:
+      button: "Follow"
+    cancel_request:
+      button: "Requested"
     show:
       posts: " %{count} posts"
       followers: "%{count} followers"
       following: "%{count} following"
+      private_title: "This Account is Private"
+      private_des: "Follow to see their photos"
+      no_post: "No posts yet."
+    update:
+      update_success: "Your account has been updated successfully"
+      update_failed: "Your account has not been updated successfully"
+  follow_requests:
+    destroy:
+      destroy_success: "You have canceled your %{user} follow request."
+      destroy_failed: "Unable to cancel request."
+    create:
+      create_success: "Your follow request has sent to user %{user}."
+      create_failed: "Unable to send request."
     user:
       followed: "Followed by %{num_user} users"
   comments:

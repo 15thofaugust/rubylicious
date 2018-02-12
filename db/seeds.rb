@@ -24,18 +24,3 @@ User.create! fullname:  "Nguyen Thuy Chi", email: "mitzu9xx@gmail.com",
   avatar: "avatar/default.png"
 end
 
-(1..20).foreach do |x|
-  Relationship.create! follower_id: x, followed_id: 1
-  Relationship.create! follower_id: x, followed_id: 2
-  Relationship.create! follower_id: x, followed_id: 3
-  Relationship.create! follower_id: x, followed_id: 4
-  Relationship.create! follower_id: x, followed_id: 5
-end
-
-10.times do |x|
-  Relationship.create! follower_id: x, followed_id: 6
-  Relationship.create! follower_id: x, followed_id: 10
-  Relationship.create! follower_id: x, followed_id: 15
-  Relationship.create! follower_id: x, followed_id: 19
-  Relationship.create! follower_id: x, followed_id: 20
-end
