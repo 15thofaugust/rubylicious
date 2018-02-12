@@ -5,16 +5,17 @@
       <div class="form-container">
         <ul>
           <li><%= link_to t("edit_button"), edit_user_path(current_user) %></li>
+          <li><%= link_to t("follow_request"), follow_requests_path %></li>
           <li class="profile-config-selected">
-            <%= link_to t("follow_request"), follow_requests_path %>
+            <%= link_to t("activity_log"), versions_path %>
           </li>
-          <li><%= link_to t("activity_log"), versions_path %></li>
         </ul>
       </div>
     </div>
     <div class="edit-profile-container">
       <div class="form-container form-container-2-col">
-        <%= render partial: "request", collection: @requests %>
+        <%= render partial: "version", collection: @versions %>
       </div>
+    </div>
   </div>
 </div>

@@ -10,7 +10,7 @@ en:
   hashtag_not_found: "Not found any result of Hashtag: \"%{hashtag}\""
   edit_button: "Edit Profile"
   follow_request: "Follow Requests"
-  liked_picture: "Liked Pictures"
+  activity_log: "Activity Log"
   helpers:
     label:
       user:
@@ -184,6 +184,8 @@ en:
       create_failed: "Unable to send request."
     user:
       followed: "Followed by %{num_user} users"
+    index:
+      title: "Follow Requests"
   comments:
     create:
       comment_success: "Comment success"
@@ -226,4 +228,11 @@ en:
   application_mailer:
     activation: "Your Rubylicious account is ready"
     reset: ""
-
+  versions:
+    index:
+      title: "Activity Log"
+    version:
+      follow: "You followed %{followed}"
+      like: "You liked %{user}'s %{photo}"
+      photo: "post"
+      comment: "You commented \"%{content}\" on %{user}'s %{photo} "

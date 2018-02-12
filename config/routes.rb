@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :sent_requests, :receive_requests
     end
   end
+  resources :versions, only: [:index]
   resources :posts
   resources :password_resets
   resources :relationships, only: [:create, :destroy]

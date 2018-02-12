@@ -1,0 +1,43 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'colors.scss';
+
+.form-container-row-log {
+  justify-content: left !important;
+  border-bottom: solid 1px $concrete;
+  .form-container-left-log {
+    width: 80%;
+    p {
+      margin-top: 10px;
+      text-align: left;
+      margin-left: 20px !important;
+      font-size: 16px;
+      line-height: 25px;
+      a {
+        color: $mineshaft;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      img {
+        width: 40px;
+        border-radius: 50%;
+        padding: 0 5px;
+      }
+    }
+    h6 {
+      text-align: left;
+      font-size: 10px;
+      margin: 10px 40px 6px 20px;
+      color: $gray78;
+      font-style: italic;
+    }
+  }
+  .form-container-right-log {
+    align-items: center;
+    img {
+      width: 100px;
+      margin: 10px 0;
+    }
+  }
+}
