@@ -11,7 +11,6 @@
             <%= image_tag("resources/logo.png", class: "logo") %>
             <h6><%= t ".description" %></h6>
             <%= render "shared/error_messages" %>
-            <%= f.hidden_field :avatar, value: "avatar/default.png" %>
             <%= f.text_field :email, placeholder: "Email", class: "input-field" %>
             <%= f.text_field :fullname, placeholder: "Full Name", class: "input-field" %>
             <%= f.text_field :username, placeholder: "Username", class: "input-field" %>

@@ -11,7 +11,8 @@
     <% if logged_in? %>
       <nav class="col-xs-4">
         <ul class="nav navbar-nav navbar-right">
-          <%= image_tag "header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload"%>
+           <%= link_to image_tag("header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload1"),
+            {controller: "posts", action: "new"}, remote: true %>
           <div class="dropdown" onclick="load_notification()">
             <%= link_to image_tag("header/noti.png", alt: t(".noti_alt"), id:"icon"), "#", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
             <div class="number_ground">
@@ -37,7 +38,11 @@
             </ul>
 
           </div>
-          <%= link_to image_tag("header/person.png", alt: t(".person_alt"), id: "icon"), current_user %>
+          <%= link_to image_tag(current_user.avatar.url(:avatar),
+            title: current_user.username,
+            id: "icon",
+            class: "header-ava"),
+            current_user %>
         </ul>
       </nav>
       <span id="current_user_id" style="display:none"><%= @current_user_id = current_user.id %></span>

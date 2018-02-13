@@ -5,7 +5,37 @@
 </script>
 <div class="row post-popup">
   <div class="post-image col-md-8">
-     <%= image_tag @post.image.url(:post), id: "post-img" %>
+     <% if post.photos.count == 0 %>
+          <p><%= t ".no_images" %></p>
+        <% elsif post.photos.count == 1 %>
+            <% post.photos.each do |p| %>
+              <%= image_tag p.image.url(:post), id: "post-img"%>
+            <% end %>
+        <% elsif post.photos.count > 1 %>
+
+        <div id="album-<%= post.id %>" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <% post.photos.each_with_index do |p,i| %>
+               <li data-target="#album-<%= p.id %>" data-slide-to="<%= i %>" class="<%= "active" if i == 0 %>"></li>
+            <% end %>
+          </ol>
+          <div class="carousel-inner single-slide">
+             <% post.photos.each_with_index do |p,i| %>
+          <div class="item single-item <%= "active" if i == 0 %>">
+                <%= image_tag p.image.url(:post), class: "item-single-img", id: "post-img" %>
+              </div>
+            <% end %>
+          </div>
+          <a class="left carousel-control" href="#album-<%= post.id %>" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only"><%= t ".next" %></span>
+          </a>
+          <a class="right carousel-control" href="#album-<%= post.id %>" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only"><%= t ".prev" %></span>
+          </a>
+        </div>
+        <% end %>
    </div>
    <div class="post-stuffs col-md-4">
     <div class="post-user">
