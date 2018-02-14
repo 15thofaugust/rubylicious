@@ -93,6 +93,15 @@
         width: 500px;
         height: 50px;
         display: inline-block;
+        .unfollow-button {
+          background: $alabaster;
+          border: solid 1px $alto;
+          color: $mineshaft;
+          width: 70%;
+        }
+        .follow-button {
+          width: 70%;
+        }
         .link_img{
           width: 40px;
           height: 40px;
@@ -161,9 +170,8 @@
         margin-top: 25%;
       }
       .dropdown-menu{
-        max-height: 400px;
         margin-top: 30px;
-        overflow: scroll;
+        height: 450px;
         .noti_title{
           width: 400px;
           margin-left: 120px;
@@ -171,6 +179,15 @@
         }
         .dim {
           display: none;
+        }
+        #notifications{
+          width: 650px;
+          height: 370px;
+          overflow-y: scroll;
+          .submit-button{
+            margin: 0 0 10px 15px;
+            width: 150px;
+          }
         }
       }
       hr{
@@ -499,9 +516,6 @@ body {
     width: 20%;
     background: $white;
     padding: 20px 0 20px;
-    &:first-child{
-      display:none;
-    }
     .unfollow-button {
       background: $alabaster;
       border: solid 1px $alto;
@@ -535,6 +549,7 @@ body {
 #all_noti_text{
   width: 100%;
   text-align: center;
+  position: absolute;
   a {
     text-decoration: none;
     color: $black;

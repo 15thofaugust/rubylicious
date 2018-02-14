@@ -5,26 +5,41 @@
         <%= link_to image_tag(noti.user_set.avatar, class: "noti_img"), noti.user_set%>
       </div>
 
-      <% if noti.isSeen %>
-        <% if noti.type_noti == 1 %>
-          <%= link_to t("layouts.header.liked_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text" %>
-        <% elsif noti.type_noti == 2 %>
-         <%= link_to t("layouts.header.commented_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text" %>
-        <% elsif noti.type_noti == 3 %>
-          <%= link_to t("layouts.header.tagged_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text" %>
-        <% else %>
-          <%= link_to t("layouts.header.followed_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text" %>
-        <% end %>
-      <% else %>
-        <% if noti.type_noti == 1 %>
-          <%= link_to t("layouts.header.liked_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text_unseen" %>
-        <% elsif noti.type_noti == 2 %>
-         <%= link_to t("layouts.header.commented_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text_unseen" %>
-        <% elsif noti.type_noti == 3 %>
-          <%= link_to t("layouts.header.tagged_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text_unseen" %>
-        <% else %>
-          <%= link_to t("layouts.header.followed_noti", user_name: noti.user_set.username).html_safe, "#", class: "noti_text_unseen" %>
-        <% end %>
+      <% if noti.type_noti == 1 %>
+        <%= link_to t("layouts.header.liked_noti", user_name: noti.user_set.username).html_safe, noti.post,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+      <% elsif noti.type_noti == 2 %>
+       <%= link_to t("layouts.header.commented_noti", user_name: noti.user_set.username).html_safe, noti.post,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+      <% elsif noti.type_noti == 3 %>
+        <%= link_to t("layouts.header.tagged_noti", user_name: noti.user_set.username).html_safe, noti.post,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+      <% elsif noti.type_noti == 4 %>
+        <%= link_to t("layouts.header.followed_noti", user_name: noti.user_set.username).html_safe, noti.user_set,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+        <% @user = noti.user_set %>
+        <div class ="follow_form button_follow button_<%= @user.id %>">
+          <% if @user.isprivate? && !current_user.following?(@user)%>
+            <% if current_user.requesting? @user %>
+              <%= render "users/cancel_request" %>
+            <% else %>
+              <%= render "users/send_request" %>
+            <% end %>
+          <% else %>
+            <% if current_user.following? @user %>
+              <%= render "users/unfollow" %>
+            <% else %>
+              <%= render "users/follow" %>
+            <% end %>
+          <% end %>
+        </div>
+        <br>
+      <% elsif noti.type_noti == 5 %>
+        <%= link_to t("layouts.header.requested_noti", user_name: noti.user_set.username).html_safe, follow_requests_path,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+      <% elsif noti.type_noti == 6 %>
+        <%= link_to t("layouts.header.accepted_noti", user_name: noti.user_set.username).html_safe, noti.user_set,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
       <% end %>
 
       <div class = "timestamp">
@@ -34,3 +49,9 @@
   <% end %>
 <% end %>
 <%= will_paginate @notifications %>
+
+<script type="text/javascript">
+  $('.dropdown-menu').click(function(){
+    event.stopPropagation();
+  });
+</script>
