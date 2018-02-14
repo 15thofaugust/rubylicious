@@ -182,6 +182,8 @@ en:
     update:
       update_success: "Your account has been updated successfully"
       update_failed: "Your account has not been updated successfully"
+    user:
+      followed: "Followed by %{num_user} users"
   follow_requests:
     destroy:
       destroy_success: "You have canceled your %{user} follow request."
