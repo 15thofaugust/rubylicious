@@ -1,5 +1,5 @@
 class Like < ApplicationRecord
-  has_paper_trail on: [:create]
+  has_paper_trail
 
   after_create_commit :create_notification
   before_destroy :destroy_notification

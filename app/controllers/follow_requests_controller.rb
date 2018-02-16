@@ -36,6 +36,7 @@ class FollowRequestsController < ApplicationController
   def accept
     if @received_req.destroy
       @follower = @received_req.follower
+      PaperTrail.whodunnit = @follower.id
       @follower.follow current_user
       respond_to do |format|
         format.html

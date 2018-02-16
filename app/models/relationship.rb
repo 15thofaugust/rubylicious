@@ -1,5 +1,5 @@
 class Relationship < ApplicationRecord
-  has_paper_trail on: [:create]
+  has_paper_trail
 
   belongs_to :follower, class_name: User.name
   belongs_to :followed, class_name: User.name

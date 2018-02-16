@@ -195,6 +195,10 @@ en:
       followed: "Followed by %{num_user} users"
     index:
       title: "Follow Requests"
+    request:
+      description: "You have receieved a follow request from %{user}"
+      accept: "Accept"
+      decline: "Decline"
   comments:
     create:
       comment_success: "Comment success"
@@ -245,3 +249,4 @@ en:
       like: "You liked %{user}'s %{photo}"
       photo: "post"
       comment: "You commented \"%{content}\" on %{user}'s %{photo} "
+      post: "You uploaded a %{post}"
