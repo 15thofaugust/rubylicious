@@ -1,4 +1,4 @@
-<% if version.item_type == "Relationship" %>
+<% if version.item_type == "Relationship" && Relationship.find_by_id(version.item_id).present? %>
   <div class="form-container-row form-container-row-log">
     <div class="form-container-col form-container-left-log">
       <p><%= t(".follow",
@@ -11,7 +11,7 @@
     </div>
   </div>
 <% end %>
-<% if version.item_type == "Like" %>
+<% if version.item_type == "Like" && Like.find_by_id(version.item_id).present? %>
   <div class="form-container-row form-container-row-log">
     <div class="form-container-col form-container-left-log">
       <p><%= t(".like",
@@ -27,7 +27,7 @@
     </div>
   </div>
 <% end %>
-<% if version.item_type == "Comment" %>
+<% if version.item_type == "Comment" && Comment.find_by_id(version.item_id).present? %>
   <div class="form-container-row form-container-row-log">
     <div class="form-container-col form-container-left-log">
       <p><%= t(".comment",
@@ -41,6 +41,20 @@
     <div class="form-container-col form-container-right-log" >
       <%= link_to(image_tag(Comment.find_by_id(version.item_id).post.photos.first.image.url(:thumb)),
         post_path(Comment.find_by_id(version.item_id).post)) %>
+    </div>
+  </div>
+<% end %>
+<% if version.item_type == "Post" && Post.find_by_id(version.item_id).present? %>
+  <div class="form-container-row form-container-row-log">
+    <div class="form-container-col form-container-left-log">
+      <p><%= t(".post",
+        post: link_to(t(".photo"),
+          post_path(Post.find_by_id(version.item_id)))).html_safe %></p>
+      <h6><%= version.created_at.strftime("%c") %></h6>
+    </div>
+    <div class="form-container-col form-container-right-log" >
+      <%= link_to(image_tag(Post.find_by_id(version.item_id).photos.first.image.url(:thumb)),
+        post_path(Post.find_by_id(version.item_id))) %>
     </div>
   </div>
 <% end %>

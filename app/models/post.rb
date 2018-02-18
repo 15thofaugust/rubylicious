@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  has_paper_trail
+
   belongs_to :user
   has_many :notifications
   has_many :photos
