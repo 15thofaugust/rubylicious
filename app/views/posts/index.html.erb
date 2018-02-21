@@ -1,22 +1,35 @@
 <script type="text/javascript">
   <%= render "show.js" %>
+  <%= render "posts/index.js.erb" %>
+  <%= render "posts/index_comment.js.erb" %>
 </script>
 <div class="recommend-text"><b><%=t ".recommend" %></b></div>
 <div class="suggest-users">
   <%= render "users/user" %>
 </div>
-<div class="index-container">
-  <div id="my-posts">
-    <%= render @posts %>
+<% if current_user.followers.count > 0 || current_user.created_at < 5.days.ago %>
+  <div class="index-container">
+    <div id="my-posts">
+      <%= render @posts %>
+    </div>
   </div>
-</div>
-<nav id="page-nav">
-
-  <%= will_paginate @posts %>
-</nav>
-
-<script type="text/javascript">
-  <%= render "posts/index.js.erb" %>
-  <%= render "posts/index_comment.js.erb" %>
-</script>
+  <nav id="page-nav">
+    <%= will_paginate @posts %>
+  </nav>
+<% else %>
+  <div class="tutorial-container">
+    <div class=form-container>
+      <h1><%= t ".welcome" %></h1>
+      <h3><%= t ".leading" %></h3>
+      <ul>
+        <li><p><%= t(".search_n_follow",
+          search: image_tag("resources/search.jpg")).html_safe %></p></li>
+        <li><p><%= t ".user" %></p></li>
+        <li><p><%= t(".upload",
+          button: image_tag("resources/upload.jpg")).html_safe %></p></li>
+      </ul>
+      <h2><%= t ".ending" %></h2>
+    </div>
+  </div>
+<% end %>
 

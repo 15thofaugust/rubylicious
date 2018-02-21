@@ -5,4 +5,6 @@ setTimeout(function(){
 $(".single-post-wrapper").empty();
 $(".dim").fadeOut(300);
 $(".post-box-<%= params[:id] %>").remove();
-$('#my-posts').masonry('reload');
+$(".user-post-<%= params[:id] %>").remove();
+$("#my-posts").masonry("reload");
+$(".user-page-main-wrapper").masonry("reload");
