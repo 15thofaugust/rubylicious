@@ -1,3 +1,15 @@
 $('.get-to-single-comment').click(function(){
   $('.comment-textarea').focus();
 });
+$(document).keydown(function(e){
+  if(e.keyCode == 37 || e.which == 37) {
+    $(".prev-post-wrapper").children("a").click();
+    e.preventDefault();
+  }
+});
+$(document).keydown(function(e){
+  if(e.keyCode == 39 || e.which == 39) {
+    $(".next-post-wrapper").children("a").click();
+    e.preventDefault();
+  }
+});

@@ -44,21 +44,7 @@
     <% else %>
       <div class="user-page-main">
         <div class="user-page-main-wrapper">
-          <% @posts.each do |p| %>
-            <div class="user-post", value=<% p.id %>>
-              <div class="user-post-stat user-post-stat-<%= p.id %>">
-                <div class="user-post-stat-component">
-                  <%= image_tag "resources/likefill.png" %>
-                  <p><%= p.likes.count %></p>
-                </div>
-                <div class="user-post-stat-component">
-                  <%= image_tag "resources/commentfill.png" %>
-                  <p><%= p.likes.count %></p>
-                </div>
-              </div>
-              <%= link_to image_tag(p.photos.first.image.url), p, class: "user-post-image", value: p.id, remote: true %>
-            </div>
-          <% end %>
+          <%= render partial: "post", collection: @posts %>
         </div>
         <nav id="page-nav">
           <%= will_paginate @posts %>

@@ -155,3 +155,34 @@
     margin: auto;
   }
 }
+
+.tutorial-container {
+  margin-top: 50px;
+  .form-container {
+    padding: 30px 80px;
+    text-align: center;
+    h1 {
+      color: $mineshaft;
+      font-weight: 1000;
+      padding-bottom: 20px;
+    }
+    h3 {
+      color: $mineshaft;
+      font-weight: 600;
+      padding-bottom: 50px;
+      font-size: 30px;
+    }
+    ul {
+      list-style-type: none;
+      li {
+        font-size: 18px;
+        padding-bottom: 15px;
+      }
+    }
+    h2 {
+      color: $mineshaft;
+      font-weight: 600;
+      padding-top: 20px;
+    }
+  }
+}

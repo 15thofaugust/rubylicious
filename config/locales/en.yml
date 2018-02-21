@@ -94,6 +94,15 @@ en:
   posts:
     index:
       recommend: "Top users that recommended for you"
+      welcome: "It seems like you are new to Rubylicious"
+      leading: "Here are a few tips for you:"
+      search_n_follow: "We have suggested a couple of user that you may want to follow.
+          In case you are interested in a specific user,
+          search bar ( %{search} ) is provided on top of the screen"
+      user: "Preview and modify your account by clicking on your avatar on the right upper corner"
+      upload: "Finally, feel free to upload your first post by clicking on this
+        %{button} button"
+      ending: "Share your moments with Rubylicous!"
     add_comment:
       add: "Add a comment..."
     post:
@@ -147,6 +156,8 @@ en:
     create:
       wrong_combination: "Invalid email/password combination."
   users:
+    create:
+      create_success: "Your account has been created successfully."
     update:
       update_success: "Your profile has been updated"
       update_failed: "Your profile can't be updated"

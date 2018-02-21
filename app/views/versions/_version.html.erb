@@ -4,7 +4,8 @@
       <p><%= t(".follow",
         followed: link_to("#{image_tag(Relationship.find_by_id(version.item_id).followed.avatar)}
           #{Relationship.find_by_id(version.item_id).followed.username}".html_safe,
-          user_path(Relationship.find_by_id(version.item_id).followed))).html_safe %></p>
+          user_path(Relationship.find_by_id(version.item_id).followed),
+          target: :_blank)).html_safe %></p>
       <h6><%= version.created_at.strftime("%c") %></h6>
     </div>
     <div class="form-container-col form-container-right-log" >
@@ -16,14 +17,14 @@
     <div class="form-container-col form-container-left-log">
       <p><%= t(".like",
         user: link_to(Like.find_by_id(version.item_id).post.user.username,
-          user_path(Like.find_by_id(version.item_id).post.user)),
+          user_path(Like.find_by_id(version.item_id).post.user), target: :_blank),
         photo: link_to(t(".photo"),
-          post_path(Like.find_by_id(version.item_id).post))).html_safe %></p>
+          post_path(Like.find_by_id(version.item_id).post), target: :_blank)).html_safe %></p>
       <h6><%= version.created_at.strftime("%c") %></h6>
     </div>
     <div class="form-container-col form-container-right-log" >
       <%= link_to(image_tag(Like.find_by_id(version.item_id).post.photos.first.image.url(:thumb)),
-        post_path(Like.find_by_id(version.item_id).post)) %>
+        post_path(Like.find_by_id(version.item_id).post), target: :_blank) %>
     </div>
   </div>
 <% end %>
@@ -33,14 +34,14 @@
       <p><%= t(".comment",
         content: "<i>#{Comment.find_by_id(version.item_id).content}</i>".html_safe,
         user: link_to(Comment.find_by_id(version.item_id).post.user.username,
-          user_path(Comment.find_by_id(version.item_id).post.user)),
+          user_path(Comment.find_by_id(version.item_id).post.user), target: :_blank),
         photo: link_to(t(".photo"),
-          post_path(Comment.find_by_id(version.item_id).post))).html_safe %></p>
+          post_path(Comment.find_by_id(version.item_id).post), target: :_blank)).html_safe %></p>
       <h6><%= version.created_at.strftime("%c") %></h6>
     </div>
     <div class="form-container-col form-container-right-log" >
       <%= link_to(image_tag(Comment.find_by_id(version.item_id).post.photos.first.image.url(:thumb)),
-        post_path(Comment.find_by_id(version.item_id).post)) %>
+        post_path(Comment.find_by_id(version.item_id).post), target: :_blank) %>
     </div>
   </div>
 <% end %>
@@ -49,12 +50,12 @@
     <div class="form-container-col form-container-left-log">
       <p><%= t(".post",
         post: link_to(t(".photo"),
-          post_path(Post.find_by_id(version.item_id)))).html_safe %></p>
+          post_path(Post.find_by_id(version.item_id)), target: :_blank)).html_safe %></p>
       <h6><%= version.created_at.strftime("%c") %></h6>
     </div>
     <div class="form-container-col form-container-right-log" >
       <%= link_to(image_tag(Post.find_by_id(version.item_id).photos.first.image.url(:thumb)),
-        post_path(Post.find_by_id(version.item_id))) %>
+        post_path(Post.find_by_id(version.item_id)), target: :_blank) %>
     </div>
   </div>
 <% end %>
