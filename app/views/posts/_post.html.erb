@@ -1,6 +1,10 @@
 <div class="post-box post-box-<%= post.id %>">
   <div class="post-box-header">
-    <%= link_to "#{image_tag(post.user.avatar)} #{post.user.username}".html_safe, post.user %>
+    <%= link_to image_tag(post.user.avatar), post.user%>
+    <%= link_to post.user.username, post.user %>
+    <% if post.user.permission == 1 %>
+      <span class="glyphicon glyphicon-star admin-star"></span>
+    <% end %>
   </div>
   <div class="post-box-image">
     <% if post.photos.count == 0 %>

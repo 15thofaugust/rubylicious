@@ -11,8 +11,11 @@
     <% if logged_in? %>
       <nav class="col-xs-4">
         <ul class="nav navbar-nav navbar-right">
-           <%= link_to image_tag("header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload1"),
-            {controller: "posts", action: "new"}, remote: true %>
+          <% if is_admin? %>
+            <%= link_to image_tag("header/admin.png", alt: t(".upload_alt"), id: "icon", class: "icon-admin" ), admins_path %>
+          <% end %>
+            <%= link_to image_tag("header/upload.png", alt: t(".upload_alt"), id: "icon", class: "icon-upload1"),
+              {controller: "posts", action: "new"}, remote: true %>
           <div class="dropdown" onclick="load_notification()">
             <%= link_to image_tag("header/noti.png", alt: t(".noti_alt"), id:"icon"), "#", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
             <div class="number_ground">

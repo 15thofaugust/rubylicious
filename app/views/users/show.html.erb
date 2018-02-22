@@ -6,7 +6,7 @@
     </div>
     <div class="user-page-info">
       <div class="user-page-info-row user-page-info-row-1">
-        <h3><%= @user.username %></h3>
+        <h3 class="<%= "banned" if is_ban? %>"><%= @user.username %></h3>
         <%= render "follow_form" if logged_in? %>
       </div>
       <div class="user-page-info-row user-page-info-stat">

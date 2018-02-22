@@ -39,10 +39,12 @@ class Post < ApplicationRecord
   end)
 
   following_ids = "SELECT followed_id FROM relationships
-                     WHERE  follower_id = :user_id"
+    WHERE follower_id = :user_id"
+  admin_ids = "SELECT id FROM users
+    WHERE permission = 1"
   scope :posts_by_follower, (lambda do
     |follower_id|
-    where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: follower_id).order(created_at: :desc)
+    where("user_id IN (#{following_ids}) OR user_id = :user_id OR user_id IN (#{admin_ids})", user_id: follower_id).order(created_at: :desc)
   end)
   scope :get_post_by_id, -> {select(:id, :user_id, :caption, :created_at)
     .where("id = ?", "%#{post_id}%").order(created_at: :desc)}

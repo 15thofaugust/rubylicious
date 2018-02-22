@@ -1,7 +1,7 @@
 <script type="text/javascript">
   <%= render "comment.js" %>
-  <%= render "posts/show.js.erb" %>
-  <%= render "posts/edit_caption.js.erb" %>
+  <%= render "show.js.erb" %>
+  <%= render "edit_caption.js.erb" %>
 </script>
 <div class="row post-popup">
   <div class="post-image col-md-8">
@@ -60,8 +60,10 @@
             class="glyphicon glyphicon-option-horizontal dropdown-toggle dropdown-toggle-post"
             data-toggle="dropdown"></span>
           <ul class="dropdown-menu dropdown-menu-post">
-            <% if @post.user.posts.include? @post %>
+            <% if @post.user == current_user %>
               <li><%= link_to t(".edit_post"), edit_post_path, remote: true %></li>
+            <% end %>
+            <% if @post.user == current_user or is_admin? %>
               <li><%= link_to t(".delete_post"), @post,
               method: :delete, data: {confirm: t(".conf_delete_post")}, remote: true %></li>
             <% end %>

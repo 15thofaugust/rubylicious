@@ -62,7 +62,8 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation,
       :isprivate,
-      :avatar
+      :avatar,
+      :is_active
   end
 
   def logged_in_user
@@ -78,7 +79,7 @@ class UsersController < ApplicationController
 
   def admin_user
    redirect_to root_url unless current_user.admin?
- end
+  end
 
   def find_user
     @user = User.find_by_id params[:id]

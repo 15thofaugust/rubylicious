@@ -1,0 +1,77 @@
+<% provide :title, t(".title") %>
+<script type="text/javascript">
+  <%= render "index.js" %>
+</script>
+<div class="main">
+  <div class="edit-profile-wrapper">
+    <div class="profile-config-menu">
+      <div class="form-container">
+        <ul>
+          <li class="profile-config-selected">
+            <%= link_to t(".users_manager"), admins_path %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="edit-profile-container">
+      <div class="form-container form-container-2-col">
+        <table class="user-datatable" id="user-datatable">
+          <thead>
+            <tr>
+              <th><%= t ".avatar" %></th>
+              <th><%= t ".username" %></th>
+              <th><%= t ".fullname" %></th>
+              <th><%= t ".permission" %></th>
+              <th><%= t ".active" %></th>
+              <th><%= t ".action" %></th>
+            </tr>
+          </thead>
+           <tbody>
+            <% @all_users.each do |user| %>
+              <tr>
+                <td><%= link_to image_tag(user.avatar.url, class: "admin-users-avatar"), user%></td>
+                <td><%= link_to user.username, user %></td>
+                <td><%= user.fullname %></td>
+                <td><%= user.permission == 1 ? "Admin" : "User" %></td>
+                <td id="user_active_<%= user.id %>"><%= user.is_active == 1 ? "Active" : "Banned" %></td>
+                <td>
+                  <% if user.permission == 0 %>
+                    <% if user.is_active == 1 %>
+                      <%= link_to t(".ban_user"),
+                        ban_path(user.id),
+                        remote: true,
+                        method: :patch,
+                        data: {confirm: t(".conf-ban")} %>
+                      <br>
+                      <% unless user == current_user %>
+                        <%= link_to t(".change_permission"),
+                          promote_path(user.id),
+                          remote: true,
+                          method: :patch,
+                          data: {confirm: t(".conf-promote")} %>
+                      <% end %>
+                    <% else %>
+                      <%= link_to t(".unban_user"),
+                        unban_path(user.id),
+                        remote: true,
+                        method: :patch,
+                        data: {confirm: t(".conf-unban")} %>
+                    <% end %>
+                  <% else %>
+                    <% unless user == current_user %>
+                      <%= link_to t(".change_permission_to_user"),
+                        disrank_path(user.id),
+                        remote: true,
+                        method: :patch,
+                        data: {confirm: t(".conf-disrank")} %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

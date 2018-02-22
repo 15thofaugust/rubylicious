@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action only: [:show] do load_post params[:id]
   end
   before_action :correct_post, only: [:destroy, :edit, :update]
+  before_action :check_ban, only: [:update, :create]
   def index
     if logged_in?
       @users = User.suggestion_users current_user.id
@@ -87,12 +88,12 @@ class PostsController < ApplicationController
     if @post.destroy
       respond_to do |format|
         format.html
-        format.js {flash.now[:success] = t "post_delete_success"}
+        format.js {flash.now[:success] = is_admin? ? @post.user.username + t("admin_delete_success") : t("post_delete_success")}
       end
     else
       respond_to do |format|
         format.html
-        format.js {flash.now[:danger] = t "post_delete_failed"}
+        format.js {flash.now[:danger] = is_admin? ? @post.user.username + t("admin_delete_failed") : t("post_delete_failed")}
       end
     end
   end
@@ -124,13 +125,24 @@ class PostsController < ApplicationController
   end
 
   def correct_post
-    @post = current_user.posts.find_by id: params[:id]
+    if is_admin?
+      @post = Post.find_by id: params[:id]
+    else
+      @post = current_user.posts.find_by id: params[:id]
+    end
     redirect_to root_url if @post.nil?
   end
   def post_params
     params.require(:post).permit(:user_id,
      :caption,
       photos_attributes: [:id, :post_id, :image])
+  end
+
+  def check_ban
+    if is_ban?
+      redirect_to root_path
+      flash[:danger] = t "banned"
+    end
   end
 end
 
