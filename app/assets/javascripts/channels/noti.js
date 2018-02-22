@@ -6,7 +6,7 @@ function noti(){
     });
 
     notification.onclick = function () {
-      window.open("https://github.com/");
+
     };
 
     setTimeout(function(){

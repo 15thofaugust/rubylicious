@@ -91,6 +91,8 @@ en:
       commented_noti: "<b>%{user_name}</b> has commented on your post"
       tagged_noti: "<b>%{user_name}</b> has mentioned you"
       followed_noti: "<b>%{user_name}</b> has followed you"
+      requested_noti: "<b>%{user_name}</b> has request to follow you"
+      accepted_noti: "<b>%{user_name}</b> has accept your follow request"
       noti_title: "Notification"
       noti_text: "See all your notifications"
   shared:

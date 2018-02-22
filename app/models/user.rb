@@ -51,8 +51,10 @@ class User < ApplicationRecord
   scope :get_all_users, -> {select(:id, :username, :fullname,:is_active, :permission, :avatar).order username: :asc}
   scope :suggestion_users, (lambda do |follower_id|
     joins("LEFT JOIN relationships R ON R.followed_id = users.id")
-    .where("(users.id NOT IN (SELECT R.followed_id FROM relationships R
-      WHERE R.follower_id = :user_id)) AND 1", user_id: follower_id)
+    .where("users.id NOT IN (SELECT R.followed_id FROM relationships R
+      WHERE R.follower_id = :user_id) AND users.id <> :user_id
+      AND (users.isprivate <> 't' OR users.isprivate IS NULL)",
+      user_id: follower_id)
     .group("users.id")
     .order("COUNT(R.id) DESC")
     .limit(20)

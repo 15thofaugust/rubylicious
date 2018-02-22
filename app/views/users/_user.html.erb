@@ -9,7 +9,7 @@
     <div class ="number_<%= user.id %>" >
       <i><%= t ".followed", num_user: user.passive_relationships.count %></i>
     </div>
-    <div id="follow_form" class ="button_follow button_<%= user.id %>">
+    <div class ="follow_form button_follow button_<%= user.id %>">
       <% @user = user %>
       <% if current_user.following? @user %>
         <%= render "users/unfollow" %>
