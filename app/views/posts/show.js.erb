@@ -4,13 +4,13 @@ $('.next-post-wrapper').empty();
 $('.prev-post-wrapper').empty();
 
 <% user = @post.user %>
-<% next_post =  user.posts.where("id < ?", @post.id).last %>
+<% next_post =  @posts.where("id < ?", @post.id).first %>
 <% if next_post.present? %>
   $('.next-post-wrapper').append('<%= link_to\
     "<span class=\"glyphicon glyphicon-triangle-right\"></span>".html_safe,\
     next_post, remote: true %>')
 <% end %>
-<% prev_post =  user.posts.where("id > ?", @post.id).first %>
+<% prev_post =  @posts.where("id > ?", @post.id).last %>
 <% if prev_post.present? %>
   $('.prev-post-wrapper').append('<%= link_to\
     "<span class=\"glyphicon glyphicon-triangle-left\"></span>".html_safe,\

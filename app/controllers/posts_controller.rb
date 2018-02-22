@@ -6,8 +6,7 @@ class PostsController < ApplicationController
   def index
     if logged_in?
       @users = User.suggestion_users current_user.id
-      @posts = Post.posts_by_follower(current_user.id)
-        .paginate page: params[:page], per_page: Settings.index_paginate_per
+      show_new_feed
       respond_to do |format|
         format.html
         format.js
@@ -21,6 +20,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    show_new_feed
     respond_to do |format|
       format.html
       format.js
@@ -136,6 +136,16 @@ class PostsController < ApplicationController
     params.require(:post).permit(:user_id,
      :caption,
       photos_attributes: [:id, :post_id, :image])
+  end
+
+  def show_new_feed
+    if is_admin?
+        @posts = Post.get_all_posts
+          .paginate page: params[:page], per_page: Settings.index_paginate_per
+      else
+        @posts = Post.posts_by_follower(current_user.id)
+          .paginate page: params[:page], per_page: Settings.index_paginate_per
+      end
   end
 
   def check_ban
