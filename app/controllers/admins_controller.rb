@@ -7,6 +7,7 @@ class AdminsController < ApplicationController
 
   def ban
     if @user.update_attribute(:is_active, 0)
+      Notification.create(type_noti: 7, isSeen: false, user_set_id: 1, user_get_id: @user.id)
       redirect_to admins_path
       flash[:success] = t "user_banned"
     else
@@ -17,6 +18,7 @@ class AdminsController < ApplicationController
 
   def unban
     if @user.update_attribute(:is_active, 1)
+      Notification.create(type_noti: 8, isSeen: false, user_set_id: 1, user_get_id: @user.id)
       redirect_to admins_path
       flash[:success] = t "user_unbanned"
     else
@@ -27,6 +29,7 @@ class AdminsController < ApplicationController
 
   def promote
     if @user.update_attribute(:permission, 1)
+      Notification.create(type_noti: 9, isSeen: false, user_set_id: 1, user_get_id: @user.id)
       redirect_to admins_path
       flash[:success] = t "user_promoted"
     else
@@ -37,6 +40,7 @@ class AdminsController < ApplicationController
 
   def disrank
     if @user.update_attribute(:permission, 0)
+      Notification.create(type_noti: 10, isSeen: false, user_set_id: 1, user_get_id: @user.id)
       redirect_to admins_path
       flash[:success] = t "user_disranked"
     else

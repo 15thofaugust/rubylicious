@@ -41,21 +41,24 @@
                         ban_path(user.id),
                         remote: true,
                         method: :patch,
-                        data: {confirm: t(".conf-ban")} %>
+                        data: {confirm: t(".conf-ban")},
+                        id: "ban_button", user_id: user.id %>
                       <br>
                       <% unless user == current_user %>
                         <%= link_to t(".change_permission"),
                           promote_path(user.id),
                           remote: true,
                           method: :patch,
-                          data: {confirm: t(".conf-promote")} %>
+                          data: {confirm: t(".conf-promote")},
+                          id: "promote_button", user_id: user.id %>
                       <% end %>
                     <% else %>
                       <%= link_to t(".unban_user"),
                         unban_path(user.id),
                         remote: true,
                         method: :patch,
-                        data: {confirm: t(".conf-unban")} %>
+                        data: {confirm: t(".conf-unban")},
+                        id: "unban_button", user_id: user.id %>
                     <% end %>
                   <% else %>
                     <% unless user == current_user %>
@@ -63,7 +66,8 @@
                         disrank_path(user.id),
                         remote: true,
                         method: :patch,
-                        data: {confirm: t(".conf-disrank")} %>
+                        data: {confirm: t(".conf-disrank")},
+                        id: "disrank_button", user_id: user.id %>
                     <% end %>
                   <% end %>
                 </td>
