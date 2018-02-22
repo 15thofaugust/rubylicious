@@ -27,12 +27,14 @@ $(document).on "click", "#like_button", ->
 $(document).on "click", "#follow_button", ->
   App.notifications.speak($(this).attr("user_follwed_id"))
 
+$(document).on "click", ".accept-button", ->
+  App.notifications.speak($(this).attr("user_follwer_id"))
+
 $(document).on "click", "#post_button", ->
   ids = $(".caption-box").html()
   pattern = /\"\/users\/(.*?)\"/g
   while((matches = pattern.exec(ids)) != null)
     App.notifications.speak(matches[1])
-
 
 noti = `function noti(){
   if (Notification.permission === "granted") {
@@ -42,7 +44,7 @@ noti = `function noti(){
     });
 
     notification.onclick = function () {
-      window.open("https://github.com/");
+
     };
 
     setTimeout(function(){

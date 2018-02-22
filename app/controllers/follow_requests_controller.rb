@@ -22,7 +22,7 @@ class FollowRequestsController < ApplicationController
 
   def destroy
     @user = Follow_Request.find_by_id(params[:id]).followed
-    if current_user.sent_requests.delete @user
+    if current_user.sent_requests.destroy @user
       respond_to do |format|
         format.html
         format.js {flash.now[:success] = t(".destroy_success", user: @user.username)}
@@ -36,6 +36,8 @@ class FollowRequestsController < ApplicationController
   def accept
     if @received_req.destroy
       @follower = @received_req.follower
+      Notification.create(type_noti: 6, isSeen: false, user_set_id: current_user.id,
+        user_get_id: @follower.id)
       PaperTrail.whodunnit = @follower.id
       @follower.follow current_user
       respond_to do |format|
