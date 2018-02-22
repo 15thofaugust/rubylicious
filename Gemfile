@@ -9,6 +9,7 @@ gem "config"
 gem "faker", "1.7.3"
 gem "jbuilder", "2.7.0"
 gem "jquery-atwho-rails"
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 gem "jquery-rails", "4.3.1"
 gem "jquery-turbolinks"
 gem "mini_magick", "4.7.0"

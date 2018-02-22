@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action only: [:create] do load_post params[:post_id]
   end
   before_action :load_comment, only: [:destroy]
-
+  before_action :check_ban, only: [:create]
   def index
     @comments = Comment.comments_by_posts(params[:id], params[:page])
     respond_to do |format|
@@ -51,5 +51,12 @@ class CommentsController < ApplicationController
     return if @comment
     flash[:danger] = t "comment_not_found"
     redirect_to root_path
+  end
+
+  def check_ban
+    if is_ban?
+      redirect_to root_path
+      flash[:danger] = t "banned"
+    end
   end
 end

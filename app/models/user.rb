@@ -48,7 +48,7 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: Settings.pass_min_length},
     allow_nil: true
 
-  scope :get_all_users, -> {select(:id, :username, :avatar).order username: :asc}
+  scope :get_all_users, -> {select(:id, :username, :fullname,:is_active, :permission, :avatar).order username: :asc}
   scope :suggestion_users, (lambda do |follower_id|
     joins("LEFT JOIN relationships R ON R.followed_id = users.id")
     .where("users.id NOT IN (SELECT R.followed_id FROM relationships R

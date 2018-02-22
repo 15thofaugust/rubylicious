@@ -1,7 +1,7 @@
 <%= form_for comment do |f| %>
   <div class="comments_wrapper clearfix comments_wrapper-<%= comment.id %>">
     <div class="comment-text">
-      <p><%= link_to comment.user.username, comment.user %> <%= sanitize render_comment_hashtag(comment.content) %></p>
+      <p><%= link_to comment.user.username, comment.user%> <%= sanitize render_comment_hashtag(comment.content) %></p>
     </div>
     <div class="comment-button">
       <% if current_user? comment.user or current_user.post.include? comment.post%>

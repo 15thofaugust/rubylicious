@@ -40,4 +40,12 @@ module SessionsHelper
     session.delete :user_id
     @current_user = nil
   end
+
+  def is_admin?
+    @current_user.permission == 1;
+  end
+
+  def is_ban?
+    @current_user.is_active == 0;
+  end
 end

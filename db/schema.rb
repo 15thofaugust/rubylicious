@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212105351) do
+ActiveRecord::Schema.define(version: 20180220154330) do
 
   create_table "comment_usertags", force: :cascade do |t|
     t.integer "comment_id"
@@ -117,7 +117,8 @@ ActiveRecord::Schema.define(version: 20180212105351) do
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.boolean "isprivate"
-    t.binary "is_active"
+    t.integer "is_active", default: 1
+    t.integer "permission", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

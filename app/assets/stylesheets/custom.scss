@@ -501,10 +501,10 @@ body {
     }
   }
   .next-post-wrapper {
-    left: 80%;
+    right: 80px;
   }
   .prev-post-wrapper {
-    left: 18.3%;
+    left: 80px;
   }
 }
 
@@ -570,5 +570,22 @@ body {
 .tag-user-item{
   font-weight: bold;
   color: $black;
-  display: block;
+  display: inline-block;
+  margin-left: 0px !important;
+}
+
+#user-datatable_wrapper{
+  margin: 0px 10px;
+}
+.user-datatable{
+  width: 100%;
+
+  img.admin-users-avatar{
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  }
+}
+.banned{
+  text-decoration: line-through !important;
 }

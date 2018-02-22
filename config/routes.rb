@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get :sent_requests, :receive_requests
     end
   end
+
   resources :versions, only: [:index]
   resources :posts
   resources :password_resets
@@ -31,7 +32,11 @@ Rails.application.routes.draw do
   end
   resources :likes, only: [:create, :destroy]
   resources :comments, except: [:index]
-
+  resources :admins
+  patch "/ban/:id", to: "admins#ban", as: "ban"
+  patch "/unban/:id", to: "admins#unban", as: "unban"
+  patch "/promote/:id", to: "admins#promote", as: "promote"
+  patch "/disrank/:id", to: "admins#disrank", as: "disrank"
   get "auth/:provider/callback", to: "sessions#create"
   get "auth/failure", to: "sessions#failure"
   resources :users
