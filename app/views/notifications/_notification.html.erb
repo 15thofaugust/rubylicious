@@ -40,6 +40,18 @@
       <% elsif noti.type_noti == 6 %>
         <%= link_to t("layouts.header.accepted_noti", user_name: noti.user_set.username).html_safe, noti.user_set,
           class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+      <% elsif noti.type_noti == 7 %>
+        <%= link_to t("layouts.header.banned_noti", user_name: noti.user_set.username).html_safe, root_path,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+      <% elsif noti.type_noti == 8 %>
+        <%= link_to t("layouts.header.unbanned_noti", user_name: noti.user_set.username).html_safe, root_path,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+      <% elsif noti.type_noti == 9 %>
+        <%= link_to t("layouts.header.promoted_noti", user_name: noti.user_set.username).html_safe, admins_path,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
+      <% elsif noti.type_noti == 10 %>
+        <%= link_to t("layouts.header.disranked_noti", user_name: noti.user_set.username).html_safe, root_path,
+          class: (noti.isSeen ? "noti_text" : "noti_text_unseen") %>
       <% end %>
 
       <div class = "timestamp">

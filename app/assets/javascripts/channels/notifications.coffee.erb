@@ -30,6 +30,18 @@ $(document).on "click", "#follow_button", ->
 $(document).on "click", ".accept-button", ->
   App.notifications.speak($(this).attr("user_follwer_id"))
 
+$(document).on "click", "#promote_button", ->
+  App.notifications.speak($(this).attr("user_id"))
+
+$(document).on "click", "#disrank_button", ->
+  App.notifications.speak($(this).attr("user_id"))
+
+$(document).on "click", "#ban_button", ->
+  App.notifications.speak($(this).attr("user_id"))
+
+$(document).on "click", "#unban_button", ->
+  App.notifications.speak($(this).attr("user_id"))
+
 $(document).on "click", "#post_button", ->
   ids = $(".caption-box").html()
   pattern = /\"\/users\/(.*?)\"/g
