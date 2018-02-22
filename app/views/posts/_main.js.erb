@@ -26,8 +26,8 @@ $(document).ready(function(){
     startWithSpace: true,
     searchKey: "username",
     insertTpl: ("<a class=\"tag-user-item\" href=\"/users/${id}\">\@${username}</a>"),
-    displayTpl: ('<li><img class="dropdown-avatar"\
-     src="assets/${avatar}" style="border-radius: 50%;" />@${username}</li>')
+    displayTpl: ('<li class=\"tag-user-item\"><img class="dropdown-avatar"\
+      src="${avatar}" style="border-radius: 50%;" />@${username}</li>')
   });
 // Upload
   $("#upload-btn").change(function () {

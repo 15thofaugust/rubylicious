@@ -7,7 +7,7 @@
 <div class="suggest-users">
   <%= render "users/user" %>
 </div>
-<% if current_user.followers.count > 0 || current_user.created_at < 5.days.ago %>
+<% if current_user.following.count > 0 || current_user.created_at < 5.days.ago %>
   <div class="index-container">
     <div id="my-posts">
       <%= render @posts %>
